@@ -1,5 +1,5 @@
 .summary-container {
-    height: calc(100vh - 56px);
+    height: calc(100vh - 56px - 5vh);
     width: 100vw;
     max-width: 100%;
     background: var(--bg);
@@ -22,5 +22,60 @@
     h3 {
         margin: 0;
         color: var(--header);
+    }
+}
+
+.summary-body {
+    display: flex;
+    align-items: center;
+    width: 80vw;
+    margin-top: 10vh;
+}
+
+.summary-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40vw;
+    height: 50vh;
+
+    div {
+        display: flex;
+    }
+}
+
+.task-overview,
+.done-cards {
+    display: flex;
+    justify-content: space-around;
+    width: 40vw;
+
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.greeting {
+    width: 40vw;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+        font-size: 42px;
+
+        &:first-child {
+            color: var(--beige);
+        }
+
+        &:last-child {
+            color: var(--header);
+            font-weight: 600;
+        }
     }
 }
