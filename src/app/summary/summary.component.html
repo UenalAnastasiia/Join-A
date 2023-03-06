@@ -42,7 +42,20 @@
 
         <div class="greeting">
             <div class="context">
-                <p class="txt-time">{{ time | date:'mediumTime' }}</p>
+                <div class="clock">
+                    <div class="hour">
+                        <div class="hr" id="hr"></div>
+                    </div>
+
+                    <div class="min">
+                        <div class="mn" id="mn"></div>
+                    </div>
+
+                    <div class="sec">
+                        <div class="sc" id="sc"></div>
+                    </div>
+                </div>
+
                 <h3>{{ greeting }},</h3>
                 <h3>Anastasiia
                     <mat-icon>waving_hand</mat-icon>

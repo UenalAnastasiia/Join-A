@@ -6,34 +6,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.scss', './clock.scss']
 })
 export class SummaryComponent implements OnInit {
-  time;
-  hours;
-  greeting;
+  greeting: string;
 
   constructor() {
-    setInterval(() => {
-      this.time = new Date();
-    }, 1000);
+ }
 
+  ngOnInit(): void {
+    this.getTime();
     this.decide();
   }
 
-  ngOnInit(): void {
+
+  getTime() {
+    setInterval(() => {
+      const deg = 6;
+      let day = new Date();
+      let hh = day.getHours() * 30;
+      let mm = day.getMinutes() * deg;
+      let ss = day.getSeconds() * deg;
+
+      (document.querySelector('#hr') as HTMLElement).style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+      (document.querySelector('#mn') as HTMLElement).style.transform = `rotateZ(${mm}deg)`;
+      (document.querySelector('#sc') as HTMLElement).style.transform = `rotateZ(${ss}deg)`;
+    });
   }
 
 
   decide() {
-    this.hours = new Date().getHours();
+    let hours = new Date().getHours();
 
-    if (this.hours < 10) {
+    if (hours < 10) {
       this.greeting = "Good Morning";
-    } else if (this.hours < 16) {
+    } else if (hours < 16) {
       this.greeting = "Good Afternoon";
-    } else if (this.hours < 19) {
+    } else if (hours < 19) {
       this.greeting = "Good Evening";
-    } else if (this.hours < 24) {
+    } else if (hours < 24) {
       this.greeting = "Good Night";
-    } else if (this.hours < 6) {
+    } else if (hours < 6) {
       this.greeting = "Hello";
     }
   }
