@@ -1,28 +1,10 @@
 .summary-container {
-    height: calc(100vh - 56px - 5vh);
-    width: 100vw;
+    height: calc(90vh - 56px);
+    width: 85vw;
     max-width: 100%;
-    background: var(--bg);
-}
-
-.header {
-    display: flex;
-    align-items: center;
-
-    h1 {
-        margin-top: 0;
-        margin-bottom: 0;
-        margin-right: 16px;
-        color: var(--header);
-        font-size: 42px;
-        width: 200px;
-        border-right: 2px solid var(--header);
-    }
-
-    h3 {
-        margin: 0;
-        color: var(--header);
-    }
+    background: var(--bg-light);
+    border-radius: 24px;
+    box-shadow: 0px 0px 6px 4px #f1e0fe;
 }
 
 .summary-body {
@@ -46,7 +28,7 @@
 }
 
 .task-overview,
-.done-cards {
+.done-cards, .deadline-card {
     display: flex;
     justify-content: space-around;
     width: 40vw;
@@ -55,6 +37,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: var(--font);
     }
 }
 
@@ -70,12 +53,18 @@
         font-size: 42px;
 
         &:first-child {
-            color: var(--beige);
+            color: var(--font);
         }
 
         &:last-child {
             color: var(--header);
             font-weight: 600;
+            margin-left: 16px;
+
+            mat-icon {
+                font-size: 28px;
+                color: #c2a083;
+            }
         }
     }
 }
