@@ -65,13 +65,11 @@
 .add-btn {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 30vh;
 
     button {
         background: var(--bg-light);
         color: var(--header);
-
-        &:first-child {
-            margin-bottom: 56px;
-        }
     }
 }
