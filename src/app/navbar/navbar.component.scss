@@ -13,6 +13,7 @@
     align-items: center;
     padding-left: 5vh;
     padding-right: 5vh;
+    position: relative;
 }
 
 .nav-left {
@@ -39,13 +40,26 @@
     }
 }
 
-.btn-box {
+.btn-box-top {
     button {
         margin-left: 32px;
         margin-right: 32px;
         color: var(--bg-light);
         font-size: 20px;
         font-weight: 800;
+    }
+}
+
+.help-btn {
+    background: var(--bg-light);
+    color: var(--header);
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    box-shadow: 0px 0px 4px 1px #f1e0fe;
+
+    mat-icon {
+        font-weight: 600;
     }
 }
 
@@ -59,17 +73,19 @@
     button {
         background: var(--bg-light);
         color: var(--header);
+        box-shadow: 0px 0px 4px 1px #f1e0fe;
     }
 }
 
-.add-btn {
+.btn-box-left {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30vh;
+    height: 40vh;
 
     button {
         background: var(--bg-light);
         color: var(--header);
+        box-shadow: 0px 0px 4px 1px #f1e0fe;
     }
 }

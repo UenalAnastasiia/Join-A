@@ -1,10 +1,14 @@
 <div class="nav-bg">
     <nav class="nav-top">
-        <div class="btn-box">
+        <div class="btn-box-top">
             <button mat-button class="active-btn">Summary</button>
             <button mat-button>Board</button>
             <button mat-button>Contact</button>
         </div>
+
+        <button mat-icon-button class="help-btn" matTooltip="Help" matTooltipPosition="above">
+            <mat-icon>question_mark</mat-icon>
+        </button>
     </nav>
 
     <nav class="nav-left">
@@ -12,21 +16,25 @@
             <h1>Join</h1>
         </div>
 
-        <div class="add-btn">
-            <button mat-icon-button>
+        <div class="btn-box-left">
+            <button mat-icon-button matTooltip="Open Calendar" matTooltipPosition="right">
                 <mat-icon>calendar_month</mat-icon>
             </button>
 
-            <button mat-icon-button>
+            <button mat-icon-button matTooltip="Open Weather" matTooltipPosition="right">
                 <mat-icon>sunny</mat-icon>
             </button>
 
-            <button mat-icon-button>
+            <button mat-icon-button matTooltip="Add Note" matTooltipPosition="right">
                 <mat-icon>note_add</mat-icon>
             </button>
 
-            <button mat-icon-button>
+            <button mat-icon-button matTooltip="Add Contact" matTooltipPosition="right">
                 <mat-icon>person_add</mat-icon>
+            </button>
+
+            <button mat-icon-button matTooltip="Open Archive" matTooltipPosition="right">
+                <mat-icon>archive</mat-icon>
             </button>
         </div>
 
