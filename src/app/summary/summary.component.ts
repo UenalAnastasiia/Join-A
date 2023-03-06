@@ -7,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummaryComponent implements OnInit {
   greeting: string;
+  today = new Date();
+  month: string;
 
   constructor() {
- }
+  }
 
   ngOnInit(): void {
     this.getTime();
-    this.decide();
+    this.getMonthName();
+    this.getGreeting();
   }
 
 
@@ -25,14 +28,20 @@ export class SummaryComponent implements OnInit {
       let mm = day.getMinutes() * deg;
       let ss = day.getSeconds() * deg;
 
-      (document.querySelector('#hr') as HTMLElement).style.transform = `rotateZ(${(hh)+(mm/12)}deg)`;
+      (document.querySelector('#hr') as HTMLElement).style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
       (document.querySelector('#mn') as HTMLElement).style.transform = `rotateZ(${mm}deg)`;
       (document.querySelector('#sc') as HTMLElement).style.transform = `rotateZ(${ss}deg)`;
     });
   }
 
 
-  decide() {
+  getMonthName() {
+    let today = new Date();
+    this.month = today.toLocaleString('en', { month: 'long' });
+  }
+
+
+  getGreeting() {
     let hours = new Date().getHours();
 
     if (hours < 10) {
