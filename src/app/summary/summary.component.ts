@@ -15,8 +15,11 @@ export class SummaryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTime();
-    this.getMonthName();
     this.getGreeting();
+    
+    setInterval(() => {
+      this.getMonthName();
+    });
   }
 
 

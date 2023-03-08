@@ -10,12 +10,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { SummaryComponent } from './summary/summary.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { BoardComponent } from './board/board.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SummaryComponent
+    SummaryComponent,
+    BoardComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

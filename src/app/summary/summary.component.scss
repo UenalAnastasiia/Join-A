@@ -1,10 +1,11 @@
-.summary-container {
+.container-style {
     height: calc(90vh - 56px);
     width: 85vw;
     max-width: 100%;
     background: var(--bg-light);
     border-radius: 24px;
     box-shadow: 0px 0px 6px 4px #f1e0fe;
+    z-index: 1;
 }
 
 .summary-body {

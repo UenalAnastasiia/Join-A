@@ -17,6 +17,14 @@ body {
   --font: #4b5585;
 }
 
+.container-position {
+  // padding-left: 10vw;
+  position: absolute;
+  top: 72px;
+  left: 10vw;
+  z-index: 1;
+}
+
 .card-header {
   display: flex;
   align-items: center;
