@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  btnTop = [
+    { name: 'summary', isClicked: true },
+    { name: 'board', isClicked: false },
+    { name: 'contact', isClicked: false },
+  ];
 
   constructor() { }
 
@@ -13,20 +18,12 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  onButtonGroupClick($event) {
-    let clickedElement = $event.target || $event.srcElement;
-
-    if (clickedElement.nodeName === "BUTTON") {
-
-      let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active-btn");
-      // if a Button already has Class: .active
-      if (isCertainButtonAlreadyActive) {
-        isCertainButtonAlreadyActive.classList.remove("active-btn");
-      }
-
-      clickedElement.className += " active-btn";
+  setActive(button: any): void {
+    for (let but of this.btnTop) {
+      but.isClicked = false;
     }
 
+    button.isClicked = true;
   }
 
 }

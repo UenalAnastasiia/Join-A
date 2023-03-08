@@ -1,9 +1,10 @@
 <div class="nav-bg">
     <nav class="nav-top">
-        <div class="btn-box-top" (click)="onButtonGroupClick($event)">
-            <button mat-button routerLink="/summary">Summary</button>
-            <button mat-button routerLink="/board">Board</button>
-            <button mat-button routerLink="/contact">Contact</button>
+        <div class="btn-box-top">
+            <button mat-button *ngFor="let button of btnTop" [ngClass]="{'active-btn-top': button.isClicked}" 
+            (click)="setActive(button)" routerLink="/{{ button.name }}">
+                {{ button.name[0].toUpperCase() }}{{ button.name.slice(1).toLowerCase() }}
+            </button>
         </div>
 
         <button mat-icon-button class="help-btn" matTooltip="Help" matTooltipPosition="above">

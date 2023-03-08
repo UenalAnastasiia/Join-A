@@ -25,6 +25,16 @@ body {
   z-index: 1;
 }
 
+.container-style {
+  height: calc(90vh - 56px);
+  width: 85vw;
+  max-width: 100%;
+  background: var(--bg-light);
+  border-radius: 24px !important;
+  box-shadow: 0px 0px 6px 4px #f1e0fe !important;
+  z-index: 1;
+}
+
 .card-header {
   display: flex;
   align-items: center;
@@ -38,7 +48,6 @@ body {
       color: var(--header);
       font-size: 42px;
       font-weight: 600;
-      width: 200px;
       border-right: 2px solid var(--header);
   }
 

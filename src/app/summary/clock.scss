@@ -18,7 +18,7 @@
         position: absolute;
         width: 15px;
         height: 15px;
-        background: #fff;
+        background: var(--header);
         border-radius: 50%;
         z-index: 10000;
     }
