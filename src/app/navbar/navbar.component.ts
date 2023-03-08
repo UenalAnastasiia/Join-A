@@ -12,4 +12,21 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  onButtonGroupClick($event) {
+    let clickedElement = $event.target || $event.srcElement;
+
+    if (clickedElement.nodeName === "BUTTON") {
+
+      let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active-btn");
+      // if a Button already has Class: .active
+      if (isCertainButtonAlreadyActive) {
+        isCertainButtonAlreadyActive.classList.remove("active-btn");
+      }
+
+      clickedElement.className += " active-btn";
+    }
+
+  }
+
 }
