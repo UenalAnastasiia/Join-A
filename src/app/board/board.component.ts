@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 
 @Component({
   selector: 'app-board',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+
+  openDialogAddTask() {
+    this.dialog.open(DialogAddTaskComponent);
   }
 
 }

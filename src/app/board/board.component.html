@@ -8,72 +8,100 @@
         <div class="progress-box">
             <div class="progress-header">
                 <h1>To do</h1>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="openDialogAddTask()">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
 
             <div class="task-cards">
                 <mat-card>
-                    <button mat-raised-button color="warn">Design</button>
-                    <h4>Task Name</h4>
-                    <span>Task description</span>
-                    <button mat-button>AÜ</button>
+                    <span class="task-category" style="background: var(--orange)">Design</span>
+                    <h4 class="task-name">Task Name</h4>
+                    <span class="task-description">Task description</span>
+                    <span  class="task-assigned">AÜ</span>
                 </mat-card>
+                
+                <div class="add-card"  (click)="openDialogAddTask()">
+                    <span>Create new task</span>
+                    <button mat-icon-button (click)="openDialogAddTask()">
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="progress-box">
             <div class="progress-header">
                 <h1>In progress</h1>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="openDialogAddTask()">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
 
             <div class="task-cards">
                 <mat-card>
-                    <button mat-raised-button color="warn">Sales</button>
-                    <h4>Task Name</h4>
-                    <span>Task description</span>
-                    <button mat-button>AÜ</button>
+                    <span class="task-category" style="background: var(--pink)">Sales</span>
+                    <h4 class="task-name">Task Name</h4>
+                    <span class="task-description">Task description</span>
+                    <span  class="task-assigned">AÜ</span>
                 </mat-card>
+
+                <div class="add-card" (click)="openDialogAddTask()">
+                    <span>Create new task</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="progress-box">
             <div class="progress-header">
                 <h1>Awaiting Feedback</h1>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="openDialogAddTask()">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
 
             <div class="task-cards">
                 <mat-card>
-                    <button mat-raised-button color="warn">Backoffice</button>
-                    <h4>Task Name</h4>
-                    <span>Task description</span>
-                    <button mat-button>AÜ</button>
+                    <span class="task-category" style="background: var(--green)">Backoffice</span>
+                    <h4 class="task-name">Task Name</h4>
+                    <span class="task-description">Task description</span>
+                    <span  class="task-assigned">AÜ</span>
                 </mat-card>
+                                
+                <div class="add-card" (click)="openDialogAddTask()">
+                    <span>Create new task</span>
+                    <button mat-icon-button (click)="openDialogAddTask()">
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
 
         <div class="progress-box">
             <div class="progress-header">
                 <h1>Done</h1>
-                <button mat-icon-button>
+                <button mat-icon-button (click)="openDialogAddTask()">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
 
             <div class="task-cards">
                 <mat-card>
-                    <button mat-raised-button color="warn">Marketing</button>
-                    <h4>Task Name</h4>
-                    <span>Task description</span>
-                    <button mat-button>AÜ</button>
+                    <span class="task-category" style="background: var(--blue)">Marketing</span>
+                    <h4 class="task-name">Task Name</h4>
+                    <span class="task-description">Task description</span>
+                    <span  class="task-assigned">AÜ</span>
                 </mat-card>
+                                
+                <div class="add-card" (click)="openDialogAddTask()">
+                    <span>Create new task</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
             </div>
         </div>
     </div>

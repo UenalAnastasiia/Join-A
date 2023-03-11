@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
   btnTop = [
-    { name: 'summary', isClicked: true },
-    { name: 'board', isClicked: false },
-    { name: 'contact', isClicked: false },
+    { name: 'summary', isClicked: true, icon: 'pending_actions' },
+    { name: 'board', isClicked: false, icon: 'dashboard' },
+    { name: 'contact', isClicked: false, icon: '3p' },
   ];
 
   constructor() { }

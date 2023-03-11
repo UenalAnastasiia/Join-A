@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BoardComponent } from './board/board.component';
 import { ContactComponent } from './contact/contact.component';
+import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { ContactComponent } from './contact/contact.component';
     NavbarComponent,
     SummaryComponent,
     BoardComponent,
-    ContactComponent
+    ContactComponent,
+    DialogAddTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,8 @@ import { ContactComponent } from './contact/contact.component';
     MatButtonModule,
     MatIconModule,
     MatCardModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

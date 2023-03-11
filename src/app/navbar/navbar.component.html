@@ -3,6 +3,7 @@
         <div class="btn-box-top">
             <button mat-button *ngFor="let button of btnTop" [ngClass]="{'active-btn-top': button.isClicked}" 
             (click)="setActive(button)" routerLink="/{{ button.name }}">
+            <mat-icon>{{ button.icon }}</mat-icon>
                 {{ button.name[0].toUpperCase() }}{{ button.name.slice(1).toLowerCase() }}
             </button>
         </div>
