@@ -1,3 +1,45 @@
-.card-header h1 {
-    width: 130px;
+.card-header {
+    margin-bottom: 58px;
+
+    h1 {
+        width: 130px;
+    }
+}
+
+.card-body {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+
+    h1 {
+        margin: 0;
+        color: var(--header);
+        font-weight: 600;
+    }
+
+    mat-icon {
+        color: var(--header);  
+    }
+}
+
+.progress-box {
+    width: 245px;
+    height: 65vh;
+    overflow-y: auto;
+}
+
+.task-cards {
+    mat-card {
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        border-radius: 24px;
+    }
 }
