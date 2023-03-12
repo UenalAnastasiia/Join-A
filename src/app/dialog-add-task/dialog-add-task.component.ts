@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -7,16 +8,20 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation : ViewEncapsulation.None
 })
 export class DialogAddTaskComponent implements OnInit {
-  choosenCategory: any;
-  categoryBtn: any[] = [
+  choosenPriority: any;
+  clickPriority: boolean = false;
+  priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
     { name: 'medium', icon: 'clear_all' },
     { name: 'low', icon: 'keyboard_double_arrow_down' },
   ];
+  minDate: Date;
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>) {
+   }
 
   ngOnInit(): void {
+    this.minDate = new Date();
   }
 
 }

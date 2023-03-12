@@ -1,16 +1,62 @@
 .add-task-container {
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--header);
+}
+
+.task-h {
+    h1 {
+        margin-bottom: 16px;
+        font-size: 24px;
+        border-right: none;
+        margin-top: 0;
+        margin-left: 32px;
+        color: var(--header);
+        font-weight: 600;
+
+    }
+}
+
+.task-box {
+    display: flex;
+    min-width: 65vw;
+}
+
+.left-box, .right-box {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+
+    textarea {
+        height: 70px;
+    }
+}
+
+.left-box {
+    border-right: 1px solid rgb(0 0 0 / 14%);
 }
 
 .priotity-section {
     display: flex;
     flex-direction: column;
 
+    label {
+        color: rgb(0 0 0 / 61%);
+    }
+
     mat-radio-group {
         display: flex;
         justify-content: space-evenly;
-        width: 400px;
+        margin-top: 24px;
     }
 
     .mat-radio-button {
@@ -20,6 +66,7 @@
         span {
             display: flex;
             align-items: center;
+            color: rgb(0 0 0 / 61%);
         }
     }
 
@@ -27,11 +74,15 @@
         border-color: var(--header);
     }
 
-    .mat-radio-button.mat-accent .mat-radio-inner-circle, 
-    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), 
-    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active 
-    .mat-radio-persistent-ripple {
+    .mat-radio-button.mat-accent .mat-radio-inner-circle,
+    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+    .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
         background-color: var(--header);
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: unset !important;
     }
 }
 
@@ -45,4 +96,40 @@
 
 .low-btn {
     color: #7AE229;
+}
+
+.mat-focused .mat-form-field-label {
+    color: var(--header) !important;
+}
+
+.mat-form-field-underline {
+    background-color: var(--header) !important;
+}
+
+.mat-form-field-ripple {
+    background-color: var(--header) !important;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-infix {
+    display: flex !important;
+}
+
+.button-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 32px;
+
+    button {
+        &:first-child {
+            background: var(--bg-light);
+            color: white;
+            margin-right: 24px;
+        }
+
+        &:last-child {
+            background: var(--header);
+            color: white;
+        }
+    }
 }
