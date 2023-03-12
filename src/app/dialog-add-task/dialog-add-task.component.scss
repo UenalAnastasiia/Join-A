@@ -1,0 +1,48 @@
+.add-task-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.priotity-section {
+    display: flex;
+    flex-direction: column;
+
+    mat-radio-group {
+        display: flex;
+        justify-content: space-evenly;
+        width: 400px;
+    }
+
+    .mat-radio-button {
+        display: flex;
+        justify-content: center;
+
+        span {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+        border-color: var(--header);
+    }
+
+    .mat-radio-button.mat-accent .mat-radio-inner-circle, 
+    .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), 
+    .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active 
+    .mat-radio-persistent-ripple {
+        background-color: var(--header);
+    }
+}
+
+.urgent-btn {
+    color: #FF3D00;
+}
+
+.medium-btn {
+    color: #FFA800;
+}
+
+.low-btn {
+    color: #7AE229;
+}
