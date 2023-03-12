@@ -61,7 +61,9 @@ export class SummaryComponent implements OnInit, OnDestroy {
   getGreeting() {
     let hours = new Date().getHours();
 
-    if (hours < 10) {
+    if (hours < 6) {
+      this.greeting = "Welcome";
+    } else if (hours < 10) {
       this.greeting = "Good Morning";
     } else if (hours < 16) {
       this.greeting = "Good Afternoon";
@@ -69,9 +71,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
       this.greeting = "Good Evening";
     } else if (hours < 24) {
       this.greeting = "Good Night";
-    } else if (hours < 6) {
-      this.greeting = "Hello";
-    }
+    } 
   }
 
 }

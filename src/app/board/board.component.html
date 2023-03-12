@@ -1,7 +1,20 @@
 <mat-card class="container-style container-position">
     <div class="card-header">
-        <h1>Board</h1>
-        <h3>Task Status</h3>
+        <div>
+            <h1>Board</h1>
+            <h3>Task Status</h3>
+        </div>
+
+        <div>
+            <span>
+                <input type="text" placeholder="Find task">
+                <mat-icon>search</mat-icon>
+            </span>
+            <button mat-raised-button (click)="openDialogAddTask()">
+                Add task
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
     </div>
 
     <div class="card-body">
@@ -16,12 +29,18 @@
             <div class="task-cards">
                 <mat-card>
                     <span class="task-category" style="background: var(--orange)">Design</span>
-                    <h4 class="task-name">Task Name</h4>
-                    <span class="task-description">Task description</span>
-                    <span  class="task-assigned">AÜ</span>
+
+                    <div>
+                        <span class="task-description">Date</span>
+                        <h4 class="task-name">Task Name</h4>
+                        <div>
+                            <span class="task-assigned">AÜ</span>
+                            <mat-icon style="color: #7AE229">keyboard_double_arrow_down</mat-icon>
+                        </div>
+                    </div>
                 </mat-card>
-                
-                <div class="add-card"  (click)="openDialogAddTask()">
+
+                <div class="add-card" (click)="openDialogAddTask()">
                     <span>Create new task</span>
                     <button mat-icon-button (click)="openDialogAddTask()">
                         <mat-icon>add_circle</mat-icon>
@@ -41,9 +60,16 @@
             <div class="task-cards">
                 <mat-card>
                     <span class="task-category" style="background: var(--pink)">Sales</span>
-                    <h4 class="task-name">Task Name</h4>
-                    <span class="task-description">Task description</span>
-                    <span  class="task-assigned">AÜ</span>
+
+                    <div>
+                        <span class="task-description">Date</span>
+                        <h4 class="task-name">Task Name</h4>
+
+                        <div>
+                            <span class="task-assigned">AÜ</span>
+                            <mat-icon style="color: #FF3D00">keyboard_double_arrow_up</mat-icon>
+                        </div>
+                    </div>
                 </mat-card>
 
                 <div class="add-card" (click)="openDialogAddTask()">
@@ -66,11 +92,18 @@
             <div class="task-cards">
                 <mat-card>
                     <span class="task-category" style="background: var(--green)">Backoffice</span>
-                    <h4 class="task-name">Task Name</h4>
-                    <span class="task-description">Task description</span>
-                    <span  class="task-assigned">AÜ</span>
+
+                    <div>
+                        <span class="task-description">Date</span>
+                        <h4 class="task-name">Task Name</h4>
+
+                        <div>
+                            <span class="task-assigned">AÜ</span>
+                            <mat-icon style="color: #FFA800">clear_all</mat-icon>
+                        </div>
+                    </div>
                 </mat-card>
-                                
+
                 <div class="add-card" (click)="openDialogAddTask()">
                     <span>Create new task</span>
                     <button mat-icon-button (click)="openDialogAddTask()">
@@ -91,11 +124,18 @@
             <div class="task-cards">
                 <mat-card>
                     <span class="task-category" style="background: var(--blue)">Marketing</span>
-                    <h4 class="task-name">Task Name</h4>
-                    <span class="task-description">Task description</span>
-                    <span  class="task-assigned">AÜ</span>
+
+                    <div>
+                        <span class="task-description">Date</span>
+                        <h4 class="task-name">Task Name</h4>
+
+                        <div>
+                            <span class="task-assigned">AÜ</span>
+                            <mat-icon style="color: #7AE229">keyboard_double_arrow_down</mat-icon>
+                        </div>
+                    </div>
                 </mat-card>
-                                
+
                 <div class="add-card" (click)="openDialogAddTask()">
                     <span>Create new task</span>
                     <button mat-icon-button>

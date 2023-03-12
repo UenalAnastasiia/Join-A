@@ -1,23 +1,25 @@
 <mat-card class="container-style container-position">
     <div class="card-header">
-        <h1>Summary</h1>
-        <h3>Task overview</h3>
+        <div>
+            <h1>Summary</h1>
+            <h3>Task overview</h3>
+        </div>
     </div>
 
     <div class="summary-body">
         <div class="summary-cards">
             <div class="task-overview">
-                <mat-card>
+                <mat-card routerLink="/board">
                     <span>5</span> <br>
                     <span>Tasks in Board</span>
                 </mat-card>
 
-                <mat-card>
+                <mat-card routerLink="/board">
                     <span>2</span> <br>
                     <span>Tasks in Progress</span>
                 </mat-card>
 
-                <mat-card>
+                <mat-card routerLink="/board">
                     <span>3</span> <br>
                     <span>Awaiting Feedback</span>
                 </mat-card>
@@ -43,7 +45,7 @@
             </div>
 
             <div class="done-cards">
-                <mat-card>
+                <mat-card routerLink="/board">
                     <div>
                         <mat-icon>file_open</mat-icon>
                     </div>
@@ -53,7 +55,7 @@
                     </div>
                 </mat-card>
 
-                <mat-card>
+                <mat-card routerLink="/board">
                     <div>
                         <mat-icon>check</mat-icon>
                     </div>
