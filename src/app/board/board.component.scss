@@ -200,3 +200,28 @@
     height: fit-content;
     padding: 8px;
 }
+
+.pin-icons {
+    position: absolute;
+    right: 40px;
+    top: 10px;
+
+    mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+        color: var(--header);
+    }
+}
+
+.hide-icons {
+    .pin-icons {
+        display: none;
+    }
+
+    &:hover {
+        .pin-icons {
+            display: flex;
+        }
+    }
+}

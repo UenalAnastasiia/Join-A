@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-dialog-add-task',
   templateUrl: './dialog-add-task.component.html',
   styleUrls: ['./dialog-add-task.component.scss'],
-  encapsulation : ViewEncapsulation.None,
+  encapsulation : ViewEncapsulation.None
 })
 export class DialogAddTaskComponent implements OnInit {
   choosenCategory: any;

@@ -108,5 +108,11 @@ body {
 
   div {
     display: flex;
+  }
 }
+
+.tooltip-blue {
+  background-color: var(--header);
+  color: white !important;
+  font-weight: 600;
 }
