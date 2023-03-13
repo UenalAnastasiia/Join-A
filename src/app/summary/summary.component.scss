@@ -36,7 +36,7 @@
         justify-content: center;
         color: var(--font);
         border-radius: 24px;
-        cursor: pointer;
+        z-index: 1;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
         span {
@@ -47,6 +47,12 @@
                 font-size: 56px;
                 font-weight: 600;
             }
+        }
+
+        &:hover {
+            transform: scale3d(1.1, 1.1, 1.1);
+            transition: 225ms ease-in-out;
+            cursor: pointer;
         }
     }
 }
