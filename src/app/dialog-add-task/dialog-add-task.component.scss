@@ -33,7 +33,8 @@
     min-width: 65vw;
 }
 
-.left-box, .right-box {
+.left-box,
+.right-box {
     display: flex;
     flex-direction: column;
     width: 30vw;
@@ -49,6 +50,13 @@
 
 .left-box {
     border-right: 1px solid rgb(0 0 0 / 14%);
+
+    mat-icon {
+        position: absolute;
+        right: 0px;
+        top: 6px;
+        // color: red;
+    }
 }
 
 .priotity-section {
@@ -122,7 +130,7 @@
 
 .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     color: var(--header) !important;
-  }
+}
 
 .button-box {
     display: flex;
