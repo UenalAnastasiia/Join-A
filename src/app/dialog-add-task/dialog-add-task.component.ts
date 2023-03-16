@@ -5,7 +5,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   selector: 'app-dialog-add-task',
   templateUrl: './dialog-add-task.component.html',
   styleUrls: ['./dialog-add-task.component.scss'],
-  encapsulation : ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None
 })
 export class DialogAddTaskComponent implements OnInit {
   choosenPriority: any;
@@ -16,9 +16,10 @@ export class DialogAddTaskComponent implements OnInit {
     { name: 'low', icon: 'keyboard_double_arrow_down' },
   ];
   minDate: Date;
+  optionList = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>) {
-   }
+  }
 
   ngOnInit(): void {
     this.minDate = new Date();

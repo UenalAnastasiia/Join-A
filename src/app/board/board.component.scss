@@ -21,6 +21,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     height: $height;
 
 }
+
 @mixin applyFontStyle() {
     font-size: $fontSize;
     line-height: $fontSize;
@@ -62,6 +63,8 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: inset 2px 2px 0px var(--bg-light),
+            inset -1px -1px 11px #ffffff;
 
         &:hover {
             transform: scale3d(1.1, 1.1, 1.1);

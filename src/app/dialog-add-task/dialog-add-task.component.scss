@@ -1,8 +1,9 @@
 $fontFamily: 'Montserrat', sans-serif;
-$fontSize: 16px;
+$fontSize: 14px;
 $textColor: #6C7587;
 
-$height: 54px;
+// $height: 54px;
+$height: 32px;
 
 $bgColor: #EBECF0;
 $iconColor: #8992A5;
@@ -43,7 +44,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         font-size: 24px;
         border-right: none;
         margin-top: 0;
-        margin-left: 32px;
+        margin-left: 42px;
         color: var(--header);
         font-weight: 600;
 
@@ -62,12 +63,6 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     width: 30vw;
     padding-left: 2vw;
     padding-right: 2vw;
-
-    // textarea {
-    //     height: 70px;
-    //     min-height: 70px;
-    //     max-height: 250px;
-    // }
 }
 
 .left-box {
@@ -81,13 +76,26 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     }
 }
 
+.right-box {
+    mat-datepicker-toggle {
+        button {
+            height: 42px !important;
+            width: 30px !important;
+            font-size: 24px !important;
+            position: absolute;
+            top: -34px;
+            right: 0px;
+        }
+    }
+}
+
 .priotity-section {
     display: flex;
     flex-direction: column;
 
-    label {
-        color: rgb(0 0 0 / 61%);
-    }
+    // mat-label {
+    //     color: var(--header);
+    // }
 
     mat-radio-group {
         display: flex;
@@ -135,15 +143,18 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
 }
 
 .mat-focused .mat-form-field-label {
+    // color: var(--header) !important;
     color: var(--header) !important;
 }
 
 .mat-form-field-underline {
-    background-color: var(--header) !important;
+    // background-color: var(--header) !important;
+    background-color: $bgColor !important;
 }
 
 .mat-form-field-ripple {
-    background-color: var(--header) !important;
+    // background-color: var(--header) !important;
+    background-color: $bgColor !important;
 }
 
 .mat-form-field-appearance-fill .mat-form-field-infix {
@@ -166,24 +177,32 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     align-items: center;
     margin-right: 32px;
 
-    button {
-        &:first-child {
-            background: var(--bg-light);
-            color: white;
-            margin-right: 24px;
+    div {
+        @extend %shared-styles;
+        box-shadow: $dropShadow;
+        cursor: pointer;
+        border-radius: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px !important;
+        color: var(--font) !important;
 
-            &:hover {
-                background: var(--bg-dark);
-            }
+        &:active {
+            box-shadow: $innerShadow;
+            border-color: rgba($lightShadow, 0);
+        }
+
+        &:hover {
+            border: 2px solid white !important;
+        }
+
+        &:first-child {
+            margin-right: 24px;
         }
 
         &:last-child {
-            background: var(--header);
-            color: white;
-
-            &:hover {
-                background: var(--bg-dark);
-            }
+            background: #647dfe69;
         }
     }
 }
@@ -208,13 +227,13 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     position: relative;
     border: 2px solid rgba($lightShadow, 0);
     outline: none;
-    text-align: center;
+    text-align: start;
     background-color: $bgColor;
     transition: all 250ms ease-in-out;
 
     &:hover {
         box-shadow: none;
-        border-color: rgba(var(--header), 0.5);
+        border-color: white;
     }
 }
 
@@ -234,17 +253,66 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         @include applyFontStyle;
         opacity: 1;
     }
+
+    mat-hint {
+        font-size: 10px !important;
+    }
+
+    .mat-form-field-appearance-legacy .mat-form-field-wrapper {
+        height: 36px;
+        padding-bottom: 0;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.hover-prio {
+    &:hover {
+        box-shadow: $innerShadow;
+        border: 2px solid $bgColor;
+    }
+}
+
+.height-36 {
+    height: 36px !important;
+}
+
+.textarea-input {
+    height: 100px !important;
+    width: 28vw;
 }
 
 .input-box {
     margin: 8px;
 
     textarea {
-        height: 100px;
-        min-height: 100px;
-        max-height: 250px;
-        width: 28vw;
-        min-width: 28vw;
-        max-width: 28vw;
+        resize: none !important;
+    }
+}
+
+.description-option {
+    width: 30vw;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    transition: all 300ms;
+}
+
+.btn-shadow {
+    @extend %shared-styles;
+    box-shadow: $dropShadow;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 14px;
+
+    &:active {
+        box-shadow: $innerShadow;
+        border-color: rgba($lightShadow, 0);
+    }
+
+    &:hover {
+        border: 1px solid white;
     }
 }
