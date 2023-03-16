@@ -1,5 +1,27 @@
+$fontFamily: 'Montserrat', sans-serif;
+$fontSize: 16px;
+$textColor: #6C7587;
+
+$height: 54px;
+
+$bgColor: #EBECF0;
+$iconColor: #8992A5;
+
+$accentBlue: #1657F0;
+$brightBlue: #36D7E0;
+
+$darkShadow: #484f60;
+$lightShadow: #FFFFFF;
+
+$dropShadow: 8px 8px 12px -2px rgba($darkShadow, 0.4),
+    -6px -6px 12px -1px rgba($lightShadow, 1);
+
+$innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
+    inset 2px 2px 8px -1px rgba($darkShadow, 0.5);
+
 .mat-dialog-container {
     border-radius: 24px;
+    background-color: $bgColor;
 }
 
 .add-task-container {
@@ -41,11 +63,11 @@
     padding-left: 2vw;
     padding-right: 2vw;
 
-    textarea {
-        height: 70px;
-        min-height: 70px;
-        max-height: 250px;
-    }
+    // textarea {
+    //     height: 70px;
+    //     min-height: 70px;
+    //     max-height: 250px;
+    // }
 }
 
 .left-box {
@@ -132,6 +154,12 @@
     color: var(--header) !important;
 }
 
+// .mat-form-field-flex {
+//     box-shadow: inset -4px -4px 6px -1px rgba(#FFFFFF, 1),
+//     inset 2px 2px 8px -1px rgba(#484f60, 0.5);
+//     border-radius: 10px;
+// }
+
 .button-box {
     display: flex;
     justify-content: flex-end;
@@ -157,5 +185,66 @@
                 background: var(--bg-dark);
             }
         }
+    }
+}
+
+
+// Mixins
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin applyFontStyle() {
+    font-family: $fontFamily;
+    font-size: $fontSize;
+    line-height: $fontSize;
+    color: $textColor;
+}
+
+%shared-styles {
+    @include applyFontStyle;
+    padding: 0 8px;
+    position: relative;
+    border: 2px solid rgba($lightShadow, 0);
+    outline: none;
+    text-align: center;
+    background-color: $bgColor;
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+        box-shadow: none;
+        border-color: rgba(var(--header), 0.5);
+    }
+}
+
+.input-shadow {
+    @extend %shared-styles;
+    box-shadow: $innerShadow;
+    width: 28vw;
+    padding: 10px;
+    border-radius: 12px;
+
+    &:focus {
+        box-shadow: none;
+        border-color: rgba(var(--header), 0.5);
+    }
+
+    &::placeholder {
+        @include applyFontStyle;
+        opacity: 1;
+    }
+}
+
+.input-box {
+    margin: 8px;
+
+    textarea {
+        height: 100px;
+        min-height: 100px;
+        max-height: 250px;
+        width: 28vw;
+        min-width: 28vw;
+        max-width: 28vw;
     }
 }

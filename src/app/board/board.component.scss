@@ -1,3 +1,49 @@
+$fontSize: 16px;
+$textColor: #6C7587;
+
+$height: 54px;
+
+$bgColor: #EBECF0;
+$iconColor: #8992A5;
+
+$darkShadow: #484f60;
+$lightShadow: #FFFFFF;
+
+$dropShadow: 8px 8px 12px -2px rgba($darkShadow, 0.4),
+    -6px -6px 12px -1px rgba($lightShadow, 1);
+
+$innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
+    inset 2px 2px 8px -1px rgba($darkShadow, 0.5);
+
+// Mixins
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+
+}
+@mixin applyFontStyle() {
+    font-size: $fontSize;
+    line-height: $fontSize;
+    color: $textColor;
+}
+
+%shared-styles {
+    @include applyFontStyle;
+    padding: 0 8px;
+    position: relative;
+    border: 2px solid rgba($lightShadow, 0);
+    outline: none;
+    text-align: start;
+    background-color: var(--bg-light);
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+        box-shadow: none;
+        border-color: rgba($lightShadow, 0.5);
+    }
+}
+
+
 .card-header {
     margin-bottom: 20px;
     display: flex;
@@ -20,34 +66,6 @@
         &:hover {
             transform: scale3d(1.1, 1.1, 1.1);
             transition: 225ms ease-in-out;
-        }
-    }
-
-    span {
-        margin-right: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 6px;
-        border: 1px solid rgba(255, 255, 255, 0.712);
-        border-radius: 10px;
-
-        mat-icon {
-            margin-left: 4px;
-            padding-left: 6px;
-            border-left: 1px solid rgba(255, 255, 255, 0.712);
-            color: rgba(255, 255, 255, 0.712);
-        }
-
-        input {
-            background: var(--bg-light);
-            border: none;
-            padding-left: 8px;
-            color: var(--font);
-
-            &:focus {
-                outline: none;
-            }
         }
     }
 }
@@ -223,5 +241,44 @@
         .pin-icons {
             display: flex;
         }
+    }
+}
+
+.search-input {
+    @extend %shared-styles;
+    box-shadow: $innerShadow;
+    width: 15vw;
+    padding: 6px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+
+    &::placeholder {
+        @include applyFontStyle;
+        opacity: 1;
+    }
+
+    &:focus {
+        box-shadow: none;
+        border-color: rgba($lightShadow, 0.5);
+    }
+
+    input {
+        border: none;
+        background: var(--bg-light);
+        color: var(--font);
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    mat-icon {
+        margin-left: 4px;
+        padding-left: 12px;
+        border-left: 1px solid rgba(255, 255, 255, 0.712);
+        color: rgba(255, 255, 255, 0.712);
     }
 }

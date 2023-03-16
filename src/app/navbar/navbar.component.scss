@@ -88,10 +88,10 @@
     }
 }
 
-.active-btn-top {
-    box-shadow: 0px 0px 6px 2px #f1e0fe;
-    color: var(--header) !important;
-}
+// .active-btn-top {
+//     box-shadow: 0px 0px 6px 2px #f1e0fe;
+//     color: var(--header) !important;
+// }
 
 .account {
     padding-bottom: 36px;
@@ -123,5 +123,28 @@
             transform: scale3d(1.1, 1.1, 1.1);
             transition: 225ms ease-in-out;
         }
+    }
+}
+
+.active-btn-top {
+    // box-shadow: 0px 0px 6px 2px #f1e0fe;
+    box-shadow: inset 2px 2px 0px var(--bg-light), 
+                inset -1px -1px 11px #ffffff;
+    transition: all 0.4s cubic-bezier(1, 0.04, 0.66, 1.23);
+    animation: pressed-btn 0.4s cubic-bezier(1, 0.04, 0.66, 1.23);
+    color: var(--header) !important;
+}
+
+@keyframes pressed-btn {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(0.98, 0.98);
+    }
+
+    100% {
+        transform: scale(1, 1);
     }
 }
