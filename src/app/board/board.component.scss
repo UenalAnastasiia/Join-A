@@ -46,7 +46,6 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
 
 
 .card-header {
-    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -77,6 +76,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     display: flex;
     justify-content: space-around;
     width: 100%;
+    margin-top: 28px;
 }
 
 .progress-header {
