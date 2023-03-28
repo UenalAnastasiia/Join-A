@@ -50,7 +50,7 @@
             </mat-form-field> -->
 
             <div class="input-box">
-                <select class="description-option input-shadow" [(ngModel)]="selectedCategory" (change)="selectOption()">
+                <select class="description-option input-shadow" [(ngModel)]="selectedCategory" (change)="selectCategory()">
                     <!-- <option selected>Choose category...</option> -->
                     <option [ngValue]="undefined" [disabled]="true">Choose category...</option>
                     <option value="{{ category }}" *ngFor="let category of categoryList">{{ category }}</option>

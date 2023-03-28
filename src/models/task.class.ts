@@ -5,6 +5,7 @@ export class Task {
     dueDate: number;
     priority: string;
     assignedTo: string;
+    status: string;
     id: string;
 
     constructor(obj?: any) {
@@ -14,6 +15,7 @@ export class Task {
         this.dueDate = obj ? obj.dueDate : '';
         this.priority = obj ? obj.priority : '';
         this.assignedTo = obj ? obj.assignedTo : '';
+        this.status = obj ? obj.status : '';
         this.id = obj ? obj.id : '';
     }
 
@@ -25,6 +27,7 @@ export class Task {
             dueDate: this.dueDate,
             priority: this.priority,
             assignedTo: this.assignedTo,
+            status: this.status,
             id: this.id
         }
     }
