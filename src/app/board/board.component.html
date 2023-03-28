@@ -10,7 +10,7 @@
                 <input type="text" placeholder="Search for...">
                 <mat-icon>search</mat-icon>
             </span>
-            <button mat-raised-button (click)="openDialogAddTask()">
+            <button mat-raised-button (click)="openDialogAddTask('To do')">
                 Add task
                 <mat-icon>add</mat-icon>
             </button>
@@ -21,7 +21,7 @@
         <div class="progress-box">
             <div class="progress-header">
                 <h1>To do</h1>
-                <button mat-icon-button (click)="openDialogAddTask()">
+                <button mat-icon-button (click)="openDialogAddTask('To do')">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
@@ -45,9 +45,9 @@
                     </div>
                 </mat-card>
 
-                <div class="add-card" (click)="openDialogAddTask()">
+                <div class="add-card" (click)="openDialogAddTask('To do')">
                     <span>Create new task</span>
-                    <button mat-icon-button (click)="openDialogAddTask()">
+                    <button mat-icon-button>
                         <mat-icon>add_circle</mat-icon>
                     </button>
                 </div>
@@ -57,7 +57,7 @@
         <div class="progress-box">
             <div class="progress-header">
                 <h1>In progress</h1>
-                <button mat-icon-button (click)="openDialogAddTask()">
+                <button mat-icon-button (click)="openDialogAddTask('In progress')">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
@@ -82,9 +82,9 @@
                     </div>
                 </mat-card>
 
-                <div class="add-card" (click)="openDialogAddTask()">
+                <div class="add-card" (click)="openDialogAddTask('In progress')">
                     <span>Create new task</span>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="openDialogAddTask('In progress')">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                 </div>
@@ -94,7 +94,7 @@
         <div class="progress-box">
             <div class="progress-header">
                 <h1>Awaiting Feedback</h1>
-                <button mat-icon-button (click)="openDialogAddTask()">
+                <button mat-icon-button (click)="openDialogAddTask('Awaiting Feedback')">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
@@ -119,9 +119,9 @@
                     </div>
                 </mat-card>
 
-                <div class="add-card" (click)="openDialogAddTask()">
+                <div class="add-card" (click)="openDialogAddTask('Awaiting Feedback')">
                     <span>Create new task</span>
-                    <button mat-icon-button (click)="openDialogAddTask()">
+                    <button mat-icon-button (click)="openDialogAddTask('Awaiting Feedback')">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                 </div>
@@ -131,7 +131,7 @@
         <div class="progress-box">
             <div class="progress-header">
                 <h1>Done</h1>
-                <button mat-icon-button (click)="openDialogAddTask()">
+                <button mat-icon-button (click)="openDialogAddTask('Done')">
                     <mat-icon>add_circle</mat-icon>
                 </button>
             </div>
@@ -156,9 +156,9 @@
                     </div>
                 </mat-card>
 
-                <div class="add-card" (click)="openDialogAddTask()">
+                <div class="add-card" (click)="openDialogAddTask('Done')">
                     <span>Create new task</span>
-                    <button mat-icon-button>
+                    <button mat-icon-button (click)="openDialogAddTask('Done')">
                         <mat-icon>add_circle</mat-icon>
                     </button>
                 </div>

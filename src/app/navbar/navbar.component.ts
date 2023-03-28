@@ -50,8 +50,9 @@ export class NavbarComponent implements OnInit {
   }
 
 
-  openDialogAddTask() {
-    this.dialog.open(DialogAddTaskComponent);
+  openDialogAddTask(status: string) {
+    const dialog = this.dialog.open(DialogAddTaskComponent);
+    dialog.componentInstance.taskStatus = status;
   }
 
 }

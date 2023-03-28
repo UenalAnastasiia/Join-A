@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from 'src/models/task.class';
 import { Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, setDoc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -17,6 +17,7 @@ export class DialogAddTaskComponent implements OnInit {
   selectedCategory: string;
   dueDate: Date;
   minDate: Date;
+  taskStatus: string;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
@@ -40,16 +41,14 @@ export class DialogAddTaskComponent implements OnInit {
   }
 
 
-  async saveTask(status: string) {
+  async saveTask() {
     this.task.dueDate = this.dueDate.getTime();
-    this.task.status = status;
-    const taskCollection = collection(this.firestore, status);
-    // console.log('Show task: ', this.task.toJSON());
+    this.task.status = this.taskStatus;
     
+    const taskCollection = collection(this.firestore, 'tasks');
     const docRef = await addDoc(taskCollection, this.task.toJSON());
     this.task.id = docRef.id;
-
-    await setDoc(doc(this.firestore, status, docRef.id), this.task.toJSON());
+    await setDoc(doc(this.firestore, 'tasks', docRef.id), this.task.toJSON());
     this.dialogRef.close();
   }
 
