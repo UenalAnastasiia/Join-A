@@ -1,5 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { collectionData, Firestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { Observable } from 'rxjs';
+import { Task } from 'src/models/task.class';
 
 @Component({
   selector: 'app-summary',
@@ -11,13 +15,29 @@ export class SummaryComponent implements OnInit, OnDestroy {
   today = new Date();
   month: string;
   timerInterval: any;
+  task = new Task();
+  allTasks$: Observable<any>;
+  allTasks: any = [];
+  taskID: string;
 
-  constructor(public router: Router) {
+  taskLength: number;
+  urgentLength: number;
+  toDoLength: number;
+  inProgressLength: number;
+  awaitingFeedbackLength: number;
+  doneLength: number;
+
+  statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
+
+
+  constructor(public router: Router, private firestore: Firestore) {
   }
 
   ngOnInit(): void {
+    this.renderSummary();
     this.getTime();
     this.getGreeting();
+
     setInterval(() => {
       this.getMonthName();
     });
@@ -26,6 +46,15 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.getTime();
+  }
+
+
+  renderSummary() {
+    this.getTaskLength();
+    this.getTaskUrgencyLength();
+    for (let index = 0; index < this.statusList.length; index++) {
+      this.getTaskStatusLength(this.statusList[index]);
+    }
   }
 
 
@@ -58,9 +87,44 @@ export class SummaryComponent implements OnInit, OnDestroy {
   }
 
 
+  async getTaskLength() {
+    const taskCollection = collection(this.firestore, 'tasks');
+    const docsSnap = await getDocs(taskCollection);
+
+    docsSnap.forEach(() => {
+      this.taskLength = docsSnap.docs.length;
+    });
+  }
+
+
+  getTaskStatusLength(statusName: string) {
+    const queryCollection = query(collection(this.firestore, "tasks"), where("status", "==", statusName));
+    this.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
+    this.allTasks$.subscribe((data: any) => {
+      if (statusName === "To do") {
+        this.toDoLength = data.length;
+      } else if (statusName === "In progress") {
+        this.inProgressLength = data.length;
+      } else if (statusName === "Awaiting Feedback") {
+        this.awaitingFeedbackLength = data.length;
+      } else if (statusName === "Done") {
+        this.doneLength = data.length;
+      }
+    });
+  }
+
+
+  getTaskUrgencyLength() {
+    const queryCollection = query(collection(this.firestore, "tasks"), where("priority", "==", "urgent"));
+    this.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
+    this.allTasks$.subscribe((data: any) => {
+      this.urgentLength = data.length;
+    });
+  }
+
+
   getGreeting() {
     let hours = new Date().getHours();
-
     if (hours < 6) {
       this.greeting = "Welcome";
     } else if (hours < 10) {
@@ -71,7 +135,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
       this.greeting = "Good Evening";
     } else if (hours < 24) {
       this.greeting = "Good Night";
-    } 
+    }
   }
 
 }
