@@ -1,8 +1,7 @@
-import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Component, OnInit } from '@angular/core';
-import { collectionData, Firestore } from '@angular/fire/firestore';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { collectionData, doc, Firestore, collection, query, updateDoc, where } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { collection, query, where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
@@ -10,7 +9,8 @@ import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.compo
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.scss']
+  styleUrls: ['./board.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BoardComponent implements OnInit {
   task = new Task();
@@ -24,24 +24,7 @@ export class BoardComponent implements OnInit {
   doneTask: any = [];
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
-  // statusList: any[] = [
-  //   {
-  //     name: "To do",
-  //     taskArray: "this.todoTask"
-  //   },
-  //   {
-  //     name: "In progress",
-  //     taskArray: "this.inprogressTask"
-  //   },
-  //   {
-  //     name: "Awaiting Feedback",
-  //     taskArray: "this.awaitingfeedbackTask"
-  //   },
-  //   {
-  //     name: "Done",
-  //     taskArray: "this.doneTask"
-  //   },
-  // ];
+
 
   constructor(public dialog: MatDialog, private firestore: Firestore) { }
 
@@ -89,7 +72,7 @@ export class BoardComponent implements OnInit {
   }
 
 
-  drop(event: CdkDragDrop<string[]>, tt) {
+  drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -97,15 +80,14 @@ export class BoardComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-        // console.log(event.previousIndex);
-        
-        this.updateTaskStatus(event.container.data[event.currentIndex]['id']);
+        this.updateTaskStatus(event.container.data[event.currentIndex]['id'], event.container.id);
     }
   }
 
 
-  updateTaskStatus(id: any) {
-    
+  async updateTaskStatus(taskID: any, stat: string) {
+    await updateDoc(doc(this.firestore, "tasks", taskID),
+          { status: stat });
   }
 
 

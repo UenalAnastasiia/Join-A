@@ -74,9 +74,9 @@
                 </button>
             </div>
 
-            <div class="task-cards" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todoTask"
+            <div class="task-cards" cdkDropList #todoList="cdkDropList" id="To do" [cdkDropListData]="todoTask"
                 [cdkDropListConnectedTo]="[inprogressList, awaitingfeedbackList, doneList]"
-                (cdkDropListDropped)="drop($event, todoTask)">
+                (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of todoTask" cdkDrag>
                     <mat-card class="hide-icons">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
@@ -103,6 +103,8 @@
                             </div>
                         </div>
                     </mat-card>
+
+                    <!-- <p *cdkDragPreview>Dropped Task</p> -->
                 </div>
 
                 <div class="add-card" (click)="openDialogAddTask('To do')">
@@ -123,9 +125,9 @@
                 </button>
             </div>
 
-            <div class="task-cards" cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogressTask"
+            <div class="task-cards" cdkDropList #inprogressList="cdkDropList" id="In progress" [cdkDropListData]="inprogressTask"
                 [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
-                (cdkDropListDropped)="drop($event, inprogressTask)">
+                (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of inprogressTask" cdkDrag>
                     <mat-card class="hide-icons">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
@@ -173,9 +175,9 @@
                 </button>
             </div>
 
-            <div class="task-cards" cdkDropList #awaitingfeedbackList="cdkDropList" [cdkDropListData]="awaitingfeedbackTask"
+            <div class="task-cards" cdkDropList #awaitingfeedbackList="cdkDropList" id="Awaiting Feedback" [cdkDropListData]="awaitingfeedbackTask"
                 [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
-                (cdkDropListDropped)="drop($event, awaitingfeedbackTask)">
+                (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of awaitingfeedbackTask" cdkDrag>
                     <mat-card class="hide-icons">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
@@ -222,11 +224,11 @@
                 </button>
             </div>
 
-            <div class="task-cards" cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTask"
+            <div class="task-cards" cdkDropList #doneList="cdkDropList" id="Done" [cdkDropListData]="doneTask"
                 [cdkDropListConnectedTo]="[todoList, inprogressList, awaitingfeedbackList]"
-                (cdkDropListDropped)="drop($event, doneTask)">
-                <div *ngFor="let task of doneTask" cdkDrag>
-                    <mat-card class="hide-icons">
+                (cdkDropListDropped)="drop($event)">
+                <div *ngFor="let task of doneTask">
+                    <mat-card class="hide-icons" cdkDrag>
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
