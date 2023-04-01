@@ -17,8 +17,8 @@
         </div>
     </div>
 
-    <div class="card-body">
-        <div class="progress-box" *ngFor="let statusName of statusList">
+    <div class="card-body" cdkDropListGroup>
+        <!-- <div class="progress-box" *ngFor="let statusName of statusList">
             <div class="progress-header">
                 <h1>{{ statusName }}</h1>
                 <button mat-icon-button (click)="openDialogAddTask(statusName)">
@@ -57,6 +57,203 @@
                 </div>
 
                 <div class="add-card" (click)="openDialogAddTask(statusName)">
+                    <span>Create new task</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+
+
+        <div class="progress-box">
+            <div class="progress-header">
+                <h1>To do</h1>
+                <button mat-icon-button (click)="openDialogAddTask('To do')">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="task-cards" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todoTask"
+                [cdkDropListConnectedTo]="[inprogressList, awaitingfeedbackList, doneList]"
+                (cdkDropListDropped)="drop($event, todoTask)">
+                <div *ngFor="let task of todoTask" cdkDrag>
+                    <mat-card class="hide-icons">
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
+
+                        <div class="pin-icons">
+                            <mat-icon matTooltip="Delete task" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                        </div>
+
+                        <div>
+                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <h4 class="task-name">{{ task.title }}</h4>
+                            <div>
+                                <span class="task-assigned">
+                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                <mat-icon style="color: #7AE229"
+                                    *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
+                                <mat-icon style="color: #FF3D00"
+                                    *ngIf="task.priority==='urgent'">keyboard_double_arrow_up</mat-icon>
+                                <mat-icon style="color: #FFA800" *ngIf="task.priority==='medium'">clear_all</mat-icon>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <div class="add-card" (click)="openDialogAddTask('To do')">
+                    <span>Create new task</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="progress-box">
+            <div class="progress-header">
+                <h1>In progress</h1>
+                <button mat-icon-button (click)="openDialogAddTask('In progress')">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="task-cards" cdkDropList #inprogressList="cdkDropList" [cdkDropListData]="inprogressTask"
+                [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
+                (cdkDropListDropped)="drop($event, inprogressTask)">
+                <div *ngFor="let task of inprogressTask" cdkDrag>
+                    <mat-card class="hide-icons">
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
+
+                        <div class="pin-icons">
+                            <mat-icon matTooltip="Delete task" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                        </div>
+
+                        <div>
+                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <h4 class="task-name">{{ task.title }}</h4>
+                            <div>
+                                <span class="task-assigned">
+                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                <mat-icon style="color: #7AE229"
+                                    *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
+                                <mat-icon style="color: #FF3D00"
+                                    *ngIf="task.priority==='urgent'">keyboard_double_arrow_up</mat-icon>
+                                <mat-icon style="color: #FFA800" *ngIf="task.priority==='medium'">clear_all</mat-icon>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <div class="add-card" (click)="openDialogAddTask('In progress')">
+                    <span>Create new task</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="progress-box">
+            <div class="progress-header">
+                <h1>Awaiting Feedback</h1>
+                <button mat-icon-button (click)="openDialogAddTask('Awaiting Feedback')">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="task-cards" cdkDropList #awaitingfeedbackList="cdkDropList" [cdkDropListData]="awaitingfeedbackTask"
+                [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
+                (cdkDropListDropped)="drop($event, awaitingfeedbackTask)">
+                <div *ngFor="let task of awaitingfeedbackTask" cdkDrag>
+                    <mat-card class="hide-icons">
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
+
+                        <div class="pin-icons">
+                            <mat-icon matTooltip="Delete task" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                        </div>
+
+                        <div>
+                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <h4 class="task-name">{{ task.title }}</h4>
+                            <div>
+                                <span class="task-assigned">
+                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                <mat-icon style="color: #7AE229"
+                                    *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
+                                <mat-icon style="color: #FF3D00"
+                                    *ngIf="task.priority==='urgent'">keyboard_double_arrow_up</mat-icon>
+                                <mat-icon style="color: #FFA800" *ngIf="task.priority==='medium'">clear_all</mat-icon>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <div class="add-card" (click)="openDialogAddTask('Awaiting Feedback')">
+                    <span>Create new task</span>
+                    <button mat-icon-button>
+                        <mat-icon>add_circle</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="progress-box">
+            <div class="progress-header">
+                <h1>Done</h1>
+                <button mat-icon-button (click)="openDialogAddTask('Done')">
+                    <mat-icon>add_circle</mat-icon>
+                </button>
+            </div>
+
+            <div class="task-cards" cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTask"
+                [cdkDropListConnectedTo]="[todoList, inprogressList, awaitingfeedbackList]"
+                (cdkDropListDropped)="drop($event, doneTask)">
+                <div *ngFor="let task of doneTask" cdkDrag>
+                    <mat-card class="hide-icons">
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
+
+                        <div class="pin-icons">
+                            <mat-icon matTooltip="Delete task" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
+                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                        </div>
+
+                        <div>
+                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <h4 class="task-name">{{ task.title }}</h4>
+                            <div>
+                                <span class="task-assigned">
+                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                <mat-icon style="color: #7AE229"
+                                    *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
+                                <mat-icon style="color: #FF3D00"
+                                    *ngIf="task.priority==='urgent'">keyboard_double_arrow_up</mat-icon>
+                                <mat-icon style="color: #FFA800" *ngIf="task.priority==='medium'">clear_all</mat-icon>
+                            </div>
+                        </div>
+                    </mat-card>
+                </div>
+
+                <div class="add-card" (click)="openDialogAddTask('Done')">
                     <span>Create new task</span>
                     <button mat-icon-button>
                         <mat-icon>add_circle</mat-icon>

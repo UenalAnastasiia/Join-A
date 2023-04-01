@@ -24,6 +24,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    DragDropModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],
