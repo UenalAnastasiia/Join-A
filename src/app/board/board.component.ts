@@ -24,7 +24,7 @@ export class BoardComponent implements OnInit {
   doneTask: any = [];
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
-
+  
 
   constructor(public dialog: MatDialog, private firestore: Firestore) { }
 

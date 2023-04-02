@@ -18,54 +18,6 @@
     </div>
 
     <div class="card-body" cdkDropListGroup>
-        <!-- <div class="progress-box" *ngFor="let statusName of statusList">
-            <div class="progress-header">
-                <h1>{{ statusName }}</h1>
-                <button mat-icon-button (click)="openDialogAddTask(statusName)">
-                    <mat-icon>add_circle</mat-icon>
-                </button>
-            </div>
-
-            <div class="task-cards">
-                <div *ngFor="let task of allTasks">
-                    <mat-card class="hide-icons" *ngIf="task.status === statusName">
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
-                            {{ task.category }}</span>
-
-                        <div class="pin-icons">
-                            <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">delete</mat-icon>
-                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
-                        </div>
-
-                        <div>
-                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
-                            <h4 class="task-name">{{ task.title }}</h4>
-                            <div>
-                                <span class="task-assigned">
-                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
-                                <mat-icon style="color: #7AE229"
-                                    *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
-                                <mat-icon style="color: #FF3D00"
-                                    *ngIf="task.priority==='urgent'">keyboard_double_arrow_up</mat-icon>
-                                <mat-icon style="color: #FFA800" 
-                                    *ngIf="task.priority==='medium'">clear_all</mat-icon>
-                            </div>
-                        </div>
-                    </mat-card>
-                </div>
-
-                <div class="add-card" (click)="openDialogAddTask(statusName)">
-                    <span>Create new task</span>
-                    <button mat-icon-button>
-                        <mat-icon>add_circle</mat-icon>
-                    </button>
-                </div>
-            </div>
-        </div> -->
-
-
         <div class="progress-box">
             <div class="progress-header">
                 <h1>To do</h1>
@@ -103,8 +55,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- <p *cdkDragPreview>Dropped Task</p> -->
                 </div>
 
                 <div class="add-card" (click)="openDialogAddTask('To do')">
@@ -125,8 +75,8 @@
                 </button>
             </div>
 
-            <div class="task-cards" cdkDropList #inprogressList="cdkDropList" id="In progress" [cdkDropListData]="inprogressTask"
-                [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
+            <div class="task-cards" cdkDropList #inprogressList="cdkDropList" id="In progress"
+                [cdkDropListData]="inprogressTask" [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of inprogressTask" cdkDrag>
                     <div class="task-card hide-icons">
@@ -166,7 +116,6 @@
         </div>
 
 
-
         <div class="progress-box">
             <div class="progress-header">
                 <h1>Awaiting Feedback</h1>
@@ -175,8 +124,8 @@
                 </button>
             </div>
 
-            <div class="task-cards" cdkDropList #awaitingfeedbackList="cdkDropList" id="Awaiting Feedback" [cdkDropListData]="awaitingfeedbackTask"
-                [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
+            <div class="task-cards" cdkDropList #awaitingfeedbackList="cdkDropList" id="Awaiting Feedback"
+                [cdkDropListData]="awaitingfeedbackTask" [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of awaitingfeedbackTask" cdkDrag>
                     <div class="task-card hide-icons">
