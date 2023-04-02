@@ -25,6 +25,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DialogTaskDetailsComponent } from './dialog-task-details/dialog-task-details.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     SummaryComponent,
     BoardComponent,
     ContactComponent,
-    DialogAddTaskComponent
+    DialogAddTaskComponent,
+    DialogTaskDetailsComponent
   ],
   imports: [
     BrowserModule,

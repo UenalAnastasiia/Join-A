@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
+import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
 
 @Component({
   selector: 'app-board',
@@ -13,7 +14,7 @@ import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.compo
   encapsulation: ViewEncapsulation.None
 })
 export class BoardComponent implements OnInit {
-  task = new Task();
+  task: Task = new Task();
   allTasks$: Observable<any>;
   allTasks: any = [];
   taskID: string;
@@ -94,5 +95,13 @@ export class BoardComponent implements OnInit {
   openDialogAddTask(status: string) {
     const dialog = this.dialog.open(DialogAddTaskComponent);
     dialog.componentInstance.taskStatus = status;
+  }
+
+
+  openTaskDetails(id: any) {
+    console.log('ID ', id);
+    const dialog = this.dialog.open(DialogTaskDetailsComponent);
+    dialog.componentInstance.task = new Task(this.task.toJSON());
+    dialog.componentInstance.task.id = id;
   }
 }

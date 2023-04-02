@@ -30,7 +30,7 @@
                 [cdkDropListConnectedTo]="[inprogressList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of todoTask" cdkDrag>
-                    <div class="task-card hide-icons">
+                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
@@ -79,7 +79,7 @@
                 [cdkDropListData]="inprogressTask" [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of inprogressTask" cdkDrag>
-                    <div class="task-card hide-icons">
+                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
@@ -128,7 +128,7 @@
                 [cdkDropListData]="awaitingfeedbackTask" [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of awaitingfeedbackTask" cdkDrag>
-                    <div class="task-card hide-icons">
+                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
@@ -177,7 +177,7 @@
                 [cdkDropListConnectedTo]="[todoList, inprogressList, awaitingfeedbackList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of doneTask" cdkDrag>
-                    <div class="task-card hide-icons">
+                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
