@@ -19,6 +19,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   dueDate: Date;
   minDate: Date;
   taskStatus: string;
+  dateChange: boolean = false;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
