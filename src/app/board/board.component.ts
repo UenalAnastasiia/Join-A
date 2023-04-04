@@ -99,7 +99,6 @@ export class BoardComponent implements OnInit {
 
 
   openTaskDetails(id: any) {
-    console.log('ID ', id);
     const dialog = this.dialog.open(DialogTaskDetailsComponent);
     dialog.componentInstance.task = new Task(this.task.toJSON());
     dialog.componentInstance.task.id = id;

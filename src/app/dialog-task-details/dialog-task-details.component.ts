@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
 
 @Component({
@@ -40,7 +40,6 @@ export class DialogTaskDetailsComponent implements OnInit {
     const docRef = doc(this.firestore, "tasks", this.task.id);
     const docSnap = await getDoc(docRef);
     this.taskData = docSnap.data();
-    console.log(this.taskData);
   }
 
 
@@ -63,13 +62,15 @@ export class DialogTaskDetailsComponent implements OnInit {
 
 
   async saveTask() {
-    this.task.dueDate = this.dueDate.getTime();
-    this.task.status = this.taskStatus;
-    
-    const taskCollection = collection(this.firestore, 'tasks');
-    const docRef = await addDoc(taskCollection, this.task.toJSON());
-    this.task.id = docRef.id;
-    await setDoc(doc(this.firestore, 'tasks', docRef.id), this.task.toJSON());
+    this.taskData.dueDate = this.taskData.dueDate.getTime();
+    await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
+          { title: this.taskData.title,
+            description: this.taskData.description,
+            category: this.taskData.category,
+            dueDate: this.taskData.dueDate,
+            priority: this.taskData.priority,
+            assignedTo: this.taskData.assignedTo,
+            status: this.taskData.status });
     this.dialogRef.close();
   }
 
