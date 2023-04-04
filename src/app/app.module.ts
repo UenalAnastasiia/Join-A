@@ -26,6 +26,8 @@ import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogTaskDetailsComponent } from './dialog-task-details/dialog-task-details.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ArchivComponent } from './archiv/archiv.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { DialogTaskDetailsComponent } from './dialog-task-details/dialog-task-de
     BoardComponent,
     ContactComponent,
     DialogAddTaskComponent,
-    DialogTaskDetailsComponent
+    DialogTaskDetailsComponent,
+    ArchivComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { DialogTaskDetailsComponent } from './dialog-task-details/dialog-task-de
     MatDatepickerModule,
     MatNativeDateModule,
     DragDropModule,
+    MatSnackBarModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],

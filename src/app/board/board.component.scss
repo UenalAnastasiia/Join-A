@@ -285,12 +285,14 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     position: absolute;
     right: 40px;
     top: 10px;
+    z-index: 1;
 
     mat-icon {
         font-size: 18px;
         width: 18px;
         height: 18px;
         color: var(--header);
+        cursor: pointer;
     }
 }
 

@@ -61,13 +61,11 @@
     </div>
 
     <div class="button-box">
-        <div>
-            Clear
-            <mat-icon>close</mat-icon>
+        <div (click)="archivedTask(taskData.id)">
+            <mat-icon>delete</mat-icon>
         </div>
 
         <div (click)="saveTask()">
-            Save
             <mat-icon>done</mat-icon>
         </div>
     </div>

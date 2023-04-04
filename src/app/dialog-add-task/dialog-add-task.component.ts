@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task } from 'src/models/task.class';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -11,6 +12,10 @@ import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
   encapsulation: ViewEncapsulation.None
 })
 export class DialogAddTaskComponent implements OnInit {
+  @ViewChild('dateInput', {
+    read: MatInput
+  }) dateInput: MatInput;
+
   choosenPriority: any;
   clickPriority: boolean = false;
   task = new Task();
@@ -50,6 +55,17 @@ export class DialogAddTaskComponent implements OnInit {
     this.task.id = docRef.id;
     await setDoc(doc(this.firestore, 'tasks', docRef.id), this.task.toJSON());
     this.dialogRef.close();
+  }
+
+
+  clearForm() {
+   this.task.title = '';
+    this.task.description = '';
+    this.task.category = '';
+    this.dateInput.value = '';
+    this.task.priority = '';
+    this.task.assignedTo = '';
+    this.clickPriority = false;
   }
 
 }

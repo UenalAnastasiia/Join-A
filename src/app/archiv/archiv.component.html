@@ -1,0 +1,15 @@
+<mat-card class="container-style container-position">
+    <div class="card-header">
+        <div>
+            <h1>Archiv</h1>
+            <h3>Archived Task</h3>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <mat-card *ngFor="let task of archivedTasks">
+            <p>{{ task.title }}</p>
+            <p>{{ task.category }}</p>
+        </mat-card>
+    </div>
+</mat-card>

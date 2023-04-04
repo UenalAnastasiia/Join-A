@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialogRef } from '@angular/material/dialog';
-import { addDoc, collection, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
+import { SnackBarService } from 'src/services/snack-bar.service';
 
 @Component({
   selector: 'app-dialog-task-details',
@@ -29,7 +30,8 @@ export class DialogTaskDetailsComponent implements OnInit {
 
   categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
 
-  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore) { }
+
+  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
 
   ngOnInit(): void {
     this.loadTask();
@@ -72,6 +74,17 @@ export class DialogTaskDetailsComponent implements OnInit {
             assignedTo: this.taskData.assignedTo,
             status: this.taskData.status });
     this.dialogRef.close();
+  }
+
+
+  async archivedTask(id: any) {
+    await updateDoc(doc(this.firestore, "tasks", id),
+    { status: 'archived' });
+    this.messageService.showSnackMessage('Task has been archived!');
+    
+    setTimeout(() => {
+      this.dialogRef.close();
+    }, 1000);
   }
 
 }

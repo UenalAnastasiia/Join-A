@@ -116,3 +116,13 @@ body {
 .d-none {
   display: none;
 }
+
+.mat-snack-bar-container {
+  background-color: var(--bg-light) !important;
+  color: #cc3e11 !important;
+  min-width: 180px !important;
+
+  span {
+      font-weight: 700;
+  }
+}

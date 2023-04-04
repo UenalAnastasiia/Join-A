@@ -30,18 +30,18 @@
                 [cdkDropListConnectedTo]="[inprogressList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of todoTask" cdkDrag>
-                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
-                            {{ task.category }}</span>
-
+                    <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
                             <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue">push_pin</mat-icon>
                         </div>
 
-                        <div>
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
+
+                        <div (click)="openTaskDetails(task.id)">
                             <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
@@ -79,18 +79,18 @@
                 [cdkDropListData]="inprogressTask" [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of inprogressTask" cdkDrag>
-                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
-                            {{ task.category }}</span>
-
+                    <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
                             <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue">push_pin</mat-icon>
                         </div>
+                        
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
 
-                        <div>
+                        <div (click)="openTaskDetails(task.id)">
                             <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
@@ -128,18 +128,18 @@
                 [cdkDropListData]="awaitingfeedbackTask" [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of awaitingfeedbackTask" cdkDrag>
-                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
-                            {{ task.category }}</span>
-
+                    <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
                             <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue">push_pin</mat-icon>
                         </div>
+                        
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
 
-                        <div>
+                        <div (click)="openTaskDetails(task.id)">
                             <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
@@ -177,18 +177,18 @@
                 [cdkDropListConnectedTo]="[todoList, inprogressList, awaitingfeedbackList]"
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of doneTask" cdkDrag>
-                    <div class="task-card hide-icons" (click)="openTaskDetails(task.id)">
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
-                            {{ task.category }}</span>
-
+                    <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">delete</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
                             <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue">push_pin</mat-icon>
                         </div>
+                        
+                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                            {{ task.category }}</span>
 
-                        <div>
+                        <div (click)="openTaskDetails(task.id)">
                             <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
