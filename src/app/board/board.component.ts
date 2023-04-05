@@ -34,19 +34,22 @@ export class BoardComponent implements OnInit {
   constructor(public dialog: MatDialog, private firestore: Firestore, private messageService: SnackBarService) { }
 
   ngOnInit(): void {
+    this.renderBoardTasks();
     this.todayDate = new Date().getTime();
 
+    for (let index = 0; index < this.statusList.length; index++) {
+      this.filterTasks(this.statusList[index]);
+    }
+  }
+
+
+  renderBoardTasks() {
     const taskCollection = collection(this.firestore, 'tasks');
     this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
 
     this.allTasks$.subscribe((loadData: any) => {
       this.allTasks = loadData;
     });
-
-    for (let index = 0; index < this.statusList.length; index++) {
-      this.filterTasks(this.statusList[index]);
-    }
-
   }
 
 

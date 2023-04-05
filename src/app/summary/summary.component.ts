@@ -12,8 +12,6 @@ import { Task } from 'src/models/task.class';
 })
 export class SummaryComponent implements OnInit, OnDestroy {
   greeting: string;
-  today = new Date();
-  month: string;
   timerInterval: any;
   task = new Task();
   allTasks$: Observable<any>;
@@ -26,6 +24,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
   inProgressLength: number;
   awaitingFeedbackLength: number;
   doneLength: number;
+  upcomingDeadline: any;
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
@@ -34,13 +33,10 @@ export class SummaryComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.renderTasks();
     this.renderSummary();
     this.getTime();
     this.getGreeting();
-
-    setInterval(() => {
-      this.getMonthName();
-    });
   }
 
 
@@ -55,6 +51,24 @@ export class SummaryComponent implements OnInit, OnDestroy {
     for (let index = 0; index < this.statusList.length; index++) {
       this.getTaskStatusLength(this.statusList[index]);
     }
+  }
+
+
+  renderTasks() {
+    const taskCollection = collection(this.firestore, 'tasks');
+    this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
+
+    this.allTasks$.subscribe((loadData: any) => {
+      this.getUpcomingDeadline(loadData);
+    });
+  }
+
+
+  getUpcomingDeadline(taskData: any) {
+    let todayDate = new Date().getTime();
+    let filterDate = taskData.filter(data => data.dueDate > todayDate && data.status != 'archived');
+    let dateMap = filterDate.map(data => data.dueDate);
+    this.upcomingDeadline = new Date(Math.min.apply(null, dateMap));
   }
 
 
@@ -78,12 +92,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
     (document.querySelector('#hr') as HTMLElement).style.transform = `rotateZ(${(hh) + (mm / 12)}deg)`;
     (document.querySelector('#mn') as HTMLElement).style.transform = `rotateZ(${mm}deg)`;
     (document.querySelector('#sc') as HTMLElement).style.transform = `rotateZ(${ss}deg)`;
-  }
-
-
-  getMonthName() {
-    let today = new Date();
-    this.month = today.toLocaleString('en', { month: 'long' });
   }
 
 
