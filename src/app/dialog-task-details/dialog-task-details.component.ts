@@ -29,6 +29,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   ];
 
   categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
+  statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
   constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
@@ -58,30 +59,34 @@ export class DialogTaskDetailsComponent implements OnInit {
   }
 
 
-  selectCategory() {
+  selectOptions() {
     this.task.category = this.selectedCategory;
+    this.task.status = this.task.status;
   }
 
 
   async saveTask() {
-    this.taskData.dueDate = this.taskData.dueDate.getTime();
+    if (this.dateChange === true) {
+      this.taskData.dueDate = this.taskData.dueDate.getTime();
+    }
+
     await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
-          { title: this.taskData.title,
-            description: this.taskData.description,
-            category: this.taskData.category,
-            dueDate: this.taskData.dueDate,
-            priority: this.taskData.priority,
-            assignedTo: this.taskData.assignedTo,
-            status: this.taskData.status });
+      { title: this.taskData.title,
+        description: this.taskData.description,
+        category: this.taskData.category,
+        dueDate: this.taskData.dueDate,
+        priority: this.taskData.priority,
+        assignedTo: this.taskData.assignedTo,
+        status: this.taskData.status });
     this.dialogRef.close();
   }
 
 
   async archivedTask(id: any) {
     await updateDoc(doc(this.firestore, "tasks", id),
-    { status: 'archived' });
+      { status: 'archived' });
     this.messageService.showSnackMessage('Task has been archived!');
-    
+
     setTimeout(() => {
       this.dialogRef.close();
     }, 1000);

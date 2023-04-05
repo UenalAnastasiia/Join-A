@@ -19,6 +19,9 @@ export class BoardComponent implements OnInit {
   allTasks$: Observable<any>;
   allTasks: any = [];
   taskID: string;
+  pastTasks$: Observable<any>;
+  pastTasks: any = [];
+  todayDate: any;
 
   todoTask: any;
   inprogressTask: any = [];
@@ -26,11 +29,13 @@ export class BoardComponent implements OnInit {
   doneTask: any = [];
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
-  
+
 
   constructor(public dialog: MatDialog, private firestore: Firestore, private messageService: SnackBarService) { }
 
   ngOnInit(): void {
+    this.todayDate = new Date().getTime();
+
     const taskCollection = collection(this.firestore, 'tasks');
     this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
 
@@ -41,6 +46,7 @@ export class BoardComponent implements OnInit {
     for (let index = 0; index < this.statusList.length; index++) {
       this.filterTasks(this.statusList[index]);
     }
+
   }
 
 
@@ -82,14 +88,14 @@ export class BoardComponent implements OnInit {
         event.container.data,
         event.previousIndex,
         event.currentIndex);
-        this.updateTaskStatus(event.container.data[event.currentIndex]['id'], event.container.id);
+      this.updateTaskStatus(event.container.data[event.currentIndex]['id'], event.container.id);
     }
   }
 
 
   async updateTaskStatus(taskID: any, stat: string) {
     await updateDoc(doc(this.firestore, "tasks", taskID),
-          { status: stat });
+      { status: stat });
   }
 
 
@@ -108,8 +114,10 @@ export class BoardComponent implements OnInit {
 
   async archivedTask(id: any) {
     await updateDoc(doc(this.firestore, "tasks", id),
-    { status: 'archived',
-      priority: 'archived' });
+      {
+        status: 'archived',
+        priority: 'archived'
+      });
     this.messageService.showSnackMessage('Task has been archived!');
   }
 

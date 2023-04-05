@@ -8,7 +8,7 @@
     </button>
 
     <div class="task-h">
-        <h1>Add task to: {{ taskStatus }}</h1>
+        <h1>Add task</h1>
     </div>
 
     <div class="task-box">
@@ -24,7 +24,7 @@
 
             <div class="input-box">
                 <select class="description-option input-shadow" [(ngModel)]="selectedCategory"
-                    (change)="selectCategory()">
+                    (change)="selectOptions()">
                     <option [ngValue]="undefined" [disabled]="true">Choose category...</option>
                     <option value="{{ category }}" *ngFor="let category of categoryList">{{ category }}</option>
                 </select>
@@ -59,6 +59,14 @@
                 <select class="description-option input-shadow" [(ngModel)]="task.assignedTo">
                     <option value="" disabled selected>Assigned to...</option>
                     <option value="person">Person</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <select class="description-option input-shadow" [(ngModel)]="task.status"
+                    (change)="selectOptions()">
+                    <option value="" disabled selected>Choose status...</option>
+                    <option value="{{ stat }}" *ngFor="let stat of statusList">{{ stat }}</option>
                 </select>
             </div>
         </div>

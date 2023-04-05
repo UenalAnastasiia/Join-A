@@ -33,6 +33,7 @@ export class DialogAddTaskComponent implements OnInit {
   ];
 
   categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
+  statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>,
@@ -42,23 +43,24 @@ export class DialogAddTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.minDate = new Date();
+    this.task.status = this.taskStatus;
   }
 
 
-  selectCategory() {
+  selectOptions() {
     this.task.category = this.selectedCategory;
+    this.task.status = this.task.status;
   }
 
 
   async saveTask() {
     this.task.dueDate = this.dueDate.getTime();
-    this.task.status = this.taskStatus;
     const taskCollection = collection(this.firestore, 'tasks');
     const docRef = await addDoc(taskCollection, this.task.toJSON());
     this.task.id = docRef.id;
     await setDoc(doc(this.firestore, 'tasks', docRef.id), this.task.toJSON());
     this.loadSpinner = true;
-    
+
     setTimeout(() => {
       this.loadSpinner = false;
       const dialog = this.dialog.open(DialogRequestComponent);
@@ -74,6 +76,7 @@ export class DialogAddTaskComponent implements OnInit {
     this.dateInput.value = '';
     this.task.priority = '';
     this.task.assignedTo = '';
+    this.task.status = '';
     this.clickPriority = false;
   }
 

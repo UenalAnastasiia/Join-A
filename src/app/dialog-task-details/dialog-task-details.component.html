@@ -20,7 +20,7 @@
 
             <div class="input-box">
                 <select class="description-option input-shadow" [(ngModel)]="taskData.category"
-                    (change)="selectCategory()">
+                    (change)="selectOptions()">
                     <option [ngValue]="undefined" [disabled]="true">Choose category...</option>
                     <option value="{{ category }}" *ngFor="let category of categoryList">{{ category }}</option>
                 </select>
@@ -55,6 +55,14 @@
                 <select class="description-option input-shadow" [(ngModel)]="taskData.assignedTo">
                     <option value="" disabled selected>Assigned to...</option>
                     <option value="person">Person</option>
+                </select>
+            </div>
+
+            <div class="input-box">
+                <select class="description-option input-shadow" [(ngModel)]="taskData.status"
+                    (change)="selectOptions()">
+                    <option [ngValue]="undefined" [disabled]="true">Choose status...</option>
+                    <option value="{{ stat }}" *ngFor="let stat of statusList">{{ stat }}</option>
                 </select>
             </div>
         </div>
