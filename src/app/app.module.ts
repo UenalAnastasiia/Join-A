@@ -30,6 +30,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ArchivComponent } from './archiv/archiv.component';
 import { DialogRequestComponent } from './dialog-request/dialog-request.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     DragDropModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    Ng2SearchPipeModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],

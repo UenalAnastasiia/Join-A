@@ -7,7 +7,7 @@
 
         <div>
             <span class="search-input">
-                <input type="text" placeholder="Search for...">
+                <input name="search" [(ngModel)]="searchInput" matInput autocomplete="off" placeholder="Search for...">
                 <mat-icon>search</mat-icon>
             </span>
             <button mat-raised-button (click)="openDialogAddTask('To do')">
@@ -29,7 +29,7 @@
             <div class="task-cards" cdkDropList #todoList="cdkDropList" id="To do" [cdkDropListData]="todoTask"
                 [cdkDropListConnectedTo]="[inprogressList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
-                <div *ngFor="let task of todoTask" cdkDrag>
+                <div *ngFor="let task of todoTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
@@ -81,7 +81,7 @@
             <div class="task-cards" cdkDropList #inprogressList="cdkDropList" id="In progress"
                 [cdkDropListData]="inprogressTask" [cdkDropListConnectedTo]="[todoList, awaitingfeedbackList, doneList]"
                 (cdkDropListDropped)="drop($event)">
-                <div *ngFor="let task of inprogressTask" cdkDrag>
+                <div *ngFor="let task of inprogressTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
@@ -133,7 +133,7 @@
             <div class="task-cards" cdkDropList #awaitingfeedbackList="cdkDropList" id="Awaiting Feedback"
                 [cdkDropListData]="awaitingfeedbackTask" [cdkDropListConnectedTo]="[todoList, inprogressList, doneList]"
                 (cdkDropListDropped)="drop($event)">
-                <div *ngFor="let task of awaitingfeedbackTask" cdkDrag>
+                <div *ngFor="let task of awaitingfeedbackTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
@@ -185,7 +185,7 @@
             <div class="task-cards" cdkDropList #doneList="cdkDropList" id="Done" [cdkDropListData]="doneTask"
                 [cdkDropListConnectedTo]="[todoList, inprogressList, awaitingfeedbackList]"
                 (cdkDropListDropped)="drop($event)">
-                <div *ngFor="let task of doneTask" cdkDrag>
+                <div *ngFor="let task of doneTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
                         <div class="pin-icons">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"

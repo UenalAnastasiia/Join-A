@@ -25,6 +25,7 @@ export class BoardComponent implements OnInit {
   inprogressTask: any = [];
   awaitingfeedbackTask: any = [];
   doneTask: any = [];
+  searchInput: string;
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
