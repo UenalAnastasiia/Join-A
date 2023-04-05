@@ -21,6 +21,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   minDate: Date;
   taskStatus: string;
   dateChange: boolean = false;
+  todayDate: any;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
@@ -36,6 +37,8 @@ export class DialogTaskDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadTask();
+    this.minDate = new Date();
+    this.todayDate = new Date().getTime();
   }
 
 

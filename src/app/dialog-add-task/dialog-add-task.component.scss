@@ -176,6 +176,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     justify-content: flex-end;
     align-items: center;
     margin-right: 32px;
+    margin-top: 12px;
 
     div {
         @extend %shared-styles;

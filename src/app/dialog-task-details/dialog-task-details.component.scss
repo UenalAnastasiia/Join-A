@@ -39,6 +39,8 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
 }
 
 .task-h {
+    display: flex;
+
     h1 {
         margin-bottom: 16px;
         font-size: 24px;
@@ -47,7 +49,14 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         margin-left: 42px;
         color: var(--header);
         font-weight: 600;
+    }
 
+    div {
+        color: rgb(255 0 0 / 51%);
+        display: flex;
+        align-items: center;
+        margin-top: -18px;
+        margin-left: 18px;
     }
 }
 
@@ -176,6 +185,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     justify-content: flex-end;
     align-items: center;
     margin-right: 32px;
+    margin-top: 12px;
 
     div {
         @extend %shared-styles;

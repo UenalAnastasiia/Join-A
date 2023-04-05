@@ -5,6 +5,10 @@
 
     <div class="task-h">
         <h1>Task Details</h1>
+        <div *ngIf="taskData.dueDate < todayDate">
+            <mat-icon>notification_important</mat-icon>
+            <span>Deadline has been exceeded!</span>
+        </div>
     </div>
 
     <div class="task-box">

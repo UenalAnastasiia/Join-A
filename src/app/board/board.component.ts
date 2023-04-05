@@ -19,8 +19,6 @@ export class BoardComponent implements OnInit {
   allTasks$: Observable<any>;
   allTasks: any = [];
   taskID: string;
-  pastTasks$: Observable<any>;
-  pastTasks: any = [];
   todayDate: any;
 
   todoTask: any;
