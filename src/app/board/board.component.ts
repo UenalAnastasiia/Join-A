@@ -108,7 +108,8 @@ export class BoardComponent implements OnInit {
 
   async archivedTask(id: any) {
     await updateDoc(doc(this.firestore, "tasks", id),
-    { status: 'archived' });
+    { status: 'archived',
+      priority: 'archived' });
     this.messageService.showSnackMessage('Task has been archived!');
   }
 

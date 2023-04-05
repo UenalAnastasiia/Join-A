@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Task } from 'src/models/task.class';
 import { Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 import { MatInput } from '@angular/material/input';
+import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -23,6 +24,7 @@ export class DialogAddTaskComponent implements OnInit {
   dueDate: Date;
   minDate: Date;
   taskStatus: string;
+  loadSpinner: boolean = false;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
@@ -33,7 +35,9 @@ export class DialogAddTaskComponent implements OnInit {
   categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
 
 
-  constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>, private firestore: Firestore) {
+  constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>,
+    private firestore: Firestore,
+    public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -49,17 +53,22 @@ export class DialogAddTaskComponent implements OnInit {
   async saveTask() {
     this.task.dueDate = this.dueDate.getTime();
     this.task.status = this.taskStatus;
-    
     const taskCollection = collection(this.firestore, 'tasks');
     const docRef = await addDoc(taskCollection, this.task.toJSON());
     this.task.id = docRef.id;
     await setDoc(doc(this.firestore, 'tasks', docRef.id), this.task.toJSON());
-    this.dialogRef.close();
+    this.loadSpinner = true;
+    
+    setTimeout(() => {
+      this.loadSpinner = false;
+      const dialog = this.dialog.open(DialogRequestComponent);
+      dialog.componentInstance.showAddTaskRequest();
+    }, 2000);
   }
 
 
   clearForm() {
-   this.task.title = '';
+    this.task.title = '';
     this.task.description = '';
     this.task.category = '';
     this.dateInput.value = '';

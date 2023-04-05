@@ -28,6 +28,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DialogTaskDetailsComponent } from './dialog-task-details/dialog-task-details.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ArchivComponent } from './archiv/archiv.component';
+import { DialogRequestComponent } from './dialog-request/dialog-request.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,8 @@ import { ArchivComponent } from './archiv/archiv.component';
     ContactComponent,
     DialogAddTaskComponent,
     DialogTaskDetailsComponent,
-    ArchivComponent
+    ArchivComponent,
+    DialogRequestComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +61,7 @@ import { ArchivComponent } from './archiv/archiv.component';
     MatNativeDateModule,
     DragDropModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],

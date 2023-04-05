@@ -114,7 +114,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
   }
 
 
-  getTaskUrgencyLength() {
+  async getTaskUrgencyLength() {
     const queryCollection = query(collection(this.firestore, "tasks"), where("priority", "==", "urgent"));
     this.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
     this.allTasks$.subscribe((data: any) => {

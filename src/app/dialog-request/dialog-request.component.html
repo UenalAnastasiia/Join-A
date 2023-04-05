@@ -1,0 +1,8 @@
+<div *ngIf="addTask" class="request-box">
+    <h1>Task created!</h1>
+
+    <div class="btn-box">
+        <div routerLink="/board" (click)="dialog.closeAll()">Open Board</div>
+        <div (click)="dialogRef.close()">Add new task</div>
+    </div>
+</div>
