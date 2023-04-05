@@ -1,14 +1,15 @@
 <div class="nav-bg">
     <nav class="nav-top">
         <div class="btn-box-top">
-            <button mat-button *ngFor="let button of btnTop" [ngClass]="{'active-btn-top': button.isClicked}" 
-            (click)="setActive(button)" routerLink="/{{ button.name }}">
-            <mat-icon>{{ button.icon }}</mat-icon>
+            <button mat-button *ngFor="let button of btnTop" routerLink="/{{ button.name }}"
+                routerLinkActive="active-btn-top">
+                <mat-icon>{{ button.icon }}</mat-icon>
                 {{ button.name[0].toUpperCase() }}{{ button.name.slice(1).toLowerCase() }}
             </button>
         </div>
 
-        <button mat-icon-button class="help-btn" matTooltip="Help" matTooltipPosition="above" matTooltipClass="tooltip-blue" matTooltipClass="tooltip-blue">
+        <button mat-icon-button class="help-btn" matTooltip="Help" matTooltipPosition="above"
+            matTooltipClass="tooltip-blue" matTooltipClass="tooltip-blue">
             <mat-icon>question_mark</mat-icon>
         </button>
     </nav>
@@ -19,7 +20,8 @@
         </div>
 
         <div class="btn-box-left">
-            <button mat-icon-button matTooltip="Open Calendar" matTooltipPosition="right" matTooltipClass="tooltip-blue">
+            <button mat-icon-button matTooltip="Open Calendar" matTooltipPosition="right"
+                matTooltipClass="tooltip-blue">
                 <mat-icon>calendar_month</mat-icon>
             </button>
 
@@ -27,7 +29,8 @@
                 <mat-icon>sunny</mat-icon>
             </button>
 
-            <button mat-icon-button matTooltip="Add Task" matTooltipPosition="right" matTooltipClass="tooltip-blue" (click)="openDialogAddTask('To do')">
+            <button mat-icon-button matTooltip="Add Task" matTooltipPosition="right" matTooltipClass="tooltip-blue"
+                (click)="openDialogAddTask('To do')">
                 <mat-icon>note_add</mat-icon>
             </button>
 
@@ -35,7 +38,8 @@
                 <mat-icon>person_add</mat-icon>
             </button>
 
-            <button routerLink="/archiv" mat-icon-button matTooltip="Open Archive" matTooltipPosition="right" matTooltipClass="tooltip-blue">
+            <button routerLink="/archiv" mat-icon-button matTooltip="Open Archive" matTooltipPosition="right"
+                matTooltipClass="tooltip-blue">
                 <mat-icon>archive</mat-icon>
             </button>
         </div>

@@ -42,7 +42,9 @@
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
-                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <span class="task-date">
+                                {{ task.dueDate | date: "MMM" }} {{ task.dueDate | date: "dd" }}, {{ task.dueDate | date: "yyyy" }}
+                            </span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
@@ -91,7 +93,9 @@
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
-                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <span class="task-date">
+                                {{ task.dueDate | date: "MMM" }} {{ task.dueDate | date: "dd" }}, {{ task.dueDate | date: "yyyy" }}
+                            </span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
@@ -140,7 +144,9 @@
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
-                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <span class="task-date">
+                                {{ task.dueDate | date: "MMM" }} {{ task.dueDate | date: "dd" }}, {{ task.dueDate | date: "yyyy" }}
+                            </span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
@@ -189,7 +195,9 @@
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
-                            <span class="task-date">{{ task.dueDate | date: "dd/MM/yyyy" }}</span>
+                            <span class="task-date">
+                                {{ task.dueDate | date: "MMM" }} {{ task.dueDate | date: "dd" }}, {{ task.dueDate | date: "yyyy" }}
+                            </span>
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
