@@ -6,3 +6,12 @@
         <div (click)="dialogRef.close()">Add new task</div>
     </div>
 </div>
+
+<div *ngIf="archivTask" class="request-box">
+    <h1>Are you sure?</h1>
+
+    <div class="btn-box">
+        <div (click)="dialogRef.close()">Cancel</div>
+        <div (click)="archivedTask()">Archived task</div>
+    </div>
+</div>

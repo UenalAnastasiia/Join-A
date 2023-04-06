@@ -31,11 +31,9 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of todoTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="pin-icons">
+                        <div class="delete-icon">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
-                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
 
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
@@ -83,11 +81,9 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of inprogressTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="pin-icons">
+                        <div class="delete-icon">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
-                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
                         
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
@@ -135,11 +131,9 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of awaitingfeedbackTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="pin-icons">
+                        <div class="delete-icon">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
-                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
                         
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
@@ -187,11 +181,9 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of doneTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="pin-icons">
+                        <div class="delete-icon">
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue" (click)="archivedTask(task.id)">delete</mat-icon>
-                            <mat-icon matTooltip="Pin task to top" matTooltipPosition="above"
-                                matTooltipClass="tooltip-blue">push_pin</mat-icon>
+                                matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
                         
                         <span class="task-category" [style.background-color]="getCategoryColor(task.category)">

@@ -281,7 +281,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     padding: 8px;
 }
 
-.pin-icons {
+.delete-icon {
     position: absolute;
     right: 40px;
     top: 10px;
@@ -297,12 +297,12 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
 }
 
 .hide-icons {
-    .pin-icons {
+    .delete-icon {
         display: none;
     }
 
     &:hover {
-        .pin-icons {
+        .delete-icon {
             display: flex;
         }
     }

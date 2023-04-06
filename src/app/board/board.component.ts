@@ -4,8 +4,8 @@ import { collectionData, doc, Firestore, collection, query, updateDoc, where } f
 import { MatDialog } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
-import { SnackBarService } from 'src/services/snack-bar.service';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
+import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
 
 @Component({
@@ -30,7 +30,7 @@ export class BoardComponent implements OnInit {
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public dialog: MatDialog, private firestore: Firestore, private messageService: SnackBarService) { }
+  constructor(public dialog: MatDialog, private firestore: Firestore) { }
 
   ngOnInit(): void {
     this.renderBoardTasks();
@@ -114,13 +114,10 @@ export class BoardComponent implements OnInit {
   }
 
 
-  async archivedTask(id: any) {
-    await updateDoc(doc(this.firestore, "tasks", id),
-      {
-        status: 'archived',
-        priority: 'archived'
-      });
-    this.messageService.showSnackMessage('Task has been archived!');
+  openDialogArchivedTask(id: any) {
+    const dialog = this.dialog.open(DialogRequestComponent);
+    dialog.componentInstance.showArchiveTaskRequest();
+    dialog.componentInstance.archivedID = id;
   }
 
 }

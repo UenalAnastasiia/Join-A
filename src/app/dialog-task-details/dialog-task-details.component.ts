@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
 import { SnackBarService } from 'src/services/snack-bar.service';
+import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 
 @Component({
   selector: 'app-dialog-task-details',
@@ -33,7 +34,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
+  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, private messageService: SnackBarService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadTask();
@@ -85,14 +86,10 @@ export class DialogTaskDetailsComponent implements OnInit {
   }
 
 
-  async archivedTask(id: any) {
-    await updateDoc(doc(this.firestore, "tasks", id),
-      { status: 'archived' });
-    this.messageService.showSnackMessage('Task has been archived!');
-
-    setTimeout(() => {
-      this.dialogRef.close();
-    }, 1000);
+  openDialogArchivedTask(id: any) {
+    const dialog = this.dialog.open(DialogRequestComponent);
+    dialog.componentInstance.showArchiveTaskRequest();
+    dialog.componentInstance.archivedID = id;
   }
 
 }
