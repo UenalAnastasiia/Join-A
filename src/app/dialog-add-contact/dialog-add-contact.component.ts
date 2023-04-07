@@ -46,5 +46,4 @@ export class DialogAddContactComponent implements OnInit {
     this.contact.email = '';
     this.contact.phone = '';
   }
-
 }

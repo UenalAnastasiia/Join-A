@@ -14,29 +14,31 @@
     <div class="task-box">
             <mat-form-field class="input-shadow input-box height-36">
                 <input matInput type="text" placeholder="First Name" [(ngModel)]="contact.firstName">
+                <mat-icon>person</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="input-shadow input-box height-36">
                 <input matInput type="text" placeholder="Last Name" [(ngModel)]="contact.lastName">
+                <mat-icon>person</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="input-shadow input-box height-36">
                 <input matInput type="text" placeholder="E-Mail" [(ngModel)]="contact.email">
+                <mat-icon>mail</mat-icon>
             </mat-form-field>
 
             <mat-form-field class="input-shadow input-box height-36">
                 <input matInput type="text" placeholder="Phone" [(ngModel)]="contact.phone">
+                <mat-icon>phone</mat-icon>
             </mat-form-field>
     </div>
 
     <div class="button-box">
-        <div (click)="clearForm()">
-            <!-- Clear -->
+        <div (click)="clearForm()" matTooltip="Reset" matTooltipPosition="below" matTooltipClass="tooltip-blue">
             <mat-icon>cleaning_services</mat-icon>
         </div>
 
-        <div (click)="saveContact()">
-            <!-- Save -->
+        <div (click)="saveContact()" matTooltip="Save" matTooltipPosition="below" matTooltipClass="tooltip-blue">
             <mat-icon>done</mat-icon>
         </div>
     </div>

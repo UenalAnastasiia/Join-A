@@ -7,7 +7,7 @@
                         <h2>{{ contact.firstName.charAt(0).toUpperCase() }}</h2>
                     </div>
 
-                    <div class="info-box">
+                    <div class="info-box" (click)="showDetails = true; contactID = contact.id">
                         <div class="contact-symbol" [ngStyle]="{'background': contact.bgColor}">
                             {{ contact.firstName[0].toUpperCase() }}{{ contact.lastName[0].toUpperCase() }}</div>
 
@@ -25,6 +25,14 @@
                 <h1>Contact</h1>
                 <h3>Better with a team</h3>
             </div>
+
+            <app-dialog-contact-details *ngIf="showDetails" [contactID]="contactID"></app-dialog-contact-details>
+        </div>
+
+        <div class="add-btn" (click)="openDialogAddContact()">
+            <button mat-raised-button>New contact 
+                <mat-icon>person_add</mat-icon>
+            </button>
         </div>
     </div>
 </mat-card>

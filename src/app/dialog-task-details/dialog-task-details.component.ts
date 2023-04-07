@@ -34,7 +34,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, private messageService: SnackBarService, public dialog: MatDialog) { }
+  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadTask();

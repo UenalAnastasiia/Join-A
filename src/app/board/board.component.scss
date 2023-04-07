@@ -281,7 +281,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     padding: 8px;
 }
 
-.delete-icon {
+.hover-icons {
     position: absolute;
     right: 40px;
     top: 10px;
@@ -293,16 +293,20 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         height: 18px;
         color: var(--header);
         cursor: pointer;
+
+        &:first-child {
+            margin-right: 6px;
+        }
     }
 }
 
 .hide-icons {
-    .delete-icon {
+    .hover-icons {
         display: none;
     }
 
     &:hover {
-        .delete-icon {
+        .hover-icons {
             display: flex;
         }
     }

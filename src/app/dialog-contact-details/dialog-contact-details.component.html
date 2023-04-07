@@ -1,0 +1,12 @@
+<div *ngIf="contactData" class="details-container">
+    <div class="info-box">
+        <div class="contact-symbol" [ngStyle]="{'background': contactData.bgColor}">
+            {{ contactData.firstName[0].toUpperCase() }}{{ contactData.lastName[0].toUpperCase() }}</div>
+
+        <div class="contact-info">
+            <span>{{ contactData.firstName }} {{ contactData.lastName }}</span>
+            <span>E-Mail: {{ contactData.email }}</span>
+            <span>Phone: {{ contactData.phone }}</span>
+        </div>
+    </div>
+</div>

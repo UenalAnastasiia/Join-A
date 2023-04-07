@@ -29,7 +29,7 @@ export class NavbarComponent implements OnInit {
 
 
   openDialogAddContact() {
-    const dialog = this.dialog.open(DialogAddContactComponent);
+    this.dialog.open(DialogAddContactComponent);
   }
 
 }

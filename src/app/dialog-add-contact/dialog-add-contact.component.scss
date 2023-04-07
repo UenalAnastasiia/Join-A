@@ -176,6 +176,12 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         display: flex;
         align-items: center;
     }
+
+    mat-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
 
 .height-36 {

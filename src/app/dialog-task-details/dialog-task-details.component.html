@@ -73,11 +73,11 @@
     </div>
 
     <div class="button-box">
-        <div (click)="openDialogArchivedTask(taskData.id)">
+        <div (click)="openDialogArchivedTask(taskData.id)" matTooltip="Delete task" matTooltipPosition="below" matTooltipClass="tooltip-blue">
             <mat-icon>delete</mat-icon>
         </div>
 
-        <div (click)="saveTask()">
+        <div (click)="saveTask()" matTooltip="Save" matTooltipPosition="below" matTooltipClass="tooltip-blue">
             <mat-icon>done</mat-icon>
         </div>
     </div>

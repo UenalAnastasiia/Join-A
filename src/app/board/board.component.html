@@ -31,7 +31,10 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of todoTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="delete-icon">
+                        <div class="hover-icons">
+                            <mat-icon matTooltip="History" matTooltipPosition="above"
+                            matTooltipClass="tooltip-blue">history</mat-icon>
+
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
@@ -81,7 +84,10 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of inprogressTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="delete-icon">
+                        <div class="hover-icons">
+                            <mat-icon matTooltip="History" matTooltipPosition="above"
+                            matTooltipClass="tooltip-blue">history</mat-icon>
+
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
@@ -131,7 +137,10 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of awaitingfeedbackTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="delete-icon">
+                        <div class="hover-icons">
+                            <mat-icon matTooltip="History" matTooltipPosition="above"
+                            matTooltipClass="tooltip-blue">history</mat-icon>
+
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
@@ -181,7 +190,10 @@
                 (cdkDropListDropped)="drop($event)">
                 <div *ngFor="let task of doneTask | filter:searchInput" cdkDrag>
                     <div class="task-card hide-icons">
-                        <div class="delete-icon">
+                        <div class="hover-icons">
+                            <mat-icon matTooltip="History" matTooltipPosition="above"
+                            matTooltipClass="tooltip-blue">history</mat-icon>
+
                             <mat-icon matTooltip="Delete task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>

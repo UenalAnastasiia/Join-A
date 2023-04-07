@@ -1,5 +1,12 @@
-.card-header h1 {
-    width: 170px;
+.card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 36px !important;
+
+    h1 {
+        width: 170px;
+    }
 }
 
 .contact-container {
@@ -80,5 +87,31 @@
     h2 {
         margin-bottom: 6px;
         padding-left: 24px;
+    }
+}
+
+.add-btn {
+    button {
+        position: absolute;
+        bottom: 46px;
+        right: 46px;
+        background: var(--header);
+        color: white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: inset 2px 2px 0px var(--bg-light),
+            inset -1px -1px 11px #ffffff;
+
+        &:hover {
+            transform: scale3d(1.1, 1.1, 1.1);
+            transition: 225ms ease-in-out;
+        }
+    }
+
+    mat-icon {
+        margin-top: -5px;
+        margin-left: 8px;
     }
 }

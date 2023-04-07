@@ -34,7 +34,8 @@
         <div class="right-box">
             <mat-form-field class="input-shadow input-box height-36">
                 <mat-label for="dueDate">Due Date</mat-label>
-                <input #dateInput [min]="minDate" matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy" [(ngModel)]="dueDate">
+                <input #dateInput [min]="minDate" matInput [matDatepicker]="picker" placeholder="mm/dd/yyyy"
+                    [(ngModel)]="dueDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
@@ -63,8 +64,7 @@
             </div>
 
             <div class="input-box">
-                <select class="description-option input-shadow" [(ngModel)]="task.status"
-                    (change)="selectOptions()">
+                <select class="description-option input-shadow" [(ngModel)]="task.status" (change)="selectOptions()">
                     <option value="" disabled selected>Choose status...</option>
                     <option value="{{ stat }}" *ngFor="let stat of statusList">{{ stat }}</option>
                 </select>
@@ -73,13 +73,11 @@
     </div>
 
     <div class="button-box">
-        <div (click)="clearForm()">
-            <!-- Clear -->
+        <div (click)="clearForm()" matTooltip="Reset" matTooltipPosition="below" matTooltipClass="tooltip-blue">
             <mat-icon>cleaning_services</mat-icon>
         </div>
 
-        <div (click)="saveTask()">
-            <!-- Save -->
+        <div (click)="saveTask()" matTooltip="Save" matTooltipPosition="below" matTooltipClass="tooltip-blue">
             <mat-icon>done</mat-icon>
         </div>
     </div>

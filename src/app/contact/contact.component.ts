@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
 import { collection, orderBy, query } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Contact } from 'src/models/contact.class';
+import { DialogAddContactComponent } from '../dialog-add-contact/dialog-add-contact.component';
+
 
 @Component({
   selector: 'app-contact',
@@ -14,8 +17,10 @@ export class ContactComponent implements OnInit {
   allContacts$: Observable<any>;
   allContacts: any = [];
   currentAlphabet: any;
+  showDetails: boolean = false;
+  contactID: any;
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.renderContacts();
@@ -40,5 +45,10 @@ export class ContactComponent implements OnInit {
       this.currentAlphabet = name.charAt(0).toLowerCase();
       return true;
     }
+  }
+
+
+  openDialogAddContact() {
+    this.dialog.open(DialogAddContactComponent);
   }
 }

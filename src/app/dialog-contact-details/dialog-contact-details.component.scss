@@ -1,0 +1,25 @@
+.details-container {
+    margin-top: 12vh;
+}
+
+.contact-symbol {
+    background: #9327FF;
+    color: white;
+    border-radius: 50%;
+    font-size: 48px;
+    font-weight: 600;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    margin-right: 16px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    min-width: 180px;
+}
