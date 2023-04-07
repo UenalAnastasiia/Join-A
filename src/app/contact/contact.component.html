@@ -1,16 +1,30 @@
 <mat-card class="container-style container-position">
-    <div class="card-header">
-        <div>
-            <h1>Contact</h1>
-            <h3>Better with a team</h3>
-        </div>
-    </div>
+    <div class="contact-container">
+        <div class="contact-list-box">
+            <div class="box-height">
+                <div *ngFor="let contact of allContacts" class="contact-box">
+                    <div *ngIf="checkLetter(contact.firstName)" class="letter-header">
+                        <h2>{{ contact.firstName.charAt(0).toUpperCase() }}</h2>
+                    </div>
 
-    <div class="card-body">
-        <mat-card *ngFor="let contact of allContacts">
-            <p>{{ contact.firstName }} {{ contact.lastName }}</p>
-            <p>{{ contact.email }}</p>
-            <p>{{ contact.phone }}</p>
-        </mat-card>
+                    <div class="info-box">
+                        <div class="contact-symbol" [ngStyle]="{'background': contact.bgColor}">
+                            {{ contact.firstName[0].toUpperCase() }}{{ contact.lastName[0].toUpperCase() }}</div>
+
+                        <div class="contact-info">
+                            <span>{{ contact.firstName }} {{ contact.lastName }}</span>
+                            <span>{{ contact.email }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-header">
+            <div>
+                <h1>Contact</h1>
+                <h3>Better with a team</h3>
+            </div>
+        </div>
     </div>
 </mat-card>

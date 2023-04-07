@@ -1,3 +1,84 @@
 .card-header h1 {
     width: 170px;
 }
+
+.contact-container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-list-box {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background: #ffffff1f;
+    border-radius: 24px;
+    margin-top: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.box-height {
+    height: 75vh;
+    width: 80%;
+    overflow-y: auto;
+}
+
+.contact-box {
+    display: flex;
+    flex-direction: column;
+    color: var(--font);
+    margin: 6px;
+    min-width: 260px;
+}
+
+.info-box {
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 12px;
+
+    &:hover {
+        background: #292F4F !important;
+        color: var(--bg-light);
+        cursor: pointer;
+    }
+}
+
+.contact-symbol {
+    background: #9327FF;
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: 600;
+    width: fit-content;
+    height: fit-content;
+    padding: 8px;
+    margin-right: 16px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+    min-width: 180px;
+
+    span {
+        &:last-child {
+            color: var(--header);
+        }
+    }
+}
+
+.letter-header {
+    border-bottom: 1px solid #4b55855e;
+    margin-top: 8px;
+    margin-bottom: 8px;
+
+    h2 {
+        margin-bottom: 6px;
+        padding-left: 24px;
+    }
+}

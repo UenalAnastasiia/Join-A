@@ -62,6 +62,7 @@ export class DialogAddTaskComponent implements OnInit {
     this.loadSpinner = true;
 
     setTimeout(() => {
+      this.clearForm();
       this.loadSpinner = false;
       const dialog = this.dialog.open(DialogRequestComponent);
       dialog.componentInstance.showAddTaskRequest();

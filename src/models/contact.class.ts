@@ -3,6 +3,7 @@ export class Contact {
     lastName: string;
     email: string;
     phone: any;
+    bgColor: any;
     id: string;
 
     constructor(obj?: any) {
@@ -10,6 +11,7 @@ export class Contact {
         this.lastName = obj ? obj.lastName : '';
         this.email = obj ? obj.email : '';
         this.phone = obj ? obj.phone : '';
+        this.bgColor = obj ? obj.bgColor : '';
         this.id = obj ? obj.id : '';
     }
 
@@ -19,6 +21,7 @@ export class Contact {
             lastName: this.lastName,
             email: this.email,
             phone: this.phone,
+            bgColor: this.bgColor,
             id: this.id
         }
     }

@@ -22,6 +22,9 @@ export class DialogAddContactComponent implements OnInit {
 
 
   async saveContact() {
+    let color = Math.floor(0x1000000 * Math.random()).toString(16);
+    this.contact.bgColor = '#' + ('000000' + color).slice(-6);
+
     const taskCollection = collection(this.firestore, 'contacts');
     const docRef = await addDoc(taskCollection, this.contact.toJSON());
     this.contact.id = docRef.id;
@@ -29,6 +32,7 @@ export class DialogAddContactComponent implements OnInit {
     this.loadSpinner = true;
 
     setTimeout(() => {
+      this.clearForm();
       this.loadSpinner = false;
       const dialog = this.dialog.open(DialogRequestComponent);
       dialog.componentInstance.showAddContactRequest();
