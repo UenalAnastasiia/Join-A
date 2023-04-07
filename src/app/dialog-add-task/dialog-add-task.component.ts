@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Task } from 'src/models/task.class';
-import { Firestore } from '@angular/fire/firestore';
-import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
+import { collectionData, Firestore } from '@angular/fire/firestore';
+import { addDoc, collection, doc, orderBy, query, setDoc } from 'firebase/firestore';
 import { MatInput } from '@angular/material/input';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -26,6 +27,9 @@ export class DialogAddTaskComponent implements OnInit {
   taskStatus: string;
   loadSpinner: boolean = false;
 
+  allContacts$: Observable<any>;
+  allContacts: any = [];
+
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
     { name: 'medium', icon: 'clear_all' },
@@ -44,6 +48,18 @@ export class DialogAddTaskComponent implements OnInit {
   ngOnInit(): void {
     this.minDate = new Date();
     this.task.status = this.taskStatus;
+    this.loadContacts();
+  }
+
+
+  loadContacts() {
+    const contactCollection = collection(this.firestore, 'contacts');
+    const queryCollection = query(contactCollection, orderBy("firstName"));
+    this.allContacts$ = collectionData(queryCollection, { idField: "contactID" });
+
+    this.allContacts$.subscribe((loadData: any) => {
+      this.allContacts = loadData;
+    });
   }
 
 
