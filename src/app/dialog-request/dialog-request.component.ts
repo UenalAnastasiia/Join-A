@@ -14,7 +14,7 @@ export class DialogRequestComponent implements OnInit {
   addTask: boolean = false;
   archivTask: boolean = false;
   archivedID: any;
-
+  addContact: boolean = false;
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogRequestComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
 
@@ -45,5 +45,12 @@ export class DialogRequestComponent implements OnInit {
     setTimeout(() => {
       this.dialog.closeAll();
     }, 1000);
+  }
+
+
+  showAddContactRequest() {
+    this.addContact = true;
+    this.addTask = false;
+    this.archivTask = false;   
   }
 }

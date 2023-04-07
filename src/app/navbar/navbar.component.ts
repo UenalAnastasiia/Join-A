@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogAddContactComponent } from '../dialog-add-contact/dialog-add-contact.component';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 
 @Component({
@@ -24,6 +25,11 @@ export class NavbarComponent implements OnInit {
   openDialogAddTask(status: string) {
     const dialog = this.dialog.open(DialogAddTaskComponent);
     dialog.componentInstance.taskStatus = status;
+  }
+
+
+  openDialogAddContact() {
+    const dialog = this.dialog.open(DialogAddContactComponent);
   }
 
 }

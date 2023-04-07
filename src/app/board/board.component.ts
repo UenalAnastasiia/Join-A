@@ -35,10 +35,6 @@ export class BoardComponent implements OnInit {
   ngOnInit(): void {
     this.renderBoardTasks();
     this.todayDate = new Date().getTime();
-
-    for (let index = 0; index < this.statusList.length; index++) {
-      this.filterTasks(this.statusList[index]);
-    }
   }
 
 
@@ -49,6 +45,10 @@ export class BoardComponent implements OnInit {
     this.allTasks$.subscribe((loadData: any) => {
       this.allTasks = loadData;
     });
+
+    for (let index = 0; index < this.statusList.length; index++) {
+      this.filterTasks(this.statusList[index]);
+    }
   }
 
 
@@ -89,7 +89,7 @@ export class BoardComponent implements OnInit {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex);
+        event.currentIndex); 
       this.updateTaskStatus(event.container.data[event.currentIndex]['id'], event.container.id);
     }
   }

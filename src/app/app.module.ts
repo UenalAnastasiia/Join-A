@@ -31,6 +31,7 @@ import { ArchivComponent } from './archiv/archiv.component';
 import { DialogRequestComponent } from './dialog-request/dialog-request.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DialogAddContactComponent } from './dialog-add-contact/dialog-add-contact.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     DialogAddTaskComponent,
     DialogTaskDetailsComponent,
     ArchivComponent,
-    DialogRequestComponent
+    DialogRequestComponent,
+    DialogAddContactComponent
   ],
   imports: [
     BrowserModule,
