@@ -50,7 +50,7 @@
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
-                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                    {{ task.assignedTo.split(" ")[0][0] }}{{task.assignedTo.split(" ")[1][0] }}</span>
                                 <mat-icon style="color: #7AE229"
                                     *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
                                 <mat-icon style="color: #FF3D00"
@@ -103,7 +103,7 @@
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
-                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                    {{ task.assignedTo.split(" ")[0][0] }}{{task.assignedTo.split(" ")[1][0] }}</span>
                                 <mat-icon style="color: #7AE229"
                                     *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
                                 <mat-icon style="color: #FF3D00"
@@ -156,7 +156,7 @@
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
-                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                    {{ task.assignedTo.split(" ")[0][0] }}{{task.assignedTo.split(" ")[1][0] }}</span>
                                 <mat-icon style="color: #7AE229"
                                     *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
                                 <mat-icon style="color: #FF3D00"
@@ -209,7 +209,7 @@
                             <h4 class="task-name">{{ task.title }}</h4>
                             <div>
                                 <span class="task-assigned">
-                                    {{ task.assignedTo[0].toUpperCase() }}{{task.assignedTo[0].toUpperCase() }}</span>
+                                    {{ task.assignedTo.split(" ")[0][0] }}{{task.assignedTo.split(" ")[1][0] }}</span>
                                 <mat-icon style="color: #7AE229"
                                     *ngIf="task.priority==='low'">keyboard_double_arrow_down</mat-icon>
                                 <mat-icon style="color: #FF3D00"
