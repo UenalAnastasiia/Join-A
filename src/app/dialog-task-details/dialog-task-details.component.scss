@@ -326,3 +326,22 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         border: 1px solid white;
     }
 }
+
+.input-holder {
+    @include applyFontStyle;
+    position: absolute;
+    z-index: 1;
+    top: 22px;
+    left: 20px;
+    width: 40%;
+    outline: none;
+    cursor: context-menu;
+
+    &:hover {
+        .btn-shadow {
+            &:hover {
+                border: 1px solid white;
+            }
+        }
+    }
+}

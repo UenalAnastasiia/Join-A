@@ -18,14 +18,17 @@ export class DialogTaskDetailsComponent implements OnInit {
   clickPriority: boolean = false;
   task: Task;
   selectedCategory: string;
+  selectedContact: any;
   dueDate: Date;
   minDate: Date;
   taskStatus: string;
   dateChange: boolean = false;
   todayDate: any;
+  contactName: any;
 
   allContacts$: Observable<any>;
   allContacts: any = [];
+  hideHolder: boolean = false;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
@@ -51,6 +54,7 @@ export class DialogTaskDetailsComponent implements OnInit {
     const docRef = doc(this.firestore, "tasks", this.task.id);
     const docSnap = await getDoc(docRef);
     this.taskData = docSnap.data();
+    this.contactName = this.taskData.assignedTo;
   }
 
 
@@ -79,8 +83,20 @@ export class DialogTaskDetailsComponent implements OnInit {
 
 
   selectOptions() {
-    this.task.category = this.selectedCategory;
-    this.task.status = this.task.status;
+    this.taskData.priority = this.taskData.priority;
+    this.taskData.category = this.taskData.category;
+    this.taskData.status = this.taskData.status;
+  }
+
+
+  getSelectedContact() {
+    this.hideHolder = true;
+    // this.taskData.assignedTo.fullName = this.taskData.assignedTo.fullName;
+    // this.taskData.bgColor.bgColor = this.taskData.assignedTo.bgColor;
+    this.taskData.assignedTo = this.contactName.fullName;
+    this.taskData.bgColor = this.contactName.bgColor;
+    console.log('Select ', this.contactName);
+
   }
 
 
@@ -89,14 +105,24 @@ export class DialogTaskDetailsComponent implements OnInit {
       this.taskData.dueDate = this.taskData.dueDate.getTime();
     }
 
+    // if (this.hideHolder === false) {
+    //   this.taskData.assignedTo = this.taskData.assignedTo.fullName;
+    //   this.taskData.bgColor = this.taskData.assignedTo.bgColor;
+    // }
+
     await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
-      { title: this.taskData.title,
+      {
+        title: this.taskData.title,
         description: this.taskData.description,
         category: this.taskData.category,
         dueDate: this.taskData.dueDate,
         priority: this.taskData.priority,
+        status: this.taskData.status,
         assignedTo: this.taskData.assignedTo,
-        status: this.taskData.status });
+        bgColor: this.taskData.bgColor
+        // assignedTo: this.taskData.assignedTo.fullName,
+        // bgColor: this.taskData.assignedTo.bgColor
+      });
     this.dialogRef.close();
   }
 
