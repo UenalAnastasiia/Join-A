@@ -7,6 +7,7 @@ export class Task {
     assignedTo: string;
     status: string;
     id: string;
+    bgColor: any;
 
     constructor(obj?: any) {
         this.title = obj ? obj.title : '';
@@ -17,6 +18,7 @@ export class Task {
         this.assignedTo = obj ? obj.assignedTo : '';
         this.status = obj ? obj.status : '';
         this.id = obj ? obj.id : '';
+        this.bgColor = obj ? obj.bgColor : '';
     }
 
     public toJSON() {
@@ -28,7 +30,8 @@ export class Task {
             priority: this.priority,
             assignedTo: this.assignedTo,
             status: this.status,
-            id: this.id
+            id: this.id,
+            bgColor: this.bgColor
         }
     }
 }

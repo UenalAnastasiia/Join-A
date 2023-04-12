@@ -25,6 +25,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
   awaitingFeedbackLength: number;
   doneLength: number;
   upcomingDeadline: any;
+  deadlineExist: boolean = false;
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
@@ -46,7 +47,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
 
   renderSummary() {
-    this.getTaskLength();
     this.getTaskUrgencyLength();
     for (let index = 0; index < this.statusList.length; index++) {
       this.getTaskStatusLength(this.statusList[index]);
@@ -60,6 +60,7 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
     this.allTasks$.subscribe((loadData: any) => {
       this.getUpcomingDeadline(loadData);
+      this.getTaskLength(loadData);
     });
   }
 
@@ -67,8 +68,14 @@ export class SummaryComponent implements OnInit, OnDestroy {
   getUpcomingDeadline(taskData: any) {
     let todayDate = new Date().getTime();
     let filterDate = taskData.filter(data => data.dueDate > todayDate && data.status != 'archived');
-    let dateMap = filterDate.map(data => data.dueDate);
-    this.upcomingDeadline = new Date(Math.min.apply(null, dateMap));
+
+    if (filterDate.length >= 1) {
+      this.deadlineExist = true;
+      let dateMap = filterDate.map(data => data.dueDate);
+      this.upcomingDeadline = new Date(Math.min.apply(null, dateMap));
+    } else {
+      this.deadlineExist = false;
+    }
   }
 
 
@@ -95,13 +102,9 @@ export class SummaryComponent implements OnInit, OnDestroy {
   }
 
 
-  async getTaskLength() {
-    const taskCollection = collection(this.firestore, 'tasks');
-    const docsSnap = await getDocs(taskCollection);
-
-    docsSnap.forEach(() => {
-      this.taskLength = docsSnap.docs.length;
-    });
+  getTaskLength(taskData: any) {
+    let filterDate = taskData.filter(data => data.status != 'archived');
+    this.taskLength = filterDate.length;
   }
 
 

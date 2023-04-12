@@ -29,6 +29,7 @@ export class DialogAddTaskComponent implements OnInit {
 
   allContacts$: Observable<any>;
   allContacts: any = [];
+  selectedContact: any;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
@@ -66,6 +67,15 @@ export class DialogAddTaskComponent implements OnInit {
   selectOptions() {
     this.task.category = this.selectedCategory;
     this.task.status = this.task.status;
+  }
+
+
+  
+  getSelectedContact(selectedContact: any) {  
+    this.task.assignedTo = selectedContact.fullName;
+    this.task.bgColor = selectedContact.bgColor;
+    console.log(this.task.assignedTo);
+    console.log(this.task.bgColor);
   }
 
 

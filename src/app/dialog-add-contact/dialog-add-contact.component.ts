@@ -28,6 +28,7 @@ export class DialogAddContactComponent implements OnInit {
     const taskCollection = collection(this.firestore, 'contacts');
     const docRef = await addDoc(taskCollection, this.contact.toJSON());
     this.contact.id = docRef.id;
+    this.contact.fullName = this.contact.firstName + ' ' + this.contact.lastName;
     await setDoc(doc(this.firestore, 'contacts', docRef.id), this.contact.toJSON());
     this.loadSpinner = true;
 
