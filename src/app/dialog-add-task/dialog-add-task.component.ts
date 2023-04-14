@@ -99,10 +99,10 @@ export class DialogAddTaskComponent implements OnInit {
   clearForm() {
     this.task.title = '';
     this.task.description = '';
-    this.task.category = '';
+    this.selectedCategory = undefined;
     this.dateInput.value = '';
     this.task.priority = '';
-    this.task.assignedTo = '';
+    this.selectedContact = undefined;
     this.task.status = '';
     this.clickPriority = false;
   }

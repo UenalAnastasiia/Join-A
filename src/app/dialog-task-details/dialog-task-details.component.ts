@@ -5,6 +5,7 @@ import { collection, doc, getDoc, orderBy, query, updateDoc } from 'firebase/fir
 import { Task } from 'src/models/task.class';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { Observable } from 'rxjs';
+import { SnackBarService } from 'src/services/snack-bar.service';
 
 @Component({
   selector: 'app-dialog-task-details',
@@ -25,6 +26,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   dateChange: boolean = false;
   todayDate: any;
   contactName: any;
+  loadSpinner: boolean = false;
 
   allContacts$: Observable<any>;
   allContacts: any = [];
@@ -40,7 +42,7 @@ export class DialogTaskDetailsComponent implements OnInit {
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog) { }
+  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog, private messageService: SnackBarService) { }
 
   ngOnInit(): void {
     this.loadTask();
@@ -91,8 +93,6 @@ export class DialogTaskDetailsComponent implements OnInit {
 
   getSelectedContact() {
     this.hideHolder = true;
-    // this.taskData.assignedTo.fullName = this.taskData.assignedTo.fullName;
-    // this.taskData.bgColor.bgColor = this.taskData.assignedTo.bgColor;
     this.taskData.assignedTo = this.contactName.fullName;
     this.taskData.bgColor = this.contactName.bgColor;
     console.log('Select ', this.contactName);
@@ -101,14 +101,11 @@ export class DialogTaskDetailsComponent implements OnInit {
 
 
   async saveTask() {
+    this.loadSpinner = true;
+
     if (this.dateChange === true) {
       this.taskData.dueDate = this.taskData.dueDate.getTime();
     }
-
-    // if (this.hideHolder === false) {
-    //   this.taskData.assignedTo = this.taskData.assignedTo.fullName;
-    //   this.taskData.bgColor = this.taskData.assignedTo.bgColor;
-    // }
 
     await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
       {
@@ -120,10 +117,13 @@ export class DialogTaskDetailsComponent implements OnInit {
         status: this.taskData.status,
         assignedTo: this.taskData.assignedTo,
         bgColor: this.taskData.bgColor
-        // assignedTo: this.taskData.assignedTo.fullName,
-        // bgColor: this.taskData.assignedTo.bgColor
       });
-    this.dialogRef.close();
+
+    setTimeout(() => {
+      this.loadSpinner = false;
+      this.dialogRef.close();
+      this.messageService.showSnackMessage('Save Changes!');
+    }, 2000);
   }
 
 
