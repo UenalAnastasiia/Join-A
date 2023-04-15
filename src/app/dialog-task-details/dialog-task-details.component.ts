@@ -6,6 +6,7 @@ import { Task } from 'src/models/task.class';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { Observable } from 'rxjs';
 import { SnackBarService } from 'src/services/snack-bar.service';
+import { DialogEditTaskComponent } from '../dialog-edit-task/dialog-edit-task.component';
 
 @Component({
   selector: 'app-dialog-task-details',
@@ -15,39 +16,38 @@ import { SnackBarService } from 'src/services/snack-bar.service';
 export class DialogTaskDetailsComponent implements OnInit {
   taskID: any;
   taskData: any = [];
-  choosenPriority: any;
-  clickPriority: boolean = false;
   task: Task;
-  selectedCategory: string;
-  selectedContact: any;
-  dueDate: Date;
-  minDate: Date;
-  taskStatus: string;
-  dateChange: boolean = false;
+  // choosenPriority: any;
+  // clickPriority: boolean = false;
+  // selectedCategory: string;
+  // selectedContact: any;
+  // dueDate: Date;
+  // minDate: Date;
+  // taskStatus: string;
+  // dateChange: boolean = false;
   todayDate: any;
-  contactName: any;
-  loadSpinner: boolean = false;
+  // contactName: any;
+  // loadSpinner: boolean = false;
 
-  allContacts$: Observable<any>;
-  allContacts: any = [];
-  hideHolder: boolean = false;
+  // allContacts$: Observable<any>;
+  // allContacts: any = [];
+  // hideHolder: boolean = false;
 
-  priorityBtn: any[] = [
-    { name: 'urgent', icon: 'keyboard_double_arrow_up' },
-    { name: 'medium', icon: 'clear_all' },
-    { name: 'low', icon: 'keyboard_double_arrow_down' },
-  ];
+  // priorityBtn: any[] = [
+  //   { name: 'urgent', icon: 'keyboard_double_arrow_up' },
+  //   { name: 'medium', icon: 'clear_all' },
+  //   { name: 'low', icon: 'keyboard_double_arrow_down' },
+  // ];
 
-  categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
-  statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
+  // categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
+  // statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
   constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog, private messageService: SnackBarService) { }
 
+  
   ngOnInit(): void {
     this.loadTask();
-    this.loadContacts();
-    this.minDate = new Date();
     this.todayDate = new Date().getTime();
   }
 
@@ -56,18 +56,6 @@ export class DialogTaskDetailsComponent implements OnInit {
     const docRef = doc(this.firestore, "tasks", this.task.id);
     const docSnap = await getDoc(docRef);
     this.taskData = docSnap.data();
-    this.contactName = this.taskData.assignedTo;
-  }
-
-
-  loadContacts() {
-    const contactCollection = collection(this.firestore, 'contacts');
-    const queryCollection = query(contactCollection, orderBy("firstName"));
-    this.allContacts$ = collectionData(queryCollection, { idField: "contactID" });
-
-    this.allContacts$.subscribe((loadData: any) => {
-      this.allContacts = loadData;
-    });
   }
 
 
@@ -84,51 +72,8 @@ export class DialogTaskDetailsComponent implements OnInit {
   }
 
 
-  selectOptions() {
-    this.taskData.priority = this.taskData.priority;
-    this.taskData.category = this.taskData.category;
-    this.taskData.status = this.taskData.status;
+  openDialogEditTask(id: any) {
+    const dialog = this.dialog.open(DialogEditTaskComponent);
+    dialog.componentInstance.taskID = id;
   }
-
-
-  getSelectedContact() {
-    this.hideHolder = true;
-    this.taskData.assignedTo = this.contactName.fullName;
-    this.taskData.bgColor = this.contactName.bgColor;
-  }
-
-
-  async saveTask() {
-    this.loadSpinner = true;
-
-    if (this.dateChange === true) {
-      this.taskData.dueDate = this.taskData.dueDate.getTime();
-    }
-
-    await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
-      {
-        title: this.taskData.title,
-        description: this.taskData.description,
-        category: this.taskData.category,
-        dueDate: this.taskData.dueDate,
-        priority: this.taskData.priority,
-        status: this.taskData.status,
-        assignedTo: this.taskData.assignedTo,
-        bgColor: this.taskData.bgColor
-      });
-
-    setTimeout(() => {
-      this.loadSpinner = false;
-      this.dialogRef.close();
-      this.messageService.showSnackMessage('Save Changes!');
-    }, 2000);
-  }
-
-
-  openDialogArchivedTask(id: any) {
-    const dialog = this.dialog.open(DialogRequestComponent);
-    dialog.componentInstance.showArchiveTaskRequest();
-    dialog.componentInstance.archivedID = id;
-  }
-
 }

@@ -33,6 +33,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DialogAddContactComponent } from './dialog-add-contact/dialog-add-contact.component';
 import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
+import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-c
     ArchivComponent,
     DialogRequestComponent,
     DialogAddContactComponent,
-    DialogContactDetailsComponent
+    DialogContactDetailsComponent,
+    DialogEditTaskComponent
   ],
   imports: [
     BrowserModule,
