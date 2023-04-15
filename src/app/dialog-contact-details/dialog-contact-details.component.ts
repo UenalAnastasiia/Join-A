@@ -29,7 +29,6 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
       const docRef = doc(this.firestore, "contacts", id);
       const docSnap = await getDoc(docRef);
       this.contactData = docSnap.data();
-      console.log(this.contactData);
     }
   }
 

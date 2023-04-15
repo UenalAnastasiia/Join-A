@@ -69,13 +69,10 @@ export class DialogAddTaskComponent implements OnInit {
     this.task.status = this.task.status;
   }
 
-
   
   getSelectedContact(selectedContact: any) {  
     this.task.assignedTo = selectedContact.fullName;
     this.task.bgColor = selectedContact.bgColor;
-    console.log(this.task.assignedTo);
-    console.log(this.task.bgColor);
   }
 
 

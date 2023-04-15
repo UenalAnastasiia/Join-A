@@ -95,8 +95,6 @@ export class DialogTaskDetailsComponent implements OnInit {
     this.hideHolder = true;
     this.taskData.assignedTo = this.contactName.fullName;
     this.taskData.bgColor = this.contactName.bgColor;
-    console.log('Select ', this.contactName);
-
   }
 
 

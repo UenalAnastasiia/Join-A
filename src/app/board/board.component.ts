@@ -2,6 +2,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { collectionData, doc, Firestore, collection, query, updateDoc, where } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
+import { orderBy } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
@@ -66,7 +67,7 @@ export class BoardComponent implements OnInit {
 
 
   filterTasks(name: string) {
-    const queryCollection = query(collection(this.firestore, "tasks"), where("status", "==", name));
+    const queryCollection = query(collection(this.firestore, "tasks"), where("status", "==", name), orderBy("dueDate"));
     this.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
     this.allTasks$.subscribe((data: any) => {
       if (name === "To do") {
