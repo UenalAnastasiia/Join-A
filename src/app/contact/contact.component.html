@@ -2,7 +2,7 @@
     <div class="contact-container">
         <div class="contact-list-box">
             <div class="box-height">
-                <div *ngFor="let contact of allContacts" class="contact-box">
+                <div *ngFor="let contact of allContacts | filter:searchInput" class="contact-box">
                     <div *ngIf="checkLetter(contact.firstName)" class="letter-header">
                         <h2>{{ contact.firstName.charAt(0).toUpperCase() }}</h2>
                     </div>
@@ -20,17 +20,29 @@
             </div>
         </div>
 
-        <div class="card-header">
-            <div>
-                <h1>Contact</h1>
-                <h3>Better with a team</h3>
+        <div class="contact-body">
+            <div class="card-header">
+                <div>
+                    <h1>Contact</h1>
+                    <h3>Better with a team</h3>
+                </div>
+
+                <div>
+                    <span class="search-input">
+                        <input name="search" [(ngModel)]="searchInput" matInput autocomplete="off"
+                            placeholder="Search for...">
+                        <mat-icon>search</mat-icon>
+                    </span>
+                </div>
             </div>
 
-            <app-dialog-contact-details *ngIf="showDetails" [contactID]="contactID"></app-dialog-contact-details>
+            <div class="contact-details-box">
+                <app-dialog-contact-details *ngIf="showDetails" [contactID]="contactID"></app-dialog-contact-details>
+            </div>
         </div>
 
         <div class="add-btn" (click)="openDialogAddContact()">
-            <button mat-raised-button>New contact 
+            <button mat-raised-button>New contact
                 <mat-icon>person_add</mat-icon>
             </button>
         </div>

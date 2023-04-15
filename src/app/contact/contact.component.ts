@@ -19,6 +19,7 @@ export class ContactComponent implements OnInit {
   currentAlphabet: any;
   showDetails: boolean = false;
   contactID: any;
+  searchInput: string;
 
   constructor(private firestore: Firestore, public dialog: MatDialog) { }
 
