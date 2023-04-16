@@ -20,6 +20,7 @@ export class ContactComponent implements OnInit {
   showDetails: boolean = false;
   contactID: any;
   searchInput: string;
+  activeElmIndex: number;
 
   constructor(private firestore: Firestore, public dialog: MatDialog) { }
 

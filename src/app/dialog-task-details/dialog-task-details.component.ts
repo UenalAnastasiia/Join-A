@@ -47,6 +47,7 @@ export class DialogTaskDetailsComponent implements OnInit {
 
   
   ngOnInit(): void {
+    this.dialogRef.updateSize('35vw', '');
     this.loadTask();
     this.todayDate = new Date().getTime();
   }

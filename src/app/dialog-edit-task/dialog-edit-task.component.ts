@@ -49,6 +49,7 @@ export class DialogEditTaskComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.dialogRef.updateSize('70vw', '');
     this.loadTask();
     this.loadContacts();
     this.minDate = new Date();

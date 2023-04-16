@@ -47,6 +47,7 @@ export class DialogAddTaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dialogRef.updateSize('70vw', '');
     this.minDate = new Date();
     this.task.status = this.taskStatus;
     this.loadContacts();

@@ -2,12 +2,13 @@
     <div class="contact-container">
         <div class="contact-list-box">
             <div class="box-height">
-                <div *ngFor="let contact of allContacts | filter:searchInput" class="contact-box">
+                <div *ngFor="let contact of allContacts | filter: searchInput; ; let i = index" class="contact-box">
                     <div *ngIf="checkLetter(contact.firstName)" class="letter-header">
                         <h2>{{ contact.firstName.charAt(0).toUpperCase() }}</h2>
                     </div>
 
-                    <div class="info-box" (click)="showDetails = true; contactID = contact.id">
+                    <div class="info-box" (click)="showDetails = true; contactID = contact.id; activeElmIndex = i"
+                    [class.activeElm]="i === activeElmIndex">
                         <div class="contact-symbol" [ngStyle]="{'background': contact.bgColor}">
                             {{ contact.firstName[0].toUpperCase() }}{{ contact.lastName[0].toUpperCase() }}</div>
 

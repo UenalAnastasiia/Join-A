@@ -71,6 +71,12 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     }
 }
 
+.activeElm {
+    background: #292F4F !important;
+    color: var(--bg-light);
+    cursor: pointer;
+}
+
 .contact-symbol {
     background: #9327FF;
     color: white;
