@@ -124,7 +124,7 @@ export class DialogEditTaskComponent implements OnInit {
 
     setTimeout(() => {
       this.loadSpinner = false;
-      this.dialogRef.close();
+      this.dialog.closeAll();
       this.messageService.showSnackMessage('Save Changes!');
     }, 2000);
   }

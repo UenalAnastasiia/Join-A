@@ -1,8 +1,6 @@
 $fontFamily: 'Montserrat', sans-serif;
 $fontSize: 14px;
 $textColor: #6C7587;
-
-// $height: 54px;
 $height: 32px;
 
 $bgColor: #EBECF0;
@@ -80,7 +78,6 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
             position: absolute;
             right: 0px;
             top: 6px;
-            // color: red;
         }
     }
     
@@ -101,14 +98,9 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
         display: flex;
         flex-direction: column;
     
-        // mat-label {
-        //     color: var(--header);
-        // }
-    
         ::ng-deep .mat-radio-group {
             display: flex;
             justify-content: space-evenly;
-            // margin-top: 24px;
         }
     
         ::ng-deep .mat-radio-button {
@@ -151,17 +143,14 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     }
     
     ::ng-deep .mat-focused .mat-form-field-label {
-        // color: var(--header) !important;
         color: var(--header) !important;
     }
     
     ::ng-deep .mat-form-field-underline {
-        // background-color: var(--header) !important;
         background-color: $bgColor !important;
     }
     
     ::ng-deep .mat-form-field-ripple {
-        // background-color: var(--header) !important;
         background-color: $bgColor !important;
     }
     
@@ -172,12 +161,6 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
         color: var(--header) !important;
     }
-    
-    // .mat-form-field-flex {
-    //     box-shadow: inset -4px -4px 6px -1px rgba(#FFFFFF, 1),
-    //     inset 2px 2px 8px -1px rgba(#484f60, 0.5);
-    //     border-radius: 10px;
-    // }
     
     .button-box {
         display: flex;
@@ -344,21 +327,21 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
             }
         }
     }
-    
-    .spinner-box {
-        position: absolute;
-        top: 0;
-        z-index: 2;
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #ffffffb5;
-        left: 0;
-    }
-    
-    .mat-progress-spinner circle, .mat-spinner circle {
-        stroke: var(--header);
-    }
+}
+
+.spinner-box {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffffb5;
+    left: 0;
+}
+
+.mat-progress-spinner circle, .mat-spinner circle {
+    stroke: var(--header);
 }

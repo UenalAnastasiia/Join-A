@@ -47,8 +47,8 @@
                     <mat-radio-group class="example-radio-group" [(ngModel)]="task.priority">
                         <div *ngFor="let button of priorityBtn" class="btn-shadow">
                             <mat-radio-button class="example-radio-button" value="{{ button.name }}"
-                                (click)="clickPriority = true">
-                                {{ button.name[0].toUpperCase() }}{{ button.name.slice(1).toLowerCase() }}
+                                (click)="clickPriority = true" class="capitalize">
+                                {{ button.name }}
                                 <mat-icon class="{{ button.name }}-btn">{{ button.icon }}</mat-icon>
                             </mat-radio-button>
                         </div>
@@ -57,7 +57,8 @@
             </div>
 
             <div class="input-box">
-                <select class="description-option input-shadow" [(ngModel)]="selectedContact" (change)="getSelectedContact(selectedContact)">
+                <select class="description-option input-shadow" [(ngModel)]="selectedContact"
+                    (change)="getSelectedContact(selectedContact)">
                     <option [ngValue]="undefined" [disabled]="true">Assigned to...</option>
                     <option [ngValue]="contact" *ngFor="let contact of allContacts">
                         {{ contact.firstName }} {{ contact.lastName }}</option>
