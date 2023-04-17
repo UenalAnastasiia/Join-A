@@ -1,12 +1,40 @@
 <div *ngIf="contactData" class="details-container">
     <div class="info-box">
-        <div class="contact-symbol" [ngStyle]="{'background': contactData.bgColor}">
-            {{ contactData.firstName[0].toUpperCase() }}{{ contactData.lastName[0].toUpperCase() }}</div>
+        <div class="header-name">
+            <span class="contact-symbol" [ngStyle]="{'background': contactData.bgColor}">
+                {{ contactData.firstName[0].toUpperCase() }}{{ contactData.lastName[0].toUpperCase() }}</span>
+            <span>
+                <span>{{ contactData.firstName }} {{ contactData.lastName }}</span>
+                <button mat-button (click)="openDialogAddTask(contactData.fullName, contactData.bgColor)">
+                    <mat-icon>add</mat-icon> Add task
+                </button>
+            </span>
+        </div>
 
-        <div class="contact-info">
-            <span>{{ contactData.firstName }} {{ contactData.lastName }}</span>
-            <span>E-Mail: {{ contactData.email }}</span>
-            <span>Phone: {{ contactData.phone }}</span>
+        <div class="contact-info-box">
+            <div class="contact-info-header">
+                <h2>Contact information</h2>
+                <button mat-button (click)="openDialogAddTask(contactData.fullName, contactData.bgColor)" 
+                matTooltip="Edit Contact" matTooltipPosition="below" matTooltipClass="tooltip-blue">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </div>
+
+            <div class="contact-info">
+                <span>
+                    <h3>E-Mail:</h3>
+                    <a href="mailto: {{ contactData.email }} ">
+                        <h3>{{ contactData.email }}</h3>
+                    </a>
+                </span>
+
+                <span>
+                    <h3>Phone:</h3>
+                    <a href="tel: {{ contactData.phone }} ">
+                        <h3>{{ contactData.phone }}</h3>
+                    </a>
+                </span>
+            </div>
         </div>
     </div>
 </div>

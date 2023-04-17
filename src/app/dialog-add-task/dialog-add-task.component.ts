@@ -25,11 +25,14 @@ export class DialogAddTaskComponent implements OnInit {
   dueDate: Date;
   minDate: Date;
   taskStatus: string;
+  contactName: string;
+  contactBG: any;
   loadSpinner: boolean = false;
 
   allContacts$: Observable<any>;
   allContacts: any = [];
   selectedContact: any;
+  hideHolder: boolean = true;
 
   priorityBtn: any[] = [
     { name: 'urgent', icon: 'keyboard_double_arrow_up' },
@@ -49,7 +52,14 @@ export class DialogAddTaskComponent implements OnInit {
   ngOnInit(): void {
     this.dialogRef.updateSize('70vw', '');
     this.minDate = new Date();
-    this.task.status = this.taskStatus;
+    if (this.taskStatus) {
+      this.task.status = this.taskStatus;
+    }
+    if (this.contactName) {
+      this.hideHolder = false;
+      this.task.assignedTo = this.contactName;
+      this.task.bgColor = this.contactBG;
+    }
     this.loadContacts();
   }
 
@@ -72,8 +82,9 @@ export class DialogAddTaskComponent implements OnInit {
 
   
   getSelectedContact(selectedContact: any) {  
-    this.task.assignedTo = selectedContact.fullName;
-    this.task.bgColor = selectedContact.bgColor;
+      this.hideHolder = true;
+      this.task.assignedTo = selectedContact.fullName;
+      this.task.bgColor = selectedContact.bgColor;
   }
 
 

@@ -56,7 +56,8 @@
                 </mat-form-field>
             </div>
 
-            <div class="input-box">
+            <div class="input-box pos-rel">
+                <input readonly *ngIf="!hideHolder" class="input-holder" matInput [(ngModel)]="contactName">
                 <select class="description-option input-shadow" [(ngModel)]="selectedContact"
                     (change)="getSelectedContact(selectedContact)">
                     <option [ngValue]="undefined" [disabled]="true">Assigned to...</option>

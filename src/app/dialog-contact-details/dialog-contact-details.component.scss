@@ -1,10 +1,11 @@
 .details-container {
     margin-top: 12vh;
+    color: var(--font);
 }
 
 .contact-symbol {
     background: #9327FF;
-    color: white;
+    color: white !important;
     border-radius: 50%;
     font-size: 48px;
     font-weight: 600;
@@ -17,9 +18,74 @@
     margin-right: 16px;
 }
 
-.contact-info {
+.contact-info-box {
     display: flex;
     flex-direction: column;
     margin-left: 16px;
     min-width: 180px;
+}
+
+.header-name {
+    display: flex;
+    align-items: center;
+
+    span {
+        &:last-child {
+            font-size: 24px;
+            font-weight: 500;
+            margin-left: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    button {
+        color: var(--header);
+    }
+}
+
+.contact-info-header {
+    display: flex;
+    align-items: baseline;
+    margin-top: 36px;
+
+    button {
+        margin-left: 36px;
+    }
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        margin-top: 12px;
+        margin-bottom: 12px;
+
+        h3 {
+            margin: 0;
+
+            &:last-child {
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        &:first-child {
+            h3 {
+                &:last-child {
+                    color: var(--header) !important;
+                }
+            }
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--font);
+        }
+    }
 }
