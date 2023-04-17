@@ -14,26 +14,33 @@
         <div class="contact-info-box">
             <div class="contact-info-header">
                 <h2>Contact information</h2>
-                <button mat-button (click)="openDialogAddTask(contactData.fullName, contactData.bgColor)" 
-                matTooltip="Edit Contact" matTooltipPosition="below" matTooltipClass="tooltip-blue">
+                <button mat-button matTooltip="Edit Contact" matTooltipPosition="below" matTooltipClass="tooltip-blue"
+                    (click)="openDialogEditContact(contactData.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
             </div>
 
             <div class="contact-info">
-                <span>
-                    <h3>E-Mail:</h3>
-                    <a href="mailto: {{ contactData.email }} ">
-                        <h3>{{ contactData.email }}</h3>
-                    </a>
-                </span>
+                <div>
+                    <span>
+                        <h3>E-Mail:</h3>
+                        <a href="mailto: {{ contactData.email }}" class="header-color">
+                            <h3>{{ contactData.email }}</h3>
+                        </a>
+                    </span>
+    
+                    <span>
+                        <h3 class="mt-24">Phone:</h3>
+                        <a href="tel: {{ contactData.phone }}">
+                            <h3>{{ contactData.phone }}</h3>
+                        </a>
+                    </span>
+                </div>
 
-                <span>
-                    <h3>Phone:</h3>
-                    <a href="tel: {{ contactData.phone }} ">
-                        <h3>{{ contactData.phone }}</h3>
-                    </a>
-                </span>
+                <div>
+                    <h3>Tasks for {{ contactData.firstName }}:</h3>
+                    <h3>{{ taskLength }}</h3>
+                </div>
             </div>
         </div>
     </div>

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { collectionData, Firestore } from '@angular/fire/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { collection, doc, getDoc, orderBy, query, updateDoc } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
-import { Observable } from 'rxjs';
-import { SnackBarService } from 'src/services/snack-bar.service';
 import { DialogEditTaskComponent } from '../dialog-edit-task/dialog-edit-task.component';
 
 @Component({
@@ -17,33 +14,9 @@ export class DialogTaskDetailsComponent implements OnInit {
   taskID: any;
   taskData: any = [];
   task: Task;
-  // choosenPriority: any;
-  // clickPriority: boolean = false;
-  // selectedCategory: string;
-  // selectedContact: any;
-  // dueDate: Date;
-  // minDate: Date;
-  // taskStatus: string;
-  // dateChange: boolean = false;
   todayDate: any;
-  // contactName: any;
-  // loadSpinner: boolean = false;
 
-  // allContacts$: Observable<any>;
-  // allContacts: any = [];
-  // hideHolder: boolean = false;
-
-  // priorityBtn: any[] = [
-  //   { name: 'urgent', icon: 'keyboard_double_arrow_up' },
-  //   { name: 'medium', icon: 'clear_all' },
-  //   { name: 'low', icon: 'keyboard_double_arrow_down' },
-  // ];
-
-  // categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
-  // statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
-
-
-  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog, private messageService: SnackBarService) { }
+  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog) { }
 
   
   ngOnInit(): void {

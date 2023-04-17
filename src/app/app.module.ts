@@ -34,6 +34,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DialogAddContactComponent } from './dialog-add-contact/dialog-add-contact.component';
 import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
 import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
+import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.com
     DialogRequestComponent,
     DialogAddContactComponent,
     DialogContactDetailsComponent,
-    DialogEditTaskComponent
+    DialogEditTaskComponent,
+    DialogEditContactComponent
   ],
   imports: [
     BrowserModule,
