@@ -35,6 +35,7 @@ import { DialogAddContactComponent } from './dialog-add-contact/dialog-add-conta
 import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
 import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
 import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-contact.component';
+import { DialogContactTasksComponent } from './dialog-contact-tasks/dialog-contact-tasks.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-co
     DialogAddContactComponent,
     DialogContactDetailsComponent,
     DialogEditTaskComponent,
-    DialogEditContactComponent
+    DialogEditContactComponent,
+    DialogContactTasksComponent
   ],
   imports: [
     BrowserModule,

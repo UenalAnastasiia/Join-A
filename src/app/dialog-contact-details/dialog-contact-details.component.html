@@ -39,7 +39,8 @@
 
                 <div>
                     <h3>Tasks for {{ contactData.firstName }}:</h3>
-                    <h3 class="task-length">{{ taskLength }}</h3>
+                    <h3 *ngIf="taskLength >= 1" class="task-length task-length-hover" (click)="openDialogContactTasks(contactTasks, contactData.firstName)">{{ taskLength }}</h3>
+                    <h3 *ngIf="taskLength == 0" class="task-length">{{ taskLength }}</h3>
                 </div>
             </div>
         </div>

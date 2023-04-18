@@ -7,6 +7,7 @@ import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.compo
 import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
 import { Observable } from 'rxjs';
 import { SharedService } from 'src/services/shared.service';
+import { DialogContactTasksComponent } from '../dialog-contact-tasks/dialog-contact-tasks.component';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
   contactData: any;
   allTasks$: Observable<any>;
   taskLength: number;
+  contactTasks: any;
 
   constructor(private firestore: Firestore, public dialog: MatDialog, public shared: SharedService) { }
 
@@ -52,6 +54,7 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
       if (this.contactData) {
         let filterDate = loadData.filter(data => data.assignedTo == this.contactData.fullName && data.status != 'archived');
         this.taskLength = filterDate.length;
+        this.contactTasks = filterDate;
       }
     });
   }
@@ -67,5 +70,12 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
   openDialogEditContact(id: any) {
     const dialog = this.dialog.open(DialogEditContactComponent);
     dialog.componentInstance.contactID = id;
+  }
+
+
+  openDialogContactTasks(tasks: any, name: string) {
+    const dialog = this.dialog.open(DialogContactTasksComponent);
+    dialog.componentInstance.taskData = tasks;
+    dialog.componentInstance.contactName = name;
   }
 }
