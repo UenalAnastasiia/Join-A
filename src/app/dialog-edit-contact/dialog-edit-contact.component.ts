@@ -62,7 +62,7 @@ export class DialogEditContactComponent implements OnInit {
 
   openDialogDeleteContact(id: any) {
     const dialog = this.dialog.open(DialogRequestComponent);
-    dialog.componentInstance.showADeleteContactRequest();
+    dialog.componentInstance.showDeleteContactRequest();
     dialog.componentInstance.contactID = id;
   }
 

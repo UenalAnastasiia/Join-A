@@ -20,7 +20,7 @@
                     <mat-icon matTooltip="History" matTooltipPosition="above"
                         matTooltipClass="tooltip-blue">history</mat-icon>
 
-                    <mat-icon matTooltip="Archived task" matTooltipPosition="above" matTooltipClass="tooltip-blue"
+                    <mat-icon matTooltip="Delete task" matTooltipPosition="above" matTooltipClass="tooltip-blue"
                         (click)="openDialogDeleteTask(task.id)">delete</mat-icon>
                 </div>
 
@@ -46,5 +46,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="delete-btn" (click)="openDialogDeleteAllTasks(archivedTasks)">
+        <button mat-raised-button>
+            <mat-icon>delete</mat-icon> Clean Archiv
+        </button>
     </div>
 </mat-card>

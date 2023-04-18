@@ -53,8 +53,15 @@ export class ArchivComponent implements OnInit {
 
   openDialogDeleteTask(id: any) {
     const dialog = this.dialog.open(DialogRequestComponent);
-    dialog.componentInstance.showADeleteTaskRequest();
+    dialog.componentInstance.showDeleteTaskRequest();
     dialog.componentInstance.deleteTaskID = id;
+  }
+
+
+  openDialogDeleteAllTasks(taskData: any) {
+    const dialog = this.dialog.open(DialogRequestComponent);
+    dialog.componentInstance.showDeleteAllTasksFromArchivRequest();
+    dialog.componentInstance.allTasksData = taskData;
   }
 
 

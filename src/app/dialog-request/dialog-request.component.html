@@ -42,3 +42,12 @@
         <div (click)="deleteTaskDoc()">Delete task</div>
     </div>
 </div>
+
+<div *ngIf="deleteAllTasks" class="request-box">
+    <h1>Are you sure?</h1>
+
+    <div class="btn-box">
+        <div (click)="dialogRef.close()">Cancel</div>
+        <div (click)="deleteAllTasksFromArchiv()">Clean Archiv</div>
+    </div>
+</div>

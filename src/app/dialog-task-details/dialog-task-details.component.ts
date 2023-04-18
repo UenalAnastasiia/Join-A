@@ -61,7 +61,7 @@ export class DialogTaskDetailsComponent implements OnInit {
 
   openDialogDeleteTask(id: any) {
     const dialog = this.dialog.open(DialogRequestComponent);
-    dialog.componentInstance.showADeleteTaskRequest();
+    dialog.componentInstance.showDeleteTaskRequest();
     dialog.componentInstance.deleteTaskID = id;
   }
 

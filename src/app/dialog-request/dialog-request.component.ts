@@ -19,6 +19,8 @@ export class DialogRequestComponent implements OnInit {
   deleteContact: boolean = false;
   deleteTaskID: any;
   deleteTask: boolean = false;
+  allTasksData: any;
+  deleteAllTasks: boolean = false;
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogRequestComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
 
@@ -59,7 +61,7 @@ export class DialogRequestComponent implements OnInit {
   }
 
 
-  showADeleteContactRequest() {
+  showDeleteContactRequest() {
     this.addContact = false;
     this.addTask = false;
     this.archivTask = false;   
@@ -81,7 +83,7 @@ export class DialogRequestComponent implements OnInit {
   }
 
 
-  showADeleteTaskRequest() {
+  showDeleteTaskRequest() {
     this.addContact = false;
     this.addTask = false;
     this.archivTask = false;   
@@ -100,6 +102,32 @@ export class DialogRequestComponent implements OnInit {
 
     setTimeout(() => {
       this.messageService.showSnackMessage('Task has been deleted!');
+    }, 1500);
+  }
+
+
+  showDeleteAllTasksFromArchivRequest() {
+    this.addContact = false;
+    this.addTask = false;
+    this.archivTask = false;   
+    this.deleteContact = false;
+    this.deleteTask = false;
+    this.deleteAllTasks = true;
+  }
+
+
+  async deleteAllTasksFromArchiv() {
+    for (let index = 0; index < this.allTasksData.length; index++) {
+      await deleteDoc(doc(this.firestore, "tasks",  this.allTasksData[index].id));
+    }
+
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1000);
+
+
+    setTimeout(() => {
+      this.messageService.showSnackMessage('Archiv has been cleaned!');
     }, 1500);
   }
 }
