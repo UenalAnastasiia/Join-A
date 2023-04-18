@@ -6,6 +6,7 @@ import { Contact } from 'src/models/contact.class';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
 import { Observable } from 'rxjs';
+import { SharedService } from 'src/services/shared.service';
 
 
 @Component({
@@ -20,14 +21,16 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
   allTasks$: Observable<any>;
   taskLength: number;
 
-  constructor(private firestore: Firestore, public dialog: MatDialog) { }
+  constructor(private firestore: Firestore, public dialog: MatDialog, public shared: SharedService) { }
 
   ngOnInit(): void {
   }
 
 
   ngOnChanges() {
-    this.loadContact(this.contactID);
+    setInterval(() => {
+      this.loadContact(this.shared.contactID); 
+    }, 100);
   }
 
 
@@ -46,8 +49,10 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
     this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
 
     this.allTasks$.subscribe((loadData: any) => {
-      let filterDate = loadData.filter(data => data.assignedTo == this.contactData.fullName && data.status != 'archived');
-      this.taskLength = filterDate.length;
+      if (this.contactData) {
+        let filterDate = loadData.filter(data => data.assignedTo == this.contactData.fullName && data.status != 'archived');
+        this.taskLength = filterDate.length;
+      }
     });
   }
 
@@ -63,5 +68,4 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
     const dialog = this.dialog.open(DialogEditContactComponent);
     dialog.componentInstance.contactID = id;
   }
-
 }

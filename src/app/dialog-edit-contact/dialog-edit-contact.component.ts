@@ -3,6 +3,7 @@ import { Firestore, updateDoc } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { doc, getDoc } from 'firebase/firestore';
 import { Contact } from 'src/models/contact.class';
+import { SharedService } from 'src/services/shared.service';
 import { SnackBarService } from 'src/services/snack-bar.service';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 
@@ -20,7 +21,8 @@ export class DialogEditContactComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogEditContactComponent>, 
     private firestore: Firestore, 
     public dialog: MatDialog, 
-    private messageService: SnackBarService) { }
+    private messageService: SnackBarService,
+    public shared: SharedService) { }
 
   ngOnInit(): void {
     this.loadContact();
@@ -49,15 +51,19 @@ export class DialogEditContactComponent implements OnInit {
     setTimeout(() => {
       this.loadSpinner = false;
       this.dialog.closeAll();
-      this.messageService.showSnackMessage('Save Changes!');
+      this.shared.contactID = this.contactData.id;
     }, 2000);
+
+    setTimeout(() => {
+      this.messageService.showSnackMessage('Save Changes!');
+    }, 2500);
   }
 
 
-  openDialogArchivedTask(id: any) {
-    // const dialog = this.dialog.open(DialogRequestComponent);
-    // dialog.componentInstance.showArchiveTaskRequest();
-    // dialog.componentInstance.archivedID = id;
+  openDialogDeleteContact(id: any) {
+    const dialog = this.dialog.open(DialogRequestComponent);
+    dialog.componentInstance.showADeleteContactRequest();
+    dialog.componentInstance.contactID = id;
   }
 
 }

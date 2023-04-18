@@ -7,7 +7,7 @@
                         <h2>{{ contact.firstName.charAt(0).toUpperCase() }}</h2>
                     </div>
 
-                    <div class="info-box" (click)="showDetails = true; contactID = contact.id; activeElmIndex = i"
+                    <div class="info-box" (click)="showDetails = true; shared.contactID = contact.id; activeElmIndex = i"
                     [class.activeElm]="i === activeElmIndex">
                         <div class="contact-symbol" [ngStyle]="{'background': contact.bgColor}">
                             {{ contact.firstName[0].toUpperCase() }}{{ contact.lastName[0].toUpperCase() }}</div>
@@ -38,7 +38,7 @@
             </div>
 
             <div class="contact-details-box">
-                <app-dialog-contact-details *ngIf="showDetails" [contactID]="contactID"></app-dialog-contact-details>
+                <app-dialog-contact-details *ngIf="showDetails" [contactID]="shared.contactID"></app-dialog-contact-details>
             </div>
         </div>
 

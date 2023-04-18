@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { doc, updateDoc } from 'firebase/firestore';
+import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { SnackBarService } from 'src/services/snack-bar.service';
 
 
@@ -15,6 +15,8 @@ export class DialogRequestComponent implements OnInit {
   archivTask: boolean = false;
   archivedID: any;
   addContact: boolean = false;
+  contactID: any;
+  deleteContact: boolean = false;
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogRequestComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
 
@@ -52,5 +54,27 @@ export class DialogRequestComponent implements OnInit {
     this.addContact = true;
     this.addTask = false;
     this.archivTask = false;   
+  }
+
+
+  showADeleteContactRequest() {
+    this.addContact = false;
+    this.addTask = false;
+    this.archivTask = false;   
+    this.deleteContact = true;
+  }
+
+
+  async deleteContactDoc() {
+    await deleteDoc(doc(this.firestore, "contacts", this.contactID));
+
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1000);
+
+
+    setTimeout(() => {
+      this.messageService.showSnackMessage('Contact has been deleted!');
+    }, 1500);
   }
 }

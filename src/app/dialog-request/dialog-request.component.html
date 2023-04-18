@@ -24,3 +24,12 @@
         <div (click)="dialogRef.close()">Add new contact</div>
     </div>
 </div>
+
+<div *ngIf="deleteContact" class="request-box">
+    <h1>Are you sure?</h1>
+
+    <div class="btn-box">
+        <div (click)="dialogRef.close()">Cancel</div>
+        <div (click)="deleteContactDoc()">Delete contact</div>
+    </div>
+</div>
