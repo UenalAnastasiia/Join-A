@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
   contactID: any;
-  // contactTasks: any;
-  
+  archivDialog: boolean = false;
+
   constructor() {
-   }
+  }
 }

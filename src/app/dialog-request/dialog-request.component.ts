@@ -17,6 +17,8 @@ export class DialogRequestComponent implements OnInit {
   addContact: boolean = false;
   contactID: any;
   deleteContact: boolean = false;
+  deleteTaskID: any;
+  deleteTask: boolean = false;
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogRequestComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
 
@@ -75,6 +77,29 @@ export class DialogRequestComponent implements OnInit {
 
     setTimeout(() => {
       this.messageService.showSnackMessage('Contact has been deleted!');
+    }, 1500);
+  }
+
+
+  showADeleteTaskRequest() {
+    this.addContact = false;
+    this.addTask = false;
+    this.archivTask = false;   
+    this.deleteContact = false;
+    this.deleteTask = true;
+  }
+
+
+  async deleteTaskDoc() {
+    await deleteDoc(doc(this.firestore, "tasks", this.deleteTaskID));
+
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1000);
+
+
+    setTimeout(() => {
+      this.messageService.showSnackMessage('Task has been deleted!');
     }, 1500);
   }
 }

@@ -18,7 +18,8 @@
 
         <span class="date-span">
             <p>Due date:</p>
-            <p>{{ taskData.dueDate | date: "MMM" }} {{ taskData.dueDate | date: "dd" }}, {{ taskData.dueDate | date: "yyyy" }}</p>
+            <p>{{ taskData.dueDate | date: "MMM" }} {{ taskData.dueDate | date: "dd" }}, {{ taskData.dueDate | date:
+                "yyyy" }}</p>
             <span *ngIf="taskData.dueDate < todayDate">
                 <mat-icon>notification_important</mat-icon>
                 Deadline has been exceeded!
@@ -41,10 +42,22 @@
         </span>
     </div>
 
-    <div class="button-box">
+    <div class="button-box" *ngIf="!shared.archivDialog">
         <div (click)="openDialogEditTask(taskData.id)" matTooltip="Edit" matTooltipPosition="below"
             matTooltipClass="tooltip-blue">
             <mat-icon>edit</mat-icon>
+        </div>
+    </div>
+
+    <div class="button-box" *ngIf="shared.archivDialog">
+        <div (click)="saveTaskFroArchivToBoard(taskData.id)" matTooltip="Save to Board" matTooltipPosition="below"
+            matTooltipClass="tooltip-blue" class="mr-16">
+            <mat-icon>update</mat-icon>
+        </div>
+
+        <div (click)="openDialogDeleteTask(taskData.id)" matTooltip="Delete Task" matTooltipPosition="below"
+            matTooltipClass="tooltip-blue">
+            <mat-icon>delete</mat-icon>
         </div>
     </div>
 </div>

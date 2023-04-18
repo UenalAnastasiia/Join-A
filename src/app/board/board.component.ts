@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { orderBy } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
+import { SharedService } from 'src/services/shared.service';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
@@ -31,7 +32,7 @@ export class BoardComponent implements OnInit {
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public dialog: MatDialog, private firestore: Firestore) { }
+  constructor(public dialog: MatDialog, private firestore: Firestore, public shared: SharedService) { }
 
   ngOnInit(): void {
     this.renderBoardTasks();
@@ -109,6 +110,7 @@ export class BoardComponent implements OnInit {
 
 
   openTaskDetails(id: any) {
+    this.shared.archivDialog = false;
     const dialog = this.dialog.open(DialogTaskDetailsComponent);
     dialog.componentInstance.task = new Task(this.task.toJSON());
     dialog.componentInstance.task.id = id;

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
+import { SharedService } from 'src/services/shared.service';
+import { SnackBarService } from 'src/services/snack-bar.service';
 import { DialogEditTaskComponent } from '../dialog-edit-task/dialog-edit-task.component';
+import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 
 @Component({
   selector: 'app-dialog-task-details',
@@ -16,7 +19,11 @@ export class DialogTaskDetailsComponent implements OnInit {
   task: Task;
   todayDate: any;
 
-  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, private firestore: Firestore, public dialog: MatDialog) { }
+  constructor(public dialogRef: MatDialogRef<DialogTaskDetailsComponent>, 
+    private firestore: Firestore, 
+    public dialog: MatDialog, 
+    public shared: SharedService,
+    public messageService: SnackBarService) { }
 
   
   ngOnInit(): void {
@@ -49,5 +56,26 @@ export class DialogTaskDetailsComponent implements OnInit {
   openDialogEditTask(id: any) {
     const dialog = this.dialog.open(DialogEditTaskComponent);
     dialog.componentInstance.taskID = id;
+  }
+
+
+  openDialogDeleteTask(id: any) {
+    const dialog = this.dialog.open(DialogRequestComponent);
+    dialog.componentInstance.showADeleteTaskRequest();
+    dialog.componentInstance.deleteTaskID = id;
+  }
+
+
+  async saveTaskFroArchivToBoard(id: any) {
+    await updateDoc(doc(this.firestore, "tasks", id),
+      {
+        status: 'To do',
+        priority: 'Medium'
+      });
+    this.messageService.showSnackMessage('Task saved in Board!');
+
+    setTimeout(() => {
+      this.dialog.closeAll();
+    }, 1000);
   }
 }

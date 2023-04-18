@@ -19,7 +19,6 @@ export class DialogContactTasksComponent implements OnInit {
 
   ngOnInit(): void {
     this.todayDate = new Date().getTime();
-    console.log(this.taskData);
   }
 
 

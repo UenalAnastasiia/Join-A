@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { collection, doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, orderBy, query } from 'firebase/firestore';
 import { Contact } from 'src/models/contact.class';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
@@ -47,14 +47,15 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
 
 
   renderTasks() {
-    const taskCollection = collection(this.firestore, 'tasks');
-    this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
+    const contactCollection = collection(this.firestore, 'tasks');
+    const queryCollection = query(contactCollection, orderBy("dueDate"));
+    this.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
 
     this.allTasks$.subscribe((loadData: any) => {
       if (this.contactData) {
         let filterDate = loadData.filter(data => data.assignedTo == this.contactData.fullName && data.status != 'archived');
         this.taskLength = filterDate.length;
-        this.contactTasks = filterDate;
+        this.contactTasks = filterDate;        
       }
     });
   }
