@@ -18,9 +18,9 @@ export class DialogEditContactComponent implements OnInit {
   contact: Contact;
   loadSpinner: boolean = false;
 
-  constructor(public dialogRef: MatDialogRef<DialogEditContactComponent>, 
-    private firestore: Firestore, 
-    public dialog: MatDialog, 
+  constructor(public dialogRef: MatDialogRef<DialogEditContactComponent>,
+    private firestore: Firestore,
+    public dialog: MatDialog,
     private messageService: SnackBarService,
     public shared: SharedService) { }
 
@@ -48,15 +48,16 @@ export class DialogEditContactComponent implements OnInit {
         phone: this.contactData.phone
       });
 
+    this.shared.loadContact(this.contactData.id);
+
     setTimeout(() => {
       this.loadSpinner = false;
       this.dialog.closeAll();
-      this.shared.contactID = this.contactData.id;
     }, 2000);
 
     setTimeout(() => {
       this.messageService.showSnackMessage('Save Changes!');
-    }, 2500);
+    }, 2000);
   }
 
 

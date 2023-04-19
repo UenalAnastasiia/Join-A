@@ -1,11 +1,11 @@
-<div *ngIf="contactData" class="details-container">
+<div *ngIf="shared.contactData" class="details-container">
     <div class="info-box">
         <div class="header-name">
-            <span class="contact-symbol" [ngStyle]="{'background': contactData.bgColor}">
-                {{ contactData.firstName[0].toUpperCase() }}{{ contactData.lastName[0].toUpperCase() }}</span>
+            <span class="contact-symbol" [ngStyle]="{'background': shared.contactData.bgColor}">
+                {{ shared.contactData.firstName[0].toUpperCase() }}{{ shared.contactData.lastName[0].toUpperCase() }}</span>
             <span>
-                <span>{{ contactData.firstName }} {{ contactData.lastName }}</span>
-                <button mat-button (click)="openDialogAddTask(contactData.fullName, contactData.bgColor)">
+                <span>{{ shared.contactData.firstName }} {{ shared.contactData.lastName }}</span>
+                <button mat-button (click)="openDialogAddTask(shared.contactData.fullName, shared.contactData.bgColor)">
                     <mat-icon>add</mat-icon> Add task
                 </button>
             </span>
@@ -15,7 +15,7 @@
             <div class="contact-info-header">
                 <h2>Contact information</h2>
                 <button mat-button matTooltip="Edit Contact" matTooltipPosition="below" matTooltipClass="tooltip-blue"
-                    (click)="openDialogEditContact(contactData.id)">
+                    (click)="openDialogEditContact(shared.contactData.id)">
                     <mat-icon>edit</mat-icon>
                 </button>
             </div>
@@ -24,25 +24,25 @@
                 <div>
                     <span>
                         <h3>E-Mail:</h3>
-                        <a href="mailto: {{ contactData.email }}" class="header-color">
-                            <h3>{{ contactData.email }}</h3>
+                        <a href="mailto: {{ shared.contactData.email }}" class="header-color">
+                            <h3>{{ shared.contactData.email }}</h3>
                         </a>
                     </span>
     
                     <span>
                         <h3 class="mt-24">Phone:</h3>
-                        <a href="tel: {{ contactData.phone }}">
-                            <h3>{{ contactData.phone }}</h3>
+                        <a href="tel: {{ shared.contactData.phone }}">
+                            <h3>{{ shared.contactData.phone }}</h3>
                         </a>
                     </span>
                 </div>
 
                 <div>
-                    <h3>Tasks for {{ contactData.firstName }}:</h3>
-                    <h3 *ngIf="taskLength >= 1" class="task-length task-length-hover" (click)="openDialogContactTasks(contactTasks, contactData.firstName)"
+                    <h3>Tasks for {{ shared.contactData.firstName }}:</h3>
+                    <h3 *ngIf="shared.taskLength >= 1" class="task-length task-length-hover" (click)="openDialogContactTasks(shared.contactTasks, shared.contactData.firstName)"
                         matTooltip="Open Tasks" matTooltipPosition="below" matTooltipClass="tooltip-blue">
-                        {{ taskLength }}</h3>
-                    <h3 *ngIf="taskLength == 0" class="task-length">{{ taskLength }}</h3>
+                        {{ shared.taskLength }}</h3>
+                    <h3 *ngIf="shared.taskLength == 0" class="task-length">{{ shared.taskLength }}</h3>
                 </div>
             </div>
         </div>
