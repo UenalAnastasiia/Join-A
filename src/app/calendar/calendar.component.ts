@@ -7,11 +7,12 @@ import { CalendarDay } from 'src/models/calendar.class';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  public calendar: CalendarDay[] = [];
-  public monthNames = ["January", "February", "March", "April", "May", "June",
+  calendar: CalendarDay[] = [];
+  monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
-  public displayMonth: string;
-  private monthIndex: number = 0;
+  displayMonth: string;
+  displayYear: any;
+  monthIndex: number = 0;
 
 
   ngOnInit(): void {
@@ -23,11 +24,11 @@ export class CalendarComponent implements OnInit {
     this.calendar = [];
     let day: Date = new Date(new Date().setMonth(new Date().getMonth() + monthIndex));
     this.displayMonth = this.monthNames[day.getMonth()];
+    this.displayYear = day.getFullYear();
     let startingDateOfCalendar = this.getStartDateForCalendar(day);
 
     let dateToAdd = startingDateOfCalendar;
-
-    for (var i = 0; i < 42; i++) {
+    for (let i = 0; i < 42; i++) {
       this.calendar.push(new CalendarDay(new Date(dateToAdd)));
       dateToAdd = new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
     }
@@ -55,8 +56,13 @@ export class CalendarComponent implements OnInit {
 
 
   decreaseMonth() {
-    this.monthIndex--
+    this.monthIndex--;
     this.generateCalendarDays(this.monthIndex);
+  }
+
+
+  showDate(c) {
+    console.log(c); 
   }
 
 }
