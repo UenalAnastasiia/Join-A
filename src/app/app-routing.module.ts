@@ -4,13 +4,15 @@ import { ArchivComponent } from './archiv/archiv.component';
 import { BoardComponent } from './board/board.component';
 import { ContactComponent } from './contact/contact.component';
 import { SummaryComponent } from './summary/summary.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'summary', pathMatch: 'full' },
   { path: 'summary', component: SummaryComponent },
   { path: 'board', component: BoardComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'archiv', component: ArchivComponent }
+  { path: 'archiv', component: ArchivComponent },
+  { path: 'calendar', component: CalendarComponent }
 ];
 
 @NgModule({

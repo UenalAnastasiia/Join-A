@@ -36,6 +36,7 @@ import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-c
 import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
 import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-contact.component';
 import { DialogContactTasksComponent } from './dialog-contact-tasks/dialog-contact-tasks.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { DialogContactTasksComponent } from './dialog-contact-tasks/dialog-conta
     DialogContactDetailsComponent,
     DialogEditTaskComponent,
     DialogEditContactComponent,
-    DialogContactTasksComponent
+    DialogContactTasksComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
