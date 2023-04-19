@@ -21,7 +21,7 @@ export class DialogContactDetailsComponent implements OnInit, OnChanges {
 
 
   ngOnChanges() {
-    this.shared.loadContact(this.contactID);
+    this.shared.loadContactDetails(this.contactID);
   }
 
 

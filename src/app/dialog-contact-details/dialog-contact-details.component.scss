@@ -60,39 +60,51 @@
     display: flex;
     justify-content: space-between;
     margin-top: 24px;
+}
 
-    div {
-        &:first-child {
-            span {
-                margin-top: 12px;
-                margin-bottom: 12px;
+.mail-phone {
+    span {
+        margin-top: 12px;
+        margin-bottom: 12px;
 
-                h3 {
-                    margin: 0;
+        h3 {
+            margin: 0;
 
-                    &:last-child {
-                        cursor: pointer;
+            &:last-child {
+                cursor: pointer;
 
-                        &:hover {
-                            text-decoration: underline;
-                        }
-                    }
+                &:hover {
+                    text-decoration: underline;
                 }
             }
+        }
+    }
 
-            a {
-                text-decoration: none;
-                color: var(--font);
-            }
+    a {
+        text-decoration: none;
+        color: var(--font);
+    }
+}
+
+.tasks-info {
+    span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+            margin: 0;
+        }
+
+        &:first-child {
+            margin-bottom: 22px;
         }
 
         &:last-child {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
             h3 {
-                margin: 0;
+                &:last-child {
+                    font-weight: 600;
+                }
             }
         }
     }

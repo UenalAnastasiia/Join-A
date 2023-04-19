@@ -2,7 +2,8 @@
     <div class="info-box">
         <div class="header-name">
             <span class="contact-symbol" [ngStyle]="{'background': shared.contactData.bgColor}">
-                {{ shared.contactData.firstName[0].toUpperCase() }}{{ shared.contactData.lastName[0].toUpperCase() }}</span>
+                {{ shared.contactData.firstName[0].toUpperCase() }}{{ shared.contactData.lastName[0].toUpperCase()
+                }}</span>
             <span>
                 <span>{{ shared.contactData.firstName }} {{ shared.contactData.lastName }}</span>
                 <button mat-button (click)="openDialogAddTask(shared.contactData.fullName, shared.contactData.bgColor)">
@@ -21,14 +22,14 @@
             </div>
 
             <div class="contact-info">
-                <div>
+                <div class="mail-phone">
                     <span>
                         <h3>E-Mail:</h3>
                         <a href="mailto: {{ shared.contactData.email }}" class="header-color">
                             <h3>{{ shared.contactData.email }}</h3>
                         </a>
                     </span>
-    
+
                     <span>
                         <h3 class="mt-24">Phone:</h3>
                         <a href="tel: {{ shared.contactData.phone }}">
@@ -37,12 +38,22 @@
                     </span>
                 </div>
 
-                <div>
-                    <h3>Tasks for {{ shared.contactData.firstName }}:</h3>
-                    <h3 *ngIf="shared.taskLength >= 1" class="task-length task-length-hover" (click)="openDialogContactTasks(shared.contactTasks, shared.contactData.firstName)"
-                        matTooltip="Open Tasks" matTooltipPosition="below" matTooltipClass="tooltip-blue">
-                        {{ shared.taskLength }}</h3>
-                    <h3 *ngIf="shared.taskLength == 0" class="task-length">{{ shared.taskLength }}</h3>
+                <div class="tasks-info">
+                    <span>
+                        <h3>Tasks for {{ shared.contactData.firstName }}:</h3>
+                        <h3 *ngIf="shared.taskLength >= 1" class="task-length task-length-hover"
+                            (click)="openDialogContactTasks(shared.contactTasks, shared.contactData.firstName)"
+                            matTooltip="Open Tasks" matTooltipPosition="below" matTooltipClass="tooltip-blue">
+                            {{ shared.taskLength }}</h3>
+                        <h3 *ngIf="shared.taskLength == 0" class="task-length">{{ shared.taskLength }}</h3>
+                    </span>
+
+                    <span>
+                        <h3>Upcoming Deadline:</h3>
+                        <h3 *ngIf="!shared.deadlineExist">No Deadlines</h3>
+                        <h3 *ngIf="shared.deadlineExist">{{ shared.upcomingDeadline | date: "MMMM" }} {{ shared.upcomingDeadline | date: "dd"
+                            }}, {{ shared.upcomingDeadline | date: "yyyy" }}</h3>
+                    </span>
                 </div>
             </div>
         </div>

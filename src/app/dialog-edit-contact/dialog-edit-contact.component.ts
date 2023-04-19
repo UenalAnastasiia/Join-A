@@ -48,7 +48,7 @@ export class DialogEditContactComponent implements OnInit {
         phone: this.contactData.phone
       });
 
-    this.shared.loadContact(this.contactData.id);
+    this.shared.loadContactDetails(this.contactData.id);
 
     setTimeout(() => {
       this.loadSpinner = false;

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { collection, query, where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
+import { SharedService } from 'src/services/shared.service';
 
 @Component({
   selector: 'app-summary',
@@ -24,13 +25,13 @@ export class SummaryComponent implements OnInit, OnDestroy {
   inProgressLength: number;
   awaitingFeedbackLength: number;
   doneLength: number;
-  upcomingDeadline: any;
-  deadlineExist: boolean = false;
+  // upcomingDeadline: any;
+  // deadlineExist: boolean = false;
 
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public router: Router, private firestore: Firestore) {
+  constructor(public router: Router, private firestore: Firestore, public shared: SharedService) {
   }
 
   ngOnInit(): void {
@@ -59,24 +60,24 @@ export class SummaryComponent implements OnInit, OnDestroy {
     this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
 
     this.allTasks$.subscribe((loadData: any) => {
-      this.getUpcomingDeadline(loadData);
+      this.shared.getUpcomingDeadline(loadData);
       this.getTaskLength(loadData);
     });
   }
 
 
-  getUpcomingDeadline(taskData: any) {
-    let todayDate = new Date().getTime();
-    let filterDate = taskData.filter(data => data.dueDate > todayDate && data.status != 'archived');
+  // getUpcomingDeadline(taskData: any) {
+  //   let todayDate = new Date().getTime();
+  //   let filterDate = taskData.filter(data => data.dueDate > todayDate && data.status != 'archived');
 
-    if (filterDate.length >= 1) {
-      this.deadlineExist = true;
-      let dateMap = filterDate.map(data => data.dueDate);
-      this.upcomingDeadline = new Date(Math.min.apply(null, dateMap));
-    } else {
-      this.deadlineExist = false;
-    }
-  }
+  //   if (filterDate.length >= 1) {
+  //     this.deadlineExist = true;
+  //     let dateMap = filterDate.map(data => data.dueDate);
+  //     this.upcomingDeadline = new Date(Math.min.apply(null, dateMap));
+  //   } else {
+  //     this.deadlineExist = false;
+  //   }
+  // }
 
 
   getTime() {

@@ -38,8 +38,9 @@
                     </div>
 
                     <div class="urgent-date">
-                        <h4 *ngIf="!deadlineExist">No Deadlines</h4>
-                        <h4 *ngIf="deadlineExist">{{ upcomingDeadline | date: "MMMM" }} {{ upcomingDeadline | date: "dd" }}, {{ upcomingDeadline | date: "yyyy" }}</h4>
+                        <h4 *ngIf="!shared.deadlineExist">No Deadlines</h4>
+                        <h4 *ngIf="shared.deadlineExist">
+                            {{ shared.upcomingDeadline | date: "MMMM" }} {{ shared.upcomingDeadline | date: "dd" }}, {{ shared.upcomingDeadline | date: "yyyy" }}</h4>
                         <h4>Upcoming Deadline</h4>
                     </div>
                 </mat-card>
