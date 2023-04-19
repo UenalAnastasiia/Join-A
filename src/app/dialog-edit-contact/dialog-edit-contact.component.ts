@@ -25,6 +25,7 @@ export class DialogEditContactComponent implements OnInit {
     public shared: SharedService) { }
 
   ngOnInit(): void {
+    this.dialogRef.updateSize('40vw', '');
     this.loadContact();
   }
 

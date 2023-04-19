@@ -25,7 +25,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     background-color: $bgColor;
 }
 
-.add-task-container {
+.edit-contact-container {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -38,7 +38,7 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     color: var(--header);
 }
 
-.task-h {
+.edit-h {
     h1 {
         margin-bottom: 16px;
         font-size: 24px;
@@ -51,9 +51,9 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     }
 }
 
-.task-box {
+.edit-box {
+    width: 38vw !important;
     display: flex;
-    min-width: 35vw;
     flex-direction: column;
     justify-content: center;
     align-items: center;
