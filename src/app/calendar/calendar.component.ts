@@ -14,10 +14,12 @@ export class CalendarComponent implements OnInit {
   calendar: CalendarDay[] = [];
   monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
+  categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
   displayMonth: string;
   displayYear: any;
   monthIndex: number = 0;
   task: Task = new Task();
+  showLegend: boolean = false;
 
   constructor(public shared: SharedService, public dialog: MatDialog) { }
 
@@ -65,6 +67,19 @@ export class CalendarComponent implements OnInit {
   decreaseMonth() {
     this.monthIndex--;
     this.generateCalendarDays(this.monthIndex);
+  }
+
+
+  getCategoryColor(category: string) {
+    switch (category) {
+      case 'Frontend': return 'rgb(115 26 203)';
+      case 'Backend': return 'rgb(69 139 127)';
+      case 'Design': return '#FF7A00';
+      case 'Marketing': return '#0038FF';
+      case 'Backoffice': return '#1FD7C1';
+      case 'Other': return '#FC71FF';
+      default: return '';
+    }
   }
 
 

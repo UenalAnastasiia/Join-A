@@ -12,6 +12,7 @@ export class SharedService {
   archivDialog: boolean = false;
   allTasks$: Observable<any>;
   allTasks: any = [];
+  filterTasks: any = [];
   taskLength: number;
   contactTasks: any;
   deadlineExist: boolean = false;
@@ -27,6 +28,7 @@ export class SharedService {
 
     this.allTasks$.subscribe((loadData: any) => {
       this.allTasks = loadData;
+      this.filterTasks = loadData.filter(data => data.status != 'archived');
     });
   }
 

@@ -42,8 +42,8 @@ export class BoardComponent implements OnInit {
   }
 
 
-  getCategoryColor(priority: string) {
-    switch (priority) {
+  getCategoryColor(category: string) {
+    switch (category) {
       case 'Frontend': return 'rgb(115 26 203)';
       case 'Backend': return 'rgb(69 139 127)';
       case 'Design': return '#FF7A00';
