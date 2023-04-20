@@ -11,12 +11,23 @@ export class SharedService {
   contactData: any;
   archivDialog: boolean = false;
   allTasks$: Observable<any>;
+  allTasks: any = [];
   taskLength: number;
   contactTasks: any;
   deadlineExist: boolean = false;
   upcomingDeadline: any;
 
   constructor(private firestore: Firestore) {
+  }
+
+
+  renderAllTasks() {
+    const taskCollection = collection(this.firestore, 'tasks');
+    this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
+
+    this.allTasks$.subscribe((loadData: any) => {
+      this.allTasks = loadData;
+    });
   }
 
 

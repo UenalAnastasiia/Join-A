@@ -77,3 +77,12 @@
 .weekend {
   color: #df3232;
 }
+
+.hideTask {
+  display: none;
+}
+
+.showTask {
+  display: flex;
+  font-weight: 600;
+}

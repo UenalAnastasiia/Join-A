@@ -5,12 +5,12 @@
         </span>
         <span>
             <button mat-icon-button (click)="decreaseMonth()" matTooltip="Last" matTooltipPosition="below"
-            matTooltipClass="tooltip-blue">
+                matTooltipClass="tooltip-blue">
                 <mat-icon>navigate_before</mat-icon>
             </button>
 
             <button mat-icon-button (click)="increaseMonth()" matTooltip="Next" matTooltipPosition="below"
-            matTooltipClass="tooltip-blue">
+                matTooltipClass="tooltip-blue">
                 <mat-icon>navigate_next</mat-icon>
             </button>
         </span>
@@ -32,10 +32,15 @@
         <tbody>
             <tr *ngFor="let row of calendar | chunk: 7; let i = index">
                 <td class="calendar-day" *ngFor="let c of row; let j = index"
-                    [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday, 'weekend': (j==5 || j==6)}"
-                    (click)="showDate(c)">
+                    [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday, 'weekend': (j==5 || j==6)}">
                     <div class="calendar-day-header">
                         {{ c.date.getDate() }}
+                    </div>
+                    <div *ngFor="let task of shared.allTasks">
+                        <span (click)="openTaskDetails(task.id)"
+                            [ngClass]="{'hideTask': c.date.getTime() != task.dueDate, 'showTask': c.date.getTime() === task.dueDate}">
+                            {{ task.title }}
+                        </span>
                     </div>
                 </td>
             </tr>

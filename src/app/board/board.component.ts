@@ -3,7 +3,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { collectionData, doc, Firestore, collection, query, updateDoc, where } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { orderBy } from 'firebase/firestore';
-import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
 import { SharedService } from 'src/services/shared.service';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
@@ -18,8 +17,6 @@ import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-d
 })
 export class BoardComponent implements OnInit {
   task: Task = new Task();
-  allTasks$: Observable<any>;
-  allTasks: any = [];
   taskID: string;
   todayDate: any;
 
@@ -35,18 +32,9 @@ export class BoardComponent implements OnInit {
   constructor(public dialog: MatDialog, private firestore: Firestore, public shared: SharedService) { }
 
   ngOnInit(): void {
-    this.renderBoardTasks();
     this.todayDate = new Date().getTime();
-  }
 
-
-  renderBoardTasks() {
-    const taskCollection = collection(this.firestore, 'tasks');
-    this.allTasks$ = collectionData(taskCollection, { idField: "taskID" });
-
-    this.allTasks$.subscribe((loadData: any) => {
-      this.allTasks = loadData;
-    });
+    this.shared.renderAllTasks();
 
     for (let index = 0; index < this.statusList.length; index++) {
       this.filterTasks(this.statusList[index]);
@@ -69,8 +57,8 @@ export class BoardComponent implements OnInit {
 
   filterTasks(name: string) {
     const queryCollection = query(collection(this.firestore, "tasks"), where("status", "==", name), orderBy("dueDate"));
-    this.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
-    this.allTasks$.subscribe((data: any) => {
+    this.shared.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
+    this.shared.allTasks$.subscribe((data: any) => {
       if (name === "To do") {
         this.todoTask = data;
       } else if (name === "In progress") {

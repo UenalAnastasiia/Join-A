@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CalendarDay } from 'src/models/calendar.class';
+import { SharedService } from 'src/services/shared.service';
+import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
+import { Task } from 'src/models/task.class';
 
 @Component({
   selector: 'app-calendar',
@@ -13,9 +17,12 @@ export class CalendarComponent implements OnInit {
   displayMonth: string;
   displayYear: any;
   monthIndex: number = 0;
+  task: Task = new Task();
 
+  constructor(public shared: SharedService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.shared.renderAllTasks();
     this.generateCalendarDays(this.monthIndex);
   }
 
@@ -61,8 +68,11 @@ export class CalendarComponent implements OnInit {
   }
 
 
-  showDate(c) {
-    console.log(c); 
+  openTaskDetails(id: any) {
+    this.shared.archivDialog = false;
+    const dialog = this.dialog.open(DialogTaskDetailsComponent);
+    dialog.componentInstance.task = new Task(this.task.toJSON());
+    dialog.componentInstance.task.id = id;
   }
 
 }
