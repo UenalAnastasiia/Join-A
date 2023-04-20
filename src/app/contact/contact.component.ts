@@ -19,7 +19,6 @@ export class ContactComponent implements OnInit {
   allContacts: any = [];
   currentAlphabet: any;
   showDetails: boolean = false;
-  // contactID: any;
   searchInput: string;
   activeElmIndex: number;
 
@@ -42,7 +41,7 @@ export class ContactComponent implements OnInit {
 
 
   checkLetter(name: string) {
-    if (this.currentAlphabet === name.charAt(0).toLowerCase()) {
+    if (this.currentAlphabet === name.charAt(0).toLowerCase() && this.searchInput === '') {
       return false;
     } else {
       this.currentAlphabet = name.charAt(0).toLowerCase();
