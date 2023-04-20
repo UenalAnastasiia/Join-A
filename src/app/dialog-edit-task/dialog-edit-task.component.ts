@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { collection, doc, getDoc, orderBy, query, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, getDoc, orderBy, query, updateDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { Observable } from 'rxjs';
@@ -76,19 +76,6 @@ export class DialogEditTaskComponent implements OnInit {
   }
 
 
-  getCategoryColor(priority: string) {
-    switch (priority) {
-      case 'Frontend': return 'rgb(115 26 203)';
-      case 'Backend': return 'rgb(69 139 127)';
-      case 'Design': return '#FF7A00';
-      case 'Marketing': return '#0038FF';
-      case 'Backoffice': return '#1FD7C1';
-      case 'Other': return '#FC71FF';
-      default: return '';
-    }
-  }
-
-
   selectOptions() {
     this.taskData.priority = this.taskData.priority;
     this.taskData.category = this.taskData.category;
@@ -103,25 +90,46 @@ export class DialogEditTaskComponent implements OnInit {
   }
 
 
-  async saveTask() {
+  saveTask() {
     this.loadSpinner = true;
-
+    
     if (this.dateChange === true) {
       this.taskData.dueDate = this.taskData.dueDate.getTime();
     }
 
-    await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
-      {
-        title: this.taskData.title,
-        description: this.taskData.description,
-        category: this.taskData.category,
-        dueDate: this.taskData.dueDate,
-        priority: this.taskData.priority,
-        status: this.taskData.status,
-        assignedTo: this.taskData.assignedTo,
-        bgColor: this.taskData.bgColor
-      });
+    this.updateTaskDoc();
+    this.updateTaskHistory(this.taskData.id);
+    this.afterSaveTask();
+  }
 
+
+  async updateTaskDoc() {
+    await updateDoc(doc(this.firestore, "tasks", this.taskData.id),
+    {
+      title: this.taskData.title,
+      description: this.taskData.description,
+      category: this.taskData.category,
+      dueDate: this.taskData.dueDate,
+      priority: this.taskData.priority,
+      status: this.taskData.status,
+      assignedTo: this.taskData.assignedTo,
+      bgColor: this.taskData.bgColor
+    });
+  }
+
+
+  async updateTaskHistory(id: any) {
+    const docRef = doc(this.firestore, 'tasks', id);
+    const colRef = collection(docRef, "history")
+    addDoc(colRef, {
+      historyDate: Date.now(),
+      message: 'Edit Task',
+      change: 'Was changed'
+    });
+  }
+
+
+  afterSaveTask() {
     setTimeout(() => {
       this.loadSpinner = false;
       this.dialog.closeAll();

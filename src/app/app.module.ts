@@ -38,6 +38,7 @@ import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-co
 import { DialogContactTasksComponent } from './dialog-contact-tasks/dialog-contact-tasks.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChunkPipe } from '../services/chunk-pipe';
+import { DialogTaskHistoryComponent } from './dialog-task-history/dialog-task-history.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ChunkPipe } from '../services/chunk-pipe';
     DialogEditContactComponent,
     DialogContactTasksComponent,
     CalendarComponent,
-    ChunkPipe
+    ChunkPipe,
+    DialogTaskHistoryComponent
   ],
   imports: [
     BrowserModule,

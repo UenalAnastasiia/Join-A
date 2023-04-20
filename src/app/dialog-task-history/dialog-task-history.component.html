@@ -1,0 +1,9 @@
+<h1>History</h1>
+<div *ngFor="let task of taskData">
+    <span>
+        {{ task.message }}: {{ task.historyDate | date: "MMM" }} {{ task.historyDate | date: "dd" }}, {{
+        task.historyDate |
+        date:"yyyy" }}
+        at {{ task.historyDate | date: "HH:mm"}}
+    </span>
+</div>

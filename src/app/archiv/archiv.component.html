@@ -24,7 +24,7 @@
                         (click)="openDialogDeleteTask(task.id)">delete</mat-icon>
                 </div>
 
-                <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                <span class="task-category" [style.background-color]="shared.getCategoryColor(task.category)">
                     {{ task.category }}</span>
 
                 <div (click)="openTaskDetails(task.id)">

@@ -96,6 +96,22 @@ export class DialogAddTaskComponent implements OnInit {
     await setDoc(doc(this.firestore, 'tasks', docRef.id), this.task.toJSON());
     this.loadSpinner = true;
 
+    this.updateTaskHistory(docRef.id);
+    this.afterSaveTask();
+  }
+
+
+  async updateTaskHistory(id: any) {
+    const docRef = doc(this.firestore, 'tasks', id);
+    const colRef = collection(docRef, "history")
+    addDoc(colRef, {
+      historyDate: Date.now(),
+      message: 'Add Task'
+    });
+  }
+
+
+  afterSaveTask() {
     setTimeout(() => {
       this.clearForm();
       this.loadSpinner = false;

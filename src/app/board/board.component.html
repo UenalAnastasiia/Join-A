@@ -33,13 +33,13 @@
                     <div class="task-card hide-icons">
                         <div class="hover-icons">
                             <mat-icon matTooltip="History" matTooltipPosition="above"
-                            matTooltipClass="tooltip-blue">history</mat-icon>
+                            matTooltipClass="tooltip-blue" (click)="openDialogHistory(task.id)">history</mat-icon>
 
                             <mat-icon matTooltip="Archived task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
 
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                        <span class="task-category" [style.background-color]="shared.getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
@@ -86,13 +86,13 @@
                     <div class="task-card hide-icons">
                         <div class="hover-icons">
                             <mat-icon matTooltip="History" matTooltipPosition="above"
-                            matTooltipClass="tooltip-blue">history</mat-icon>
+                            matTooltipClass="tooltip-blue" (click)="openDialogHistory(task.id)">history</mat-icon>
 
                             <mat-icon matTooltip="Archived task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
                         
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                        <span class="task-category" [style.background-color]="shared.getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
@@ -139,13 +139,13 @@
                     <div class="task-card hide-icons">
                         <div class="hover-icons">
                             <mat-icon matTooltip="History" matTooltipPosition="above"
-                            matTooltipClass="tooltip-blue">history</mat-icon>
+                            matTooltipClass="tooltip-blue" (click)="openDialogHistory(task.id)">history</mat-icon>
 
                             <mat-icon matTooltip="Archived task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
                         
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                        <span class="task-category" [style.background-color]="shared.getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">
@@ -192,13 +192,13 @@
                     <div class="task-card hide-icons">
                         <div class="hover-icons">
                             <mat-icon matTooltip="History" matTooltipPosition="above"
-                            matTooltipClass="tooltip-blue">history</mat-icon>
+                            matTooltipClass="tooltip-blue" (click)="openDialogHistory(task.id)">history</mat-icon>
 
                             <mat-icon matTooltip="Archived task" matTooltipPosition="above"
                                 matTooltipClass="tooltip-blue" (click)="openDialogArchivedTask(task.id)">delete</mat-icon>
                         </div>
                         
-                        <span class="task-category" [style.background-color]="getCategoryColor(task.category)">
+                        <span class="task-category" [style.background-color]="shared.getCategoryColor(task.category)">
                             {{ task.category }}</span>
 
                         <div (click)="openTaskDetails(task.id)">

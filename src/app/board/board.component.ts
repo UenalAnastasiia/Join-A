@@ -2,12 +2,13 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { collectionData, doc, Firestore, collection, query, updateDoc, where } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { orderBy } from 'firebase/firestore';
+import { addDoc, orderBy } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
 import { SharedService } from 'src/services/shared.service';
 import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
+import { DialogTaskHistoryComponent } from '../dialog-task-history/dialog-task-history.component';
 
 @Component({
   selector: 'app-board',
@@ -42,19 +43,6 @@ export class BoardComponent implements OnInit {
   }
 
 
-  getCategoryColor(category: string) {
-    switch (category) {
-      case 'Frontend': return 'rgb(115 26 203)';
-      case 'Backend': return 'rgb(69 139 127)';
-      case 'Design': return '#FF7A00';
-      case 'Marketing': return '#0038FF';
-      case 'Backoffice': return '#1FD7C1';
-      case 'Other': return '#FC71FF';
-      default: return '';
-    }
-  }
-
-
   filterTasks(name: string) {
     const queryCollection = query(collection(this.firestore, "tasks"), where("status", "==", name), orderBy("dueDate"));
     this.shared.allTasks$ = collectionData(queryCollection, { idField: "taskID" });
@@ -79,7 +67,7 @@ export class BoardComponent implements OnInit {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex); 
+        event.currentIndex);
       this.updateTaskStatus(event.container.data[event.currentIndex]['id'], event.container.id);
     }
   }
@@ -88,6 +76,19 @@ export class BoardComponent implements OnInit {
   async updateTaskStatus(taskID: any, stat: string) {
     await updateDoc(doc(this.firestore, "tasks", taskID),
       { status: stat });
+
+    this.updateTaskHistory(taskID);
+  }
+
+
+  async updateTaskHistory(id: any) {
+    const docRef = doc(this.firestore, 'tasks', id);
+    const colRef = collection(docRef, "history")
+    addDoc(colRef, {
+      historyDate: Date.now(),
+      message: 'Edit Task',
+      change: 'Was changed'
+    });
   }
 
 
@@ -102,6 +103,12 @@ export class BoardComponent implements OnInit {
     const dialog = this.dialog.open(DialogTaskDetailsComponent);
     dialog.componentInstance.task = new Task(this.task.toJSON());
     dialog.componentInstance.task.id = id;
+  }
+
+
+  openDialogHistory(id: any) {
+    const dialog = this.dialog.open(DialogTaskHistoryComponent);
+    dialog.componentInstance.taskID = id;
   }
 
 

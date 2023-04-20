@@ -22,7 +22,7 @@
 
 
     <mat-card class="legend-card" *ngIf="showLegend">
-        <div *ngFor="let category of categoryList" [style.color]="getCategoryColor(category)">
+        <div *ngFor="let category of categoryList" [style.color]="shared.getCategoryColor(category)">
             <mat-icon>circle</mat-icon>
             <span>{{ category }}</span>
         </div>
@@ -50,7 +50,7 @@
                     </div>
                     <div class="task-title-box">
                         <div *ngFor="let task of shared.filterTasks">
-                            <span (click)="openTaskDetails(task.id)" [style.color]="getCategoryColor(task.category)"
+                            <span (click)="openTaskDetails(task.id)" [style.color]="shared.getCategoryColor(task.category)"
                                 [ngClass]="{'hideTask': c.date.getTime() != task.dueDate, 'showTask': c.date.getTime() === task.dueDate}"
                                 matTooltip="{{task.title}}" matTooltipPosition="above" matTooltipClass="tooltip-blue">
                                 <mat-icon>circle</mat-icon>
