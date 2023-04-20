@@ -41,7 +41,7 @@ export class ContactComponent implements OnInit {
 
 
   checkLetter(name: string) {
-    if (this.currentAlphabet === name.charAt(0).toLowerCase() && this.searchInput === '') {
+    if (this.currentAlphabet === name.charAt(0).toLowerCase() && this.searchInput == undefined) {
       return false;
     } else {
       this.currentAlphabet = name.charAt(0).toLowerCase();
