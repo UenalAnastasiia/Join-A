@@ -19,7 +19,7 @@ export class DialogTaskHistoryComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.dialogRef.updateSize('35vw', '');
+    this.dialogRef.updateSize('20vw', '');
     this.loadTask();
   }
 
