@@ -18,7 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -39,6 +39,9 @@ import { DialogContactTasksComponent } from './dialog-contact-tasks/dialog-conta
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChunkPipe } from '../services/chunk-pipe';
 import { DialogTaskHistoryComponent } from './dialog-task-history/dialog-task-history.component';
+import { LoginComponent } from './login/login.component';
+import { getAuth } from 'firebase/auth';
+import { provideAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import { DialogTaskHistoryComponent } from './dialog-task-history/dialog-task-hi
     DialogContactTasksComponent,
     CalendarComponent,
     ChunkPipe,
-    DialogTaskHistoryComponent
+    DialogTaskHistoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -80,8 +84,10 @@ import { DialogTaskHistoryComponent } from './dialog-task-history/dialog-task-hi
     MatSnackBarModule,
     MatProgressSpinnerModule,
     Ng2SearchPipeModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore())
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]

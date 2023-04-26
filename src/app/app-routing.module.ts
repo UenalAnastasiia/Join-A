@@ -5,6 +5,7 @@ import { BoardComponent } from './board/board.component';
 import { ContactComponent } from './contact/contact.component';
 import { SummaryComponent } from './summary/summary.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'summary', pathMatch: 'full' },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'board', component: BoardComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'archiv', component: ArchivComponent },
-  { path: 'calendar', component: CalendarComponent }
+  { path: 'calendar', component: CalendarComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({

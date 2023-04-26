@@ -1,0 +1,79 @@
+.register-container {
+    height: calc(100vh - 116px);
+    width: 100vw;
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.login-card {
+    width: max-content;
+    height: max-content;
+}
+
+.mat-card-title {
+    margin-bottom: 24px;
+}
+
+mat-form-field {
+    width: 350px;
+
+    @media (max-width: 400px) {
+        width: 270px; 
+    }
+
+    @media (max-width: 320px) {
+        width: 240px; 
+    }
+}
+
+.login-options-btn {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        cursor: pointer !important;
+    }
+
+    img {
+        height: 18px;
+        margin-right: 8px;
+    }
+}
+
+.or-text {
+    margin-top: 28px;
+    border-top: 1px solid #c3c0c0;
+    padding-top: 6px;
+    position: relative;
+
+    span {
+        padding: 4px;
+        background: white;
+        position: absolute;
+        top: -14px;
+        right: 160px;
+
+        @media (max-width: 400px) {
+            right: 120px;
+        }
+    
+        @media (max-width: 320px) {
+            right: 105px; 
+        }
+    }
+}
+
+.sign-up-btn {
+    font-size: 12px;
+}
+
+.icon-guest {
+    margin-right: 4px;
+    margin-top: -4px;
+}
