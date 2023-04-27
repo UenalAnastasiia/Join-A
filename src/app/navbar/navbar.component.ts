@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogAddContactComponent } from '../dialog-add-contact/dialog-add-contact.component';
-import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
+import { DialogAddTaskComponent } from '../task-section/dialog-add-task/dialog-add-task.component';
+import { DialogAddContactComponent } from '../contact-section/dialog-add-contact/dialog-add-contact.component';
+
 
 @Component({
   selector: 'app-navbar',

@@ -5,10 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { addDoc, orderBy } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
 import { SharedService } from 'src/services/shared.service';
-import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
-import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
-import { DialogTaskHistoryComponent } from '../dialog-task-history/dialog-task-history.component';
+import { DialogAddTaskComponent } from '../task-section/dialog-add-task/dialog-add-task.component';
+import { DialogTaskDetailsComponent } from '../task-section/dialog-task-details/dialog-task-details.component';
+import { DialogTaskHistoryComponent } from '../task-section/dialog-task-history/dialog-task-history.component';
 
 @Component({
   selector: 'app-board',

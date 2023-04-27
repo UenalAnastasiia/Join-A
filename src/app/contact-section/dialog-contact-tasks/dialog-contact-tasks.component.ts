@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
+import { DialogTaskDetailsComponent } from 'src/app/task-section/dialog-task-details/dialog-task-details.component';
 import { Task } from 'src/models/task.class';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
-import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
 import { SharedService } from 'src/services/shared.service';
 
 @Component({

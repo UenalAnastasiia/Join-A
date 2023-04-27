@@ -3,9 +3,9 @@ import { collectionData, Firestore } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { addDoc, collection, doc, getDoc, orderBy, query, updateDoc } from 'firebase/firestore';
 import { Task } from 'src/models/task.class';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { Observable } from 'rxjs';
 import { SnackBarService } from 'src/services/snack-bar.service';
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 
 @Component({
   selector: 'app-dialog-edit-task',

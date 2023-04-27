@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Firestore, updateDoc } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { doc, getDoc } from 'firebase/firestore';
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 import { Contact } from 'src/models/contact.class';
 import { SharedService } from 'src/services/shared.service';
 import { SnackBarService } from 'src/services/snack-bar.service';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
+
 
 @Component({
   selector: 'app-dialog-edit-contact',

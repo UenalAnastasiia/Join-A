@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore, addDoc, collection, doc, setDoc } from '@angular/fire/firestore';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 import { Contact } from 'src/models/contact.class';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
+
 
 @Component({
   selector: 'app-dialog-add-contact',

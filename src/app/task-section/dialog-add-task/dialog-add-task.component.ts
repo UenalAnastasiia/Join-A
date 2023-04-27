@@ -4,8 +4,8 @@ import { Task } from 'src/models/task.class';
 import { collectionData, Firestore } from '@angular/fire/firestore';
 import { addDoc, collection, doc, orderBy, query, setDoc } from 'firebase/firestore';
 import { MatInput } from '@angular/material/input';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { Observable } from 'rxjs';
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 
 @Component({
   selector: 'app-dialog-add-task',

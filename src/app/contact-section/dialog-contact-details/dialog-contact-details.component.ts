@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogAddTaskComponent } from '../dialog-add-task/dialog-add-task.component';
 import { DialogEditContactComponent } from '../dialog-edit-contact/dialog-edit-contact.component';
 import { SharedService } from 'src/services/shared.service';
 import { DialogContactTasksComponent } from '../dialog-contact-tasks/dialog-contact-tasks.component';
+import { DialogAddTaskComponent } from 'src/app/task-section/dialog-add-task/dialog-add-task.component';
 
 
 @Component({

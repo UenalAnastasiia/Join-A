@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { collectionData, Firestore, collection, query, where } from '@angular/fire/firestore';
 import { Task } from 'src/models/task.class';
 import { Observable } from 'rxjs';
-import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
 import { SharedService } from 'src/services/shared.service';
+import { DialogTaskDetailsComponent } from '../task-section/dialog-task-details/dialog-task-details.component';
 
 @Component({
   selector: 'app-archiv',

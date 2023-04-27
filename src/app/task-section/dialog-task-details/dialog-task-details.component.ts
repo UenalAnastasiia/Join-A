@@ -6,7 +6,8 @@ import { Task } from 'src/models/task.class';
 import { SharedService } from 'src/services/shared.service';
 import { SnackBarService } from 'src/services/snack-bar.service';
 import { DialogEditTaskComponent } from '../dialog-edit-task/dialog-edit-task.component';
-import { DialogRequestComponent } from '../dialog-request/dialog-request.component';
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
+
 
 @Component({
   selector: 'app-dialog-task-details',

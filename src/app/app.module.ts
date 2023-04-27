@@ -11,8 +11,8 @@ import { SummaryComponent } from './summary/summary.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BoardComponent } from './board/board.component';
-import { ContactComponent } from './contact/contact.component';
-import { DialogAddTaskComponent } from './dialog-add-task/dialog-add-task.component';
+import { ContactComponent } from './contact-section/contact/contact.component';
+import { DialogAddTaskComponent } from './task-section/dialog-add-task/dialog-add-task.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,23 +25,24 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { DialogTaskDetailsComponent } from './dialog-task-details/dialog-task-details.component';
+import { DialogTaskDetailsComponent } from './task-section/dialog-task-details/dialog-task-details.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ArchivComponent } from './archiv/archiv.component';
 import { DialogRequestComponent } from './dialog-request/dialog-request.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { DialogAddContactComponent } from './dialog-add-contact/dialog-add-contact.component';
-import { DialogContactDetailsComponent } from './dialog-contact-details/dialog-contact-details.component';
-import { DialogEditTaskComponent } from './dialog-edit-task/dialog-edit-task.component';
-import { DialogEditContactComponent } from './dialog-edit-contact/dialog-edit-contact.component';
-import { DialogContactTasksComponent } from './dialog-contact-tasks/dialog-contact-tasks.component';
+import { DialogAddContactComponent } from './contact-section/dialog-add-contact/dialog-add-contact.component';
+import { DialogContactDetailsComponent } from './contact-section/dialog-contact-details/dialog-contact-details.component';
+import { DialogEditTaskComponent } from './task-section/dialog-edit-task/dialog-edit-task.component';
+import { DialogEditContactComponent } from './contact-section/dialog-edit-contact/dialog-edit-contact.component';
+import { DialogContactTasksComponent } from './contact-section/dialog-contact-tasks/dialog-contact-tasks.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ChunkPipe } from '../services/chunk-pipe';
-import { DialogTaskHistoryComponent } from './dialog-task-history/dialog-task-history.component';
-import { LoginComponent } from './login/login.component';
+import { DialogTaskHistoryComponent } from './task-section/dialog-task-history/dialog-task-history.component';
+import { LoginComponent } from './authentication-section/login/login.component';
 import { getAuth } from 'firebase/auth';
 import { provideAuth } from '@angular/fire/auth';
+import { SignInComponent } from './authentication-section/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { provideAuth } from '@angular/fire/auth';
     CalendarComponent,
     ChunkPipe,
     DialogTaskHistoryComponent,
-    LoginComponent
+    LoginComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

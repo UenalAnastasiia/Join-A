@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CalendarDay } from 'src/models/calendar.class';
 import { SharedService } from 'src/services/shared.service';
-import { DialogTaskDetailsComponent } from '../dialog-task-details/dialog-task-details.component';
 import { Task } from 'src/models/task.class';
+import { DialogTaskDetailsComponent } from '../task-section/dialog-task-details/dialog-task-details.component';
 
 @Component({
   selector: 'app-calendar',
