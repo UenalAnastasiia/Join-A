@@ -7,14 +7,15 @@ import { SummaryComponent } from './summary/summary.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './authentication-section/login/login.component';
 import { SignInComponent } from './authentication-section/sign-in/sign-in.component';
+import { AuthGuard } from 'src/services/auth-guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'summary', pathMatch: 'full' },
-  { path: 'summary', component: SummaryComponent },
-  { path: 'board', component: BoardComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'archiv', component: ArchivComponent },
-  { path: 'calendar', component: CalendarComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'summary', component: SummaryComponent, canActivate: [AuthGuard] },
+  { path: 'board', component: BoardComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
+  { path: 'archiv', component: ArchivComponent, canActivate: [AuthGuard] },
+  { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignInComponent }
 ];
