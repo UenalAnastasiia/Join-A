@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { collection, query, where } from 'firebase/firestore';
 import { Observable } from 'rxjs';
 import { Task } from 'src/models/task.class';
+import { AuthenticationService } from 'src/services/authentication.service';
 import { SharedService } from 'src/services/shared.service';
 
 @Component({
@@ -25,20 +26,18 @@ export class SummaryComponent implements OnInit, OnDestroy {
   inProgressLength: number;
   awaitingFeedbackLength: number;
   doneLength: number;
-  // upcomingDeadline: any;
-  // deadlineExist: boolean = false;
-
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
 
-  constructor(public router: Router, private firestore: Firestore, public shared: SharedService) {
+  constructor(public router: Router, private firestore: Firestore, public shared: SharedService, public auth: AuthenticationService) {
   }
 
   ngOnInit(): void {
+    this.auth.getLoggedUser();
     this.renderTasks();
     this.renderSummary();
     this.getTime();
-    this.getGreeting();
+    this.getGreeting();    
   }
 
 
@@ -64,20 +63,6 @@ export class SummaryComponent implements OnInit, OnDestroy {
       this.getTaskLength(loadData);
     });
   }
-
-
-  // getUpcomingDeadline(taskData: any) {
-  //   let todayDate = new Date().getTime();
-  //   let filterDate = taskData.filter(data => data.dueDate > todayDate && data.status != 'archived');
-
-  //   if (filterDate.length >= 1) {
-  //     this.deadlineExist = true;
-  //     let dateMap = filterDate.map(data => data.dueDate);
-  //     this.upcomingDeadline = new Date(Math.min.apply(null, dateMap));
-  //   } else {
-  //     this.deadlineExist = false;
-  //   }
-  // }
 
 
   getTime() {

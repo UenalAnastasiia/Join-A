@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { getAuth, signInAnonymously } from "firebase/auth";
 import { AuthenticationService } from 'src/services/authentication.service';
+import { SharedService } from 'src/services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   error: string;
 
 
-  constructor(public auth: AuthenticationService) {
+  constructor(public auth: AuthenticationService, public shared: SharedService) {
     this.formLogin = new FormGroup({
       email: new FormControl(),
       password: new FormControl()

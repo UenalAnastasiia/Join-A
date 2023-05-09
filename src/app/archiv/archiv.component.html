@@ -14,6 +14,10 @@
     </div>
 
     <div class="tasks-box">
+        <div *ngIf="noTasks">
+            <h3>No tasks archived...</h3>
+        </div>
+
         <div *ngFor="let task of archivedTasks | filter:searchInput">
             <div class="task-card hide-icons">
                 <div class="hover-icons">

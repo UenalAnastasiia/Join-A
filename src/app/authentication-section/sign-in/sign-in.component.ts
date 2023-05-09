@@ -57,7 +57,7 @@ export class SignInComponent implements OnInit {
       photoURL: 'assets/img/profile.png'
     }).then(() => {
       this.createUserInDB();
-      this.router.navigate(['/login']);
+      window.location.href = '/login'
     }).catch((error) => {
       this.error = error
     });

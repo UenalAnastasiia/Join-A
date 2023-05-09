@@ -6,6 +6,7 @@ import { addDoc, collection, doc, orderBy, query, setDoc } from 'firebase/firest
 import { MatInput } from '@angular/material/input';
 import { Observable } from 'rxjs';
 import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
+import { AuthenticationService } from 'src/services/authentication.service';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -46,7 +47,8 @@ export class DialogAddTaskComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>,
     private firestore: Firestore,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,
+    public auth: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -90,6 +92,8 @@ export class DialogAddTaskComponent implements OnInit {
 
   async saveTask() {
     this.task.dueDate = this.dueDate.getTime();
+    this.auth.getLoggedUser();
+    this.task.editor = this.auth.userName;
     const taskCollection = collection(this.firestore, 'tasks');
     const docRef = await addDoc(taskCollection, this.task.toJSON());
     this.task.id = docRef.id;

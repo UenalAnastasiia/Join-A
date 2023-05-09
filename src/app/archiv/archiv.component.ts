@@ -18,6 +18,7 @@ export class ArchivComponent implements OnInit {
   archivedTasks: any = [];
   todayDate: any;
   searchInput: string;
+  noTasks: boolean = true;
 
   constructor(private firestore: Firestore, public dialog: MatDialog, public shared: SharedService) { }
 
@@ -26,6 +27,8 @@ export class ArchivComponent implements OnInit {
     this.archivedTasks$ = collectionData(queryCollection, { idField: "taskID" });
     this.archivedTasks$.subscribe((data: any) => {
       this.archivedTasks = data;
+
+      data.length === 0 ? this.noTasks = true : this.noTasks = false;
     });
   }
   

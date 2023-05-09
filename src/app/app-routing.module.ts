@@ -10,7 +10,7 @@ import { SignInComponent } from './authentication-section/sign-in/sign-in.compon
 import { AuthGuard } from 'src/services/auth-guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'summary', pathMatch: 'full' },
   { path: 'summary', component: SummaryComponent, canActivate: [AuthGuard] },
   { path: 'board', component: BoardComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
