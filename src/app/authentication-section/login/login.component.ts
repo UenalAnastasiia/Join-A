@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.auth.login(this.formLogin.value)
       .then(() => {
-        localStorage.setItem('loggedUser', this.formLogin.value.email);
         window.location.href = '/summary';
       })
       .catch(error => this.error = error);

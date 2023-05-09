@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogAddTaskComponent } from '../task-section/dialog-add-task/dialog-add-task.component';
 import { DialogAddContactComponent } from '../contact-section/dialog-add-contact/dialog-add-contact.component';
+import { AuthenticationService } from 'src/services/authentication.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
     { name: 'contact', icon: '3p' },
   ];
 
-  constructor(public router: Router, public dialog: MatDialog) { }
+  constructor(public router: Router, public dialog: MatDialog, public auth: AuthenticationService) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +32,15 @@ export class NavbarComponent implements OnInit {
 
   openDialogAddContact() {
     this.dialog.open(DialogAddContactComponent);
+  }
+
+
+  logOut() {
+    this.auth.logout()
+      .then(() => {
+        window.location.href = '/login';
+      })
+      .catch(error => console.log(error));
   }
 
 }
