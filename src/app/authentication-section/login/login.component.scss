@@ -227,3 +227,25 @@ mat-form-field {
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
     color: var(--header) !important;
 }
+
+.logo-box {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+
+    h1 {
+        font-size: 58px;
+        font-weight: 800;
+        margin: 0;
+        color: var(--header);
+        margin-top: 18px;
+        letter-spacing: -8px;
+        -webkit-text-stroke: 0.5px #0a0a0a80;
+        filter: drop-shadow(3px 0px 2px #ffffff);
+
+        &:first-letter {
+            color: var(--bg-light);
+            font-size: 100px;
+        }
+    }
+}

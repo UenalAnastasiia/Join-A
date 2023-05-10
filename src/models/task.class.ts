@@ -8,7 +8,7 @@ export class Task {
     status: string;
     id: string;
     bgColor: any;
-    editor: string;
+    editor: any;
 
     constructor(obj?: any) {
         this.title = obj ? obj.title : '';

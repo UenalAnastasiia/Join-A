@@ -93,7 +93,7 @@ export class DialogAddTaskComponent implements OnInit {
   async saveTask() {
     this.task.dueDate = this.dueDate.getTime();
     this.auth.getLoggedUser();
-    this.task.editor = this.auth.userName;
+    this.auth.userName === undefined ? this.task.editor = 'Guest' : this.task.editor = this.auth.userName;
     const taskCollection = collection(this.firestore, 'tasks');
     const docRef = await addDoc(taskCollection, this.task.toJSON());
     this.task.id = docRef.id;
