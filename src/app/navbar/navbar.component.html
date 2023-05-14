@@ -9,7 +9,7 @@
         </div>
 
         <button mat-icon-button class="help-btn" matTooltip="Help" matTooltipPosition="above"
-            matTooltipClass="tooltip-blue" matTooltipClass="tooltip-blue">
+            matTooltipClass="tooltip-blue">
             <mat-icon>question_mark</mat-icon>
         </button>
     </nav>
@@ -42,9 +42,15 @@
         </div>
 
         <div class="account">
-            <button mat-icon-button (click)="logOut()">
-                <mat-icon>account_circle</mat-icon>
+            <button mat-icon-button matTooltip="{{ auth.userName || 'Guest'}}"
+                matTooltipPosition="above" matTooltipClass="tooltip-blue" [matMenuTriggerFor]="userMenu">
+                <img src="{{ auth.userImg || 'assets/img/profile.png'}}" alt="">
             </button>
+
+            <mat-menu #userMenu="matMenu" yPosition="above">
+                <button mat-menu-item (click)="logOut()">
+                    <mat-icon>logout</mat-icon> Log Out</button>
+            </mat-menu>
         </div>
     </nav>
 </div>

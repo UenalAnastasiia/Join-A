@@ -43,6 +43,7 @@ import { LoginComponent } from './authentication-section/login/login.component';
 import { getAuth } from 'firebase/auth';
 import { provideAuth } from '@angular/fire/auth';
 import { SignInComponent } from './authentication-section/sign-in/sign-in.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import { SignInComponent } from './authentication-section/sign-in/sign-in.compon
     MatProgressSpinnerModule,
     Ng2SearchPipeModule,
     ReactiveFormsModule,
+    MatMenuModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())

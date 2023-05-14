@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { DialogAddTaskComponent } from '../task-section/dialog-add-task/dialog-add-task.component';
 import { DialogAddContactComponent } from '../contact-section/dialog-add-contact/dialog-add-contact.component';
 import { AuthenticationService } from 'src/services/authentication.service';
+import { Firestore, collectionData } from '@angular/fire/firestore';
+import { collection, query, where } from 'firebase/firestore';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -17,10 +20,13 @@ export class NavbarComponent implements OnInit {
     { name: 'board', icon: 'dashboard' },
     { name: 'contact', icon: '3p' },
   ];
+  currentUser$: Observable<any>;
+  currentUser: any = [];
 
-  constructor(public router: Router, public dialog: MatDialog, public auth: AuthenticationService) { }
+  constructor(public router: Router, public dialog: MatDialog, public auth: AuthenticationService, private firestore: Firestore) { }
 
   ngOnInit(): void {
+    this.auth.getLoggedUser();
   }
 
 
@@ -42,5 +48,4 @@ export class NavbarComponent implements OnInit {
       })
       .catch(error => console.log(error));
   }
-
 }
