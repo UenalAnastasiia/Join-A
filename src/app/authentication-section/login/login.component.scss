@@ -1,8 +1,6 @@
 $fontFamily: 'Montserrat', sans-serif;
 $fontSize: 14px;
 $textColor: #6C7587;
-
-// $height: 54px;
 $height: 32px;
 
 $bgColor: #EBECF0;
@@ -106,6 +104,14 @@ mat-form-field {
 
 .sign-up-btn {
     font-size: 12px;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+        &:last-child {
+            margin-left: 26px;
+        }
+    }
 }
 
 .signIn-btn {

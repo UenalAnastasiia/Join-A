@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, 
-  signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import {
+  Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,
+  signInWithPopup, GoogleAuthProvider
+} from '@angular/fire/auth';
+import { getAuth, onAuthStateChanged, sendPasswordResetEmail } from 'firebase/auth';
+import { SnackBarService } from './snack-bar.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +14,9 @@ export class AuthenticationService {
   userName: any;
   userImg: any;
   userEmail: any;
+  errorResetMessage: any;
 
-  constructor(private auth: Auth) { }
+  constructor(private auth: Auth, private messageService: SnackBarService, public dialog: MatDialog) { }
 
 
   register({ email, password }: any) {
@@ -43,5 +48,23 @@ export class AuthenticationService {
         this.userEmail = user.email;
       }
     });
+  }
+
+
+  resetPassword(email: any) {
+    console.log('email ', email);
+
+    const auth = getAuth();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        this.messageService.showSnackMessage('E-Mail was send!');
+        setTimeout(() => {
+          this.dialog.closeAll();
+        }, 1000);
+
+      })
+      .catch((error) => {
+        this.errorResetMessage = error.message;
+      });
   }
 }

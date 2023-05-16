@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore } from '@angular/fire/firestore';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
+import { AuthenticationService } from 'src/services/authentication.service';
 import { SnackBarService } from 'src/services/snack-bar.service';
 
 
@@ -21,22 +23,38 @@ export class DialogRequestComponent implements OnInit {
   deleteTask: boolean = false;
   allTasksData: any;
   deleteAllTasks: boolean = false;
+  resetDialog: boolean = true;
+  email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<DialogRequestComponent>, private firestore: Firestore, private messageService: SnackBarService) { }
+  constructor(public dialog: MatDialog, 
+    public dialogRef: MatDialogRef<DialogRequestComponent>, 
+    private firestore: Firestore, 
+    private messageService: SnackBarService,
+    public auth: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
 
   showAddTaskRequest() {
+    this.addContact = false;
     this.addTask = true;
     this.archivTask = false;   
+    this.deleteContact = false;
+    this.deleteTask = false;
+    this.deleteAllTasks = false;
+    this.resetDialog = false;  
   }
 
 
   showArchiveTaskRequest() {
-    this.archivTask = true;   
+    this.addContact = false;
     this.addTask = false;
+    this.archivTask = true;   
+    this.deleteContact = false;
+    this.deleteTask = false;
+    this.deleteAllTasks = false;
+    this.resetDialog = false;
   }
 
 
@@ -58,6 +76,10 @@ export class DialogRequestComponent implements OnInit {
     this.addContact = true;
     this.addTask = false;
     this.archivTask = false;   
+    this.deleteContact = false;
+    this.deleteTask = false;
+    this.deleteAllTasks = false;
+    this.resetDialog = false; 
   }
 
 
@@ -66,6 +88,9 @@ export class DialogRequestComponent implements OnInit {
     this.addTask = false;
     this.archivTask = false;   
     this.deleteContact = true;
+    this.deleteTask = false;
+    this.deleteAllTasks = false;
+    this.resetDialog = false;
   }
 
 
@@ -89,6 +114,8 @@ export class DialogRequestComponent implements OnInit {
     this.archivTask = false;   
     this.deleteContact = false;
     this.deleteTask = true;
+    this.deleteAllTasks = false;
+    this.resetDialog = false;
   }
 
 
@@ -113,6 +140,7 @@ export class DialogRequestComponent implements OnInit {
     this.deleteContact = false;
     this.deleteTask = false;
     this.deleteAllTasks = true;
+    this.resetDialog = false;
   }
 
 
@@ -129,5 +157,16 @@ export class DialogRequestComponent implements OnInit {
     setTimeout(() => {
       this.messageService.showSnackMessage('Archiv has been cleaned!');
     }, 1500);
+  }
+
+
+  showResetPassword() {
+    this.addContact = false;
+    this.addTask = false;
+    this.archivTask = false;   
+    this.deleteContact = false;
+    this.deleteTask = false;
+    this.deleteAllTasks = false;
+    this.resetDialog = true;
   }
 }

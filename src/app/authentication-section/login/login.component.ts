@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { getAuth, signInAnonymously } from "firebase/auth";
+import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 import { AuthenticationService } from 'src/services/authentication.service';
 import { SharedService } from 'src/services/shared.service';
 
@@ -14,7 +16,7 @@ export class LoginComponent implements OnInit {
   error: string;
 
 
-  constructor(public auth: AuthenticationService, public shared: SharedService) {
+  constructor(public auth: AuthenticationService, public shared: SharedService, public dialog: MatDialog) {
     this.formLogin = new FormGroup({
       email: new FormControl(),
       password: new FormControl()
@@ -54,5 +56,11 @@ export class LoginComponent implements OnInit {
       .catch((error) => {
         this.error = error;
       });
+  }
+
+
+  openDialogResetPassword() {
+    const dialog = this.dialog.open(DialogRequestComponent);
+    dialog.componentInstance.showResetPassword();
   }
 }

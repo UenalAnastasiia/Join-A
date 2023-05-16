@@ -51,3 +51,24 @@
         <div (click)="deleteAllTasksFromArchiv()">Clean Archiv</div>
     </div>
 </div>
+
+<div *ngIf="resetDialog" class="request-box">
+    <h1>Enter Your E-Mail</h1>
+
+    <mat-form-field class="input-shadow input-box height-36">
+        <input matInput placeholder="E-Mail" #resetEmail required [formControl]="email" autocomplete="off">
+    </mat-form-field>
+
+    <p *ngIf="auth.errorResetMessage" class="error">
+        {{ auth.errorResetMessage }}
+    </p>
+
+    <div class="btn-box">
+        <div (click)="dialogRef.close()">Cancel</div>
+        <div>
+            <button mat-button (click)="auth.resetPassword(resetEmail.value)" [disabled]="!email.valid">
+                Send E-Mail
+            </button>
+        </div>
+    </div>
+</div>
