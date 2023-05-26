@@ -1,8 +1,18 @@
 <div class="register-container">
+    <div class="info-box">
+        <button mat-icon-button [matMenuTriggerFor]="infoMenu">
+            <mat-icon>information</mat-icon>
+        </button>
+
+        <mat-menu #infoMenu="matMenu" yPosition="above">
+            <button mat-menu-item routerLink="/imprint">Imprint</button>
+            <button mat-menu-item routerLink="/data-protection">Data Protection</button>
+        </mat-menu>
+    </div>
     <div class="logo-box">
         <h1>Join</h1>
     </div>
-    
+
     <mat-card class="login-card">
         <mat-card-title>Login</mat-card-title>
         <mat-card-content>

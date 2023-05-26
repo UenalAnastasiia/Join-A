@@ -32,6 +32,17 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     background-image: url('/../assets/img/bg1.jpg');
 }
 
+.info-box {
+    position: absolute;
+    bottom: 42px;
+    left: 42px;
+
+    mat-icon {
+        color: var(--header);
+        font-size: 32px;
+    }
+}
+
 .login-card {
     width: max-content;
     height: max-content;

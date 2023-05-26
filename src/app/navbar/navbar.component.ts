@@ -4,8 +4,7 @@ import { Router } from '@angular/router';
 import { DialogAddTaskComponent } from '../task-section/dialog-add-task/dialog-add-task.component';
 import { DialogAddContactComponent } from '../contact-section/dialog-add-contact/dialog-add-contact.component';
 import { AuthenticationService } from 'src/services/authentication.service';
-import { Firestore, collectionData } from '@angular/fire/firestore';
-import { collection, query, where } from 'firebase/firestore';
+import { Firestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 

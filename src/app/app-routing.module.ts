@@ -9,6 +9,8 @@ import { LoginComponent } from './authentication-section/login/login.component';
 import { SignInComponent } from './authentication-section/sign-in/sign-in.component';
 import { AuthGuard } from 'src/services/auth-guard';
 import { HelpInfoComponent } from './help-info/help-info.component';
+import { ImprintComponent } from './imprint/imprint.component';
+import { DataProtectionComponent } from './data-protection/data-protection.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'summary', pathMatch: 'full' },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
   { path: 'help', component: HelpInfoComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-  { path: 'register', component: SignInComponent }
+  { path: 'register', component: SignInComponent },
+  { path: 'imprint', component: ImprintComponent },
+  { path: 'data-protection', component: DataProtectionComponent }
 ];
 
 @NgModule({

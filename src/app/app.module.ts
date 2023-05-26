@@ -46,6 +46,8 @@ import { SignInComponent } from './authentication-section/sign-in/sign-in.compon
 import { MatMenuModule } from '@angular/material/menu';
 import { HelpInfoComponent } from './help-info/help-info.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ImprintComponent } from './imprint/imprint.component';
+import { DataProtectionComponent } from './data-protection/data-protection.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     DialogTaskHistoryComponent,
     LoginComponent,
     SignInComponent,
-    HelpInfoComponent
+    HelpInfoComponent,
+    ImprintComponent,
+    DataProtectionComponent
   ],
   imports: [
     BrowserModule,
