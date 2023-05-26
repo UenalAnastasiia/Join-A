@@ -44,6 +44,8 @@ import { getAuth } from 'firebase/auth';
 import { provideAuth } from '@angular/fire/auth';
 import { SignInComponent } from './authentication-section/sign-in/sign-in.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { HelpInfoComponent } from './help-info/help-info.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { MatMenuModule } from '@angular/material/menu';
     ChunkPipe,
     DialogTaskHistoryComponent,
     LoginComponent,
-    SignInComponent
+    SignInComponent,
+    HelpInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +92,7 @@ import { MatMenuModule } from '@angular/material/menu';
     Ng2SearchPipeModule,
     ReactiveFormsModule,
     MatMenuModule,
+    MatExpansionModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth())

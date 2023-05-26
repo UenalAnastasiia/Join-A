@@ -8,6 +8,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './authentication-section/login/login.component';
 import { SignInComponent } from './authentication-section/sign-in/sign-in.component';
 import { AuthGuard } from 'src/services/auth-guard';
+import { HelpInfoComponent } from './help-info/help-info.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'summary', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent, canActivate: [AuthGuard] },
   { path: 'archiv', component: ArchivComponent, canActivate: [AuthGuard] },
   { path: 'calendar', component: CalendarComponent, canActivate: [AuthGuard] },
+  { path: 'help', component: HelpInfoComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: SignInComponent }
 ];
