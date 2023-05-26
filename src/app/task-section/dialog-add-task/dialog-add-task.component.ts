@@ -7,6 +7,7 @@ import { MatInput } from '@angular/material/input';
 import { Observable } from 'rxjs';
 import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 import { AuthenticationService } from 'src/services/authentication.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dialog-add-task',
@@ -44,6 +45,12 @@ export class DialogAddTaskComponent implements OnInit {
   categoryList: any[] = ["Frontend", "Backend", "Design", "Marketing", "Backoffice", "Other"];
   statusList: any[] = ["To do", "In progress", "Awaiting Feedback", "Done"];
 
+  title = new FormControl('', [Validators.required, Validators.minLength(1)]);
+  description = new FormControl('', [Validators.required, Validators.minLength(1)]);
+  category = new FormControl('', [Validators.required]);
+  datepicker = new FormControl('', [Validators.required]);
+  priority = new FormControl('', [Validators.required]);
+  assignedTo = new FormControl('', [Validators.required]);
 
   constructor(public dialogRef: MatDialogRef<DialogAddTaskComponent>,
     private firestore: Firestore,

@@ -226,6 +226,11 @@ $innerShadow: inset -4px -4px 6px -1px rgba($lightShadow, 1),
     left: 0;
 }
 
-::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
     stroke: var(--header);
+}
+
+.disabled {
+    pointer-events: none;
 }

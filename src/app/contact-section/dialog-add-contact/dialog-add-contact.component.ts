@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Firestore, addDoc, collection, doc, setDoc } from '@angular/fire/firestore';
+import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogRequestComponent } from 'src/app/dialog-request/dialog-request.component';
 import { Contact } from 'src/models/contact.class';
@@ -13,6 +14,10 @@ import { Contact } from 'src/models/contact.class';
 export class DialogAddContactComponent implements OnInit {
   contact = new Contact();
   loadSpinner: boolean = false;
+  firstName = new FormControl('', [Validators.required, Validators.minLength(1)]);
+  lastName = new FormControl('', [Validators.required, Validators.minLength(1)]);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  phone = new FormControl('', [Validators.required, Validators.pattern('[- +()0-9]+')]);
 
   constructor(public dialogRef: MatDialogRef<DialogAddContactComponent>,
     private firestore: Firestore,

@@ -12,25 +12,29 @@
     </div>
 
     <div class="task-box">
-            <mat-form-field class="input-shadow input-box height-36">
-                <input matInput type="text" placeholder="First Name" [(ngModel)]="contact.firstName">
-                <mat-icon>person</mat-icon>
-            </mat-form-field>
+        <mat-form-field class="input-shadow input-box height-36">
+            <input matInput type="text" placeholder="First Name" [(ngModel)]="contact.firstName"
+                [formControl]="firstName" autocomplete="off">
+            <mat-icon>person</mat-icon>
+        </mat-form-field>
 
-            <mat-form-field class="input-shadow input-box height-36">
-                <input matInput type="text" placeholder="Last Name" [(ngModel)]="contact.lastName">
-                <mat-icon>person</mat-icon>
-            </mat-form-field>
+        <mat-form-field class="input-shadow input-box height-36">
+            <input matInput type="text" placeholder="Last Name" [(ngModel)]="contact.lastName" [formControl]="lastName"
+                autocomplete="off">
+            <mat-icon>person</mat-icon>
+        </mat-form-field>
 
-            <mat-form-field class="input-shadow input-box height-36">
-                <input matInput type="text" placeholder="E-Mail" [(ngModel)]="contact.email">
-                <mat-icon>mail</mat-icon>
-            </mat-form-field>
+        <mat-form-field class="input-shadow input-box height-36">
+            <input matInput type="text" placeholder="E-Mail" [(ngModel)]="contact.email" [formControl]="email"
+                autocomplete="off">
+            <mat-icon>mail</mat-icon>
+        </mat-form-field>
 
-            <mat-form-field class="input-shadow input-box height-36">
-                <input matInput type="text" placeholder="Phone" [(ngModel)]="contact.phone">
-                <mat-icon>phone</mat-icon>
-            </mat-form-field>
+        <mat-form-field class="input-shadow input-box height-36">
+            <input matInput type="text" placeholder="Phone" [(ngModel)]="contact.phone" [formControl]="phone"
+                autocomplete="off">
+            <mat-icon>phone</mat-icon>
+        </mat-form-field>
     </div>
 
     <div class="button-box">
@@ -38,7 +42,8 @@
             <mat-icon>cleaning_services</mat-icon>
         </div>
 
-        <div (click)="saveContact()" matTooltip="Save" matTooltipPosition="below" matTooltipClass="tooltip-blue">
+        <div matTooltip="Save" matTooltipPosition="below" matTooltipClass="tooltip-blue" (click)="saveContact()"
+            [class.disabled]="!firstName.valid || !lastName.valid || !email.valid || !phone.valid">
             <mat-icon>done</mat-icon>
         </div>
     </div>
