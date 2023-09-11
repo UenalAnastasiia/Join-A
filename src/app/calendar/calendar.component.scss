@@ -25,6 +25,10 @@
   background-color: #fff;
   border-radius: 16px;
   margin-top: 62px;
+
+  @media (max-height: 720px)  {
+    margin-top: 46px;
+  }
 }
 
 .calendar-table thead th {
